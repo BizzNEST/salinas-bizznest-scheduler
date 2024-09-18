@@ -1,10 +1,10 @@
-# Project Title
+# Nest Meetup
 
-A brief description of what this project does and who it's for.
+The goal of this project is to develop a randomized scheduling application using only frontend technologies (HTML, CSS, and JavaScript). The application will allow users to pair interns or group interns from different locations and departments based on customizable rules. It will provide flexibility to include or exclude interns from the schedule with simple selection controls.
 
 ## Table of Contents
 
-- [Project Title](#project-title)
+- [Nest Meetup](#nest-meetup)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Usage](#usage)
