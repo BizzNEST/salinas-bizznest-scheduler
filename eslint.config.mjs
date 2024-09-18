@@ -1,10 +1,10 @@
-import globals from 'globals';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
+import globals from 'globals';
 
 export default [
   {
-    files: ['**/*.js', '**/*.html', '**/*.css'],
+    files: ['**/*.js'],
     languageOptions: {
       globals: {
         ...globals.browser,
