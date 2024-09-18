@@ -10,6 +10,7 @@ The goal of this project is to develop a randomized scheduling application using
 - [Usage](#usage)
 - [Features](#features)
 - [Development Process](#development-process)
+- [Deployment Instructions](#deployment-instructions)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -45,6 +46,10 @@ All of the process is completed following [bizzNest GitHub Branching/Commit/PR S
 * Implement changes and commit frequently
 * Open PR into `main` when ready
 
+
+## Deployment Instructions
+
+* Website will be deployed either by GitHub Pages or Vercel
 
 
 
