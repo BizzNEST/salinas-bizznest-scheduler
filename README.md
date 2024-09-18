@@ -6,7 +6,7 @@ The goal of this project is to develop a randomized scheduling application using
 
 - [Nest Meetup](#nest-meetup)
 - [Table of Contents](#table-of-contents)
-- [Installation](#installation)
+- [Project Set Up](#project-set-up)
 - [Usage](#usage)
 - [Features](#features)
 - [Development Process](#development-process)
@@ -14,26 +14,24 @@ The goal of this project is to develop a randomized scheduling application using
 - [License](#license)
 - [Contact](#contact)
 
-## Installation
+## Project Set Up 
 
 Step-by-step instructions on how to get the development environment running.
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone git@github.com:BizzNEST/salinas-bizznest-scheduler.git
     ```
 2. Navigate to the project directory:
     ```sh
-    cd your-repo
+    cd salinas-bizznest-scheduler
     ```
 3. Install dependencies:
     ```sh
     npm install
     ```
 4. Run the development server:
-    ```sh
-    npm start
-    ```
+   - run live server
 
 ## Usage
 
