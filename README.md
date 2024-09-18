@@ -9,6 +9,7 @@ The goal of this project is to develop a randomized scheduling application using
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Development Process](#development-process)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -37,4 +38,15 @@ Step-by-step instructions on how to get the development environment running.
 ## Usage
 
 Instructions and examples for using the project. Include code snippets and screenshots as needed.
+
+## Development Process
+
+All of the process is completed following [bizzNest GitHub Branching/Commit/PR Standards](https://github.com/BizzNEST/Standards-and-Practices/tree/main/standards)
+
+* Create feature branch from `main`
+* Implement changes and commit frequently
+* Open PR into `main` when ready
+
+
+
 
