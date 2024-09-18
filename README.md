@@ -41,9 +41,12 @@ Instructions and examples for using the project. Include code snippets and scree
 
 ## Development Process
 
+All of the process is completed following [bizzNest GitHub Branching/Commit/PR Standards](https://github.com/BizzNEST/Standards-and-Practices/tree/main/standards)
+
 * Create feature branch from `main`
 * Implement changes and commit frequently
 * Open PR into `main` when ready
+
 
 
 
