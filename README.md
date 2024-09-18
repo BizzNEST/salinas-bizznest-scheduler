@@ -49,7 +49,7 @@ All of the process is completed following [bizzNest GitHub Branching/Commit/PR S
 
 ## Deployment Instructions
 
-* Website will deployed either by GitHub Pages or Vercel
+* Website will be deployed either by GitHub Pages or Vercel
 
 
 
