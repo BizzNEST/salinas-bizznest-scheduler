@@ -9,6 +9,7 @@ A brief description of what this project does and who it's for.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Development Process](#development-process)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -37,4 +38,12 @@ Step-by-step instructions on how to get the development environment running.
 ## Usage
 
 Instructions and examples for using the project. Include code snippets and screenshots as needed.
+
+## Development Process
+
+* Create feature branch from `main`
+* Implement changes and commit frequently
+* Open PR into `main` when ready
+
+
 
