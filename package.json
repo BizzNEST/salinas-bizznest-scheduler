@@ -1,0 +1,22 @@
+{
+  "name": "salinas-bizznest-scheduler",
+  "version": "1.0.0",
+  "description": "A brief description of what this project does and who it's for.",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --config eslint.config.mjs .",
+    "format": "prettier --write \"src/**/*.js\"",
+    "check": "npm run lint && npm run format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3"
+  }
+}
