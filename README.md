@@ -6,14 +6,9 @@ The goal of this project is to develop a randomized scheduling application using
 
 - [Nest Meetup](#nest-meetup)
 - [Table of Contents](#table-of-contents)
+- [Project Requirements](#project-requirements)
 - [Project Set Up](#project-set-up)
-- [Usage](#usage)
-- [Features](#features)
 - [Development Process](#development-process)
-- [Deployment Instructions](#deployment-instructions)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Project Set Up 
 
@@ -34,9 +29,10 @@ Step-by-step instructions on how to get the development environment running.
 4. Run the development server:
    - run live server
 
-## Usage
+## Project Requirements
 
-Instructions and examples for using the project. Include code snippets and screenshots as needed.
+
+
 
 ## Development Process
 
