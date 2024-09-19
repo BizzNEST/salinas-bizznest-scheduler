@@ -2,6 +2,10 @@
 
 The goal of this project is to develop a randomized scheduling application using only frontend technologies (HTML, CSS, and JavaScript). The application will allow users to pair interns or group interns from different locations and departments based on customizable rules. It will provide flexibility to include or exclude interns from the schedule with simple selection controls.
 
+#### [Designs](https://www.figma.com/design/1nsYgWIN5bC7NnnVApTcK4/Salinas---bizzNest-Scheduler?node-id=0-1&t=TLQ1O5AYgPPOLJtm-0)
+
+#### [Mock-Ups](https://excalidraw.com/#json=hXikrerg9aW93NtIB4y55,HiubrShERrkbW7idVJSJiA)
+
 ## Table of Contents
 
 - [Nest Meetup](#nest-meetup)
