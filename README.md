@@ -13,6 +13,7 @@ The goal of this project is to develop a randomized scheduling application using
 - [Project Requirements](#project-requirements)
 - [Project Set Up](#project-set-up)
 - [Development Process](#development-process)
+- [Deployment Instructions](#deployment-instructions)
 
 ## Project Set Up 
 
