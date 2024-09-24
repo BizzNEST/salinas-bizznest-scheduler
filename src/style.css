@@ -45,7 +45,7 @@ header h1{
   color: #2A2E33;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (width <= 550px) {
   #desktop-logo {
     display: none;
   }
