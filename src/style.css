@@ -1,4 +1,41 @@
-.hello-world {
-  color: red;
-  text-decoration: underline;
+body {
+  margin: 0;
+  padding: 0;
 }
+
+.outfit-headerFont {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.web-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #BDE3D0;
+  width: 100%;
+
+}
+
+.logo {
+  padding: 10px;
+  align-self: center;
+
+}
+
+.header_spacer {
+  width: 150px;
+  padding: 10px;
+  align-self: center;
+}
+
+header h1{
+  font-family:'Outfit','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #2A2E33;
+}
+
+
+
+
