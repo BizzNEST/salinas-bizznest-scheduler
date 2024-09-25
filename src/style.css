@@ -41,6 +41,7 @@ header {
   background-color: #bde3d0;
   width: 100%;
 }
+
 .logo {
   padding: 20px;
   align-self: center;
@@ -69,9 +70,9 @@ header h1 {
 
 /* Week Card Styles */
 section.week-card {
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
   padding: 30px;
   max-width: 800px;
   margin: 20px auto;
@@ -80,7 +81,8 @@ section.week-card {
 
 /* Inner Week Card */
 .inner-week-card {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header Styling */
@@ -89,7 +91,7 @@ section.week-card {
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #ececec;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .week-header h2 {
@@ -97,18 +99,16 @@ section.week-card {
   margin: 0;
 }
 
-.week-header button {
+.fa-chevron-up {
+  font-size: 20px;
+}
+
+.week-header.fa-chevron-up {
   padding: 5px 10px;
-  background-color: #bde3d0;
-  color: white;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.week-header button:hover {
-  background-color: #7ad3a7;
 }
 
 /* Departments Section */
@@ -138,13 +138,10 @@ section.week-card {
   display: inline-block; /* Ensure the pill does not take full width */
   background-color: #bde3d0;
   color: black;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* Ice Breakers Section */
-.ice-breakers {
-  margin-bottom: 20px;
-}
 
 .ice-breakers h3 {
   font-size: 1.25rem;
@@ -170,10 +167,13 @@ table {
   margin-top: 20px;
 }
 
+th {
+  padding: 10px;
+}
+
 table thead th {
   background-color: #bde3d0;
   color: black;
-  padding: 10px;
   text-align: center;
 }
 
@@ -212,7 +212,7 @@ table tbody td {
   font-size: 0.9rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (width <= 600px) {
   #desktop-logo {
     display: none;
   }

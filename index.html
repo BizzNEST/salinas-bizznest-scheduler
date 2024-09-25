@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="./src/app.js"></script>
+    <script
+      src="https://kit.fontawesome.com/0227bd90ba.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./src/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,14 +39,17 @@
       <div class="header-spacer"></div>
     </header>
     <section class="week-card">
+      <!-- TODO: Dynamically display the card info (interns, departments, etc..)-->
       <div class="inner-week-card">
         <div class="week-header">
           <h2>Week</h2>
-          <button>Close/Expand</button>
+          <i class="fa-solid fa-chevron-up"></i>
         </div>
+      </div>
+      <div id="week-card-content" class="inner-week-card">
         <div class="departments">
           <h3>Departments</h3>
-          <!-- TODO: Add Department Pills -->
+          <!-- TODO: Dynamically display the department pill with their style (only background color should change)-->
           <ul>
             <li class="pill">Web Developer</li>
             <li class="pill">Design</li>
