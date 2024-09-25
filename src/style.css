@@ -71,7 +71,7 @@ header h1 {
 /* Week Card Styles */
 section.week-card {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
   padding: 30px;
   max-width: 800px;
@@ -147,18 +147,6 @@ section.week-card {
   margin-bottom: 10px;
 }
 
-.ice-breakers ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.ice-breakers li {
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 1rem;
-  white-space: nowrap; /* Prevents wrapping of list items */
-}
-
 /* Table Styles */
 table {
   width: 100%;
@@ -192,7 +180,7 @@ table tbody td {
   font-size: 0.9rem;
   margin-bottom: 5px;
   display: inline-block; /* Ensure the pill does not take full width */
-  max-width: fit-content; /* Adjust width to fit content */
+  max-width: fit-content;
 }
 
 /* Intern Pill Styles */
@@ -215,7 +203,8 @@ table tbody td {
 #week-card-content {
   overflow: hidden;
   transition: max-height 0.3s ease-out;
-  max-height: 500px; /* Set a max-height based on your content */
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 #week-card-content.collapsed {
@@ -229,6 +218,20 @@ i#toggle-icon {
 
 i#toggle-icon.rotate {
   transform: rotate(180deg);
+}
+
+#ice-breaker-questions {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add space between list items */
+}
+
+#ice-breaker-questions li {
+  word-wrap: break-word; /* Ensure long words break and wrap to the next line */
+  overflow-wrap: break-word;
+  padding: 5px 0;
+  list-style-type: decimal;
 }
 
 @media screen and (width <= 600px) {
@@ -258,12 +261,12 @@ i#toggle-icon.rotate {
 
   .departments,
   .ice-breakers {
-    flex-direction: column; /* Stack the department section */
-    align-items: flex-start; /* Align items to the start */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .departments ul {
-    gap: 5px; /* Adjust gap for smaller screens */
+    gap: 5px;
   }
 
   .departments h3,
