@@ -1,8 +1,29 @@
 body {
-  margin: 0;
-  padding: 0;
+  padding: 0; 
+  margin:0;
 }
 
+footer {
+  text-align: center;
+  font-family: Outfit, sans-serif;
+  position: relative;
+  width: 100%; 
+  font-style: normal;
+  height: 100px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background-color: #BDE3D0;
+  gap: 20px;
+}
+
+footer img {
+  width: 30px;
+  height: 30px;
+  }
+
+  
+  
 .outfit-header-font {
   font-family: Outfit, sans-serif;
   font-optical-sizing: auto;
@@ -63,8 +84,8 @@ header h1{
     align-self: center;
   }
 
+  footer img {
+    width: 35px;
+    height: 35px;
+  }
 }
-
-
-
-
