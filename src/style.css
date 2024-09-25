@@ -90,8 +90,6 @@ section.week-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #ececec;
-  margin-bottom: 10px;
 }
 
 .week-header h2 {
@@ -115,6 +113,7 @@ section.week-card {
 .departments {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .departments h3 {
@@ -210,6 +209,26 @@ table tbody td {
 .intern-pill-name-location p {
   margin: 0;
   font-size: 0.9rem;
+}
+
+/* Toggle Icons + Callapsing Content */
+#week-card-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 500px; /* Set a max-height based on your content */
+}
+
+#week-card-content.collapsed {
+  max-height: 0;
+}
+
+i#toggle-icon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+i#toggle-icon.rotate {
+  transform: rotate(180deg);
 }
 
 @media screen and (width <= 600px) {
