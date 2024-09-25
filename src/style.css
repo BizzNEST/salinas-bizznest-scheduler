@@ -1,29 +1,27 @@
 body {
-  padding: 0; 
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 
 footer {
   text-align: center;
   font-family: Outfit, sans-serif;
   position: relative;
-  width: 100%; 
+  width: 100%;
   font-style: normal;
   height: 100px;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
-  background-color: #BDE3D0;
+  background-color: #bde3d0;
   gap: 20px;
 }
 
 footer img {
   width: 30px;
   height: 30px;
-  }
+}
 
-  
-  
 .outfit-header-font {
   font-family: Outfit, sans-serif;
   font-optical-sizing: auto;
@@ -31,14 +29,13 @@ footer img {
   font-style: normal;
 }
 
-.web-header {
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #BDE3D0;
+  background-color: #bde3d0;
   width: 100%;
 }
-
 .logo {
   padding: 20px;
   align-self: center;
@@ -59,16 +56,17 @@ footer img {
   align-self: center;
 }
 
-header h1{
-  font-family:Outfit,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #2A2E33;
+header h1 {
+  font-family: Outfit, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  color: #2a2e33;
 }
 
 @media screen and (width <= 550px) {
   #desktop-logo {
     display: none;
   }
-  
+
   #mobile-logo {
     display: block;
     width: 50px;
