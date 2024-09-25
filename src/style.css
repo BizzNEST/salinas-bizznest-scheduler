@@ -1,6 +1,11 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 footer {
@@ -62,7 +67,152 @@ header h1 {
   color: #2a2e33;
 }
 
-@media screen and (width <= 550px) {
+/* Week Card Styles */
+section.week-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 800px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+/* Inner Week Card */
+.inner-week-card {
+  margin-bottom: 20px;
+}
+
+/* Header Styling */
+.week-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ececec;
+  padding-bottom: 10px;
+}
+
+.week-header h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.week-header button {
+  padding: 5px 10px;
+  background-color: #bde3d0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.week-header button:hover {
+  background-color: #7ad3a7;
+}
+
+/* Departments Section */
+.departments {
+  display: flex;
+  align-items: center;
+}
+
+.departments h3 {
+  font-size: 1.25rem;
+  margin-right: 20px; /* Adds space between the header and the list */
+  white-space: nowrap; /* Ensures the header text stays on one line */
+}
+
+.departments ul {
+  list-style-type: none;
+  display: flex;
+  gap: 10px; /* Adds space between the list items */
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.departments li {
+  font-weight: bold;
+  white-space: nowrap; /* Prevents wrapping of list items */
+  display: inline-block; /* Ensure the pill does not take full width */
+  background-color: #bde3d0;
+  color: black;
+  margin-bottom: 0px;
+}
+
+/* Ice Breakers Section */
+.ice-breakers {
+  margin-bottom: 20px;
+}
+
+.ice-breakers h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.ice-breakers ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ice-breakers li {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 1rem;
+  white-space: nowrap; /* Prevents wrapping of list items */
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table thead th {
+  background-color: #bde3d0;
+  color: black;
+  padding: 10px;
+  text-align: center;
+}
+
+table tbody td {
+  padding: 10px;
+  border: 1px solid #ececec;
+  vertical-align: top;
+  text-align: center; /* Center content within the table cell */
+}
+
+/* Reusable Pill Styles */
+.pill {
+  background-color: #bde3d0;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: inline-block; /* Ensure the pill does not take full width */
+  max-width: fit-content; /* Adjust width to fit content */
+}
+
+/* Intern Pill Styles */
+.intern-pill-name-location {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content within the flex container */
+}
+
+.intern-pill-name-location .pill {
+  margin-bottom: 5px;
+}
+
+.intern-pill-name-location p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 600px) {
   #desktop-logo {
     display: none;
   }
@@ -85,5 +235,20 @@ header h1 {
   footer img {
     width: 35px;
     height: 35px;
+  }
+
+  .departments,
+  .ice-breakers {
+    flex-direction: column; /* Stack the department section */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .departments ul {
+    gap: 5px; /* Adjust gap for smaller screens */
+  }
+
+  .departments h3,
+  .ice-breakers h3 {
+    width: 100%;
   }
 }

@@ -8,8 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
     <title>Nest Meetup</title>
   </head>
@@ -29,12 +33,93 @@
       </div>
       <h1 class="name">Nest Meet</h1>
       <div class="header-spacer"></div>
-    </div>
-   
-
+    </header>
+    <section class="week-card">
+      <div class="inner-week-card">
+        <div class="week-header">
+          <h2>Week</h2>
+          <button>Close/Expand</button>
+        </div>
+        <div class="departments">
+          <h3>Departments</h3>
+          <!-- TODO: Add Department Pills -->
+          <ul>
+            <li class="pill">Web Developer</li>
+            <li class="pill">Design</li>
+            <li class="pill">Video Production</li>
+            <li class="pill">IT</li>
+          </ul>
+        </div>
+        <div class="ice-breakers">
+          <h3>Ice Breakers</h3>
+          <!-- TODO: Dynamically display the questions -->
+          <ol>
+            <li>What is your favorite color?</li>
+            <li>What is your favorite food?</li>
+          </ol>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Intern 1</th>
+              <th>Intern 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Group 1</td>
+              <td>
+                <div class="intern-pill-name-location">
+                  <div class="pill">
+                    <b>Web Development</b>
+                  </div>
+                  <p>Intern Name 1</p>
+                  <p>Location 1</p>
+                </div>
+              </td>
+              <td>
+                <div class="intern-pill-name-location">
+                  <div class="pill">
+                    <b>Design</b>
+                  </div>
+                  <p>Intern Name 2</p>
+                  <p>Location 2</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Group 1</td>
+              <td>
+                <div class="intern-pill-name-location">
+                  <div class="pill">
+                    <b>Video Production</b>
+                  </div>
+                  <p>Intern Name 3</p>
+                  <p>Location 3</p>
+                </div>
+              </td>
+              <td>
+                <div class="intern-pill-name-location">
+                  <div class="pill">
+                    <b>IT</b>
+                  </div>
+                  <p>Intern Name 4</p>
+                  <p>Location 4</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
     <footer>
-      <img id="logo" src="src/assets/images/DN-logo.png" alt="Digital NEST logo"/>
-        <b> Powered by Digital NEST</b>
+      <img
+        id="logo"
+        src="src/assets/images/DN-logo.png"
+        alt="Digital NEST logo"
+      />
+      <b> Powered by Digital NEST</b>
     </footer>
   </body>
 </html>
