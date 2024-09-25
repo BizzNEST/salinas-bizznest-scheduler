@@ -282,3 +282,41 @@ i#toggle-icon.rotate {
     width: 100%;
   }
 }
+
+.buttons-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  width: 100%;
+  padding: 20px 0 20px 0;
+}
+ 
+.buttons-filters button {
+  width: 200px;
+  height: 50px;
+  padding: 3px;
+  border-radius: 10px;
+  border: none;
+  font-size: medium;
+}
+
+.buttons-filters select {
+  width: 200px;
+  height: 50px;
+  padding: 3px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  font-size: medium;
+  background-color: #BDE3D0;
+}
+
+#schedule-button {
+  background-color: #BEBDE3 ;
+}
+
+#clear-button {
+  background-color: #E3BDBD;
+}
+ 
