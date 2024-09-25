@@ -1,29 +1,40 @@
 body {
-  padding: 0; 
-  margin:0;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
 }
 
 footer {
   text-align: center;
   font-family: Outfit, sans-serif;
   position: relative;
-  width: 100%; 
+  width: 100%;
   font-style: normal;
   height: 100px;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
-  background-color: #BDE3D0;
+  background-color: #bde3d0;
   gap: 20px;
 }
 
 footer img {
   width: 30px;
   height: 30px;
-  }
+}
 
-  
-  
 .outfit-header-font {
   font-family: Outfit, sans-serif;
   font-optical-sizing: auto;
@@ -31,11 +42,11 @@ footer img {
   font-style: normal;
 }
 
-.web-header {
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #BDE3D0;
+  background-color: #bde3d0;
   width: 100%;
 }
 
@@ -59,16 +70,183 @@ footer img {
   align-self: center;
 }
 
-header h1{
-  font-family:Outfit,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #2A2E33;
+header h1 {
+  font-family: Outfit, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  color: #2a2e33;
 }
 
-@media screen and (width <= 550px) {
+/* Week Card Styles */
+section.week-card {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  padding: 30px;
+  max-width: 800px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+/* Inner Week Card */
+.inner-week-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styling */
+.week-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-header h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.fa-chevron-up {
+  font-size: 20px;
+}
+
+.week-header.fa-chevron-up {
+  padding: 5px 10px;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Departments Section */
+.departments {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.departments h3 {
+  font-size: 1.25rem;
+  margin-right: 20px; /* Adds space between the header and the list */
+  white-space: nowrap; /* Ensures the header text stays on one line */
+}
+
+.departments ul {
+  list-style-type: none;
+  display: flex;
+  gap: 10px; /* Adds space between the list items */
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.departments li {
+  font-weight: bold;
+  white-space: nowrap; /* Prevents wrapping of list items */
+  display: inline-block; /* Ensure the pill does not take full width */
+  background-color: #bde3d0;
+  color: black;
+  margin-bottom: 0;
+}
+
+/* Ice Breakers Section */
+
+.ice-breakers h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  padding: 10px;
+}
+
+table thead th {
+  background-color: #bde3d0;
+  color: black;
+  text-align: center;
+}
+
+table tbody td {
+  padding: 10px;
+  border: 1px solid #ececec;
+  vertical-align: top;
+  text-align: center; /* Center content within the table cell */
+}
+
+/* Reusable Pill Styles */
+.pill {
+  background-color: #bde3d0;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: inline-block; /* Ensure the pill does not take full width */
+  max-width: fit-content;
+}
+
+/* Intern Pill Styles */
+.intern-pill-name-location {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content within the flex container */
+}
+
+.intern-pill-name-location .pill {
+  margin-bottom: 5px;
+}
+
+.intern-pill-name-location p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Toggle Icons + Callapsing Content */
+#week-card-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+#week-card-content.collapsed {
+  max-height: 0;
+}
+
+i#toggle-icon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+i#toggle-icon.rotate {
+  transform: rotate(180deg);
+}
+
+#ice-breaker-questions {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add space between list items */
+}
+
+#ice-breaker-questions li {
+  word-wrap: break-word; /* Ensure long words break and wrap to the next line */
+  overflow-wrap: break-word;
+  padding: 5px 0;
+  list-style-type: decimal;
+}
+
+@media screen and (width <= 600px) {
   #desktop-logo {
     display: none;
   }
-  
+
   #mobile-logo {
     display: block;
     width: 50px;
@@ -87,5 +265,20 @@ header h1{
   footer img {
     width: 35px;
     height: 35px;
+  }
+
+  .departments,
+  .ice-breakers {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .departments ul {
+    gap: 5px;
+  }
+
+  .departments h3,
+  .ice-breakers h3 {
+    width: 100%;
   }
 }
