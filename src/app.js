@@ -75,44 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const groupNum = document.createElement("td");
       groupNum.textContent = "Group " + count;
 
-      const internA = document.createElement("td"); //Create column for first intern
+      const internA = organizeInternInfo(pair.internA);
 
-      const internInfo = document.createElement("div"); //Column info div
-      internInfo.className = "intern-pill-name-location";
-
-      const pill = document.createElement("div"); //Department pill div
-      pill.className = "pill";
-      pill.innerHTML = "<b>" + pair.internA.department + "</b>";
-      internInfo.appendChild(pill);
-
-      const name = document.createElement("p"); //Name
-      name.textContent = pair.internA.name;
-      internInfo.appendChild(name);
-
-      const location = document.createElement("p"); //Location
-      location.textContent = pair.internA.location;
-      internInfo.appendChild(location);
-
-      internA.appendChild(internInfo);
-
-      const internB = document.createElement("td");
-      const internInfoB = document.createElement("div"); //Column info div
-      internInfoB.className = "intern-pill-name-location";
-
-      const pillB = document.createElement("div"); //Department pill div
-      pillB.className = "pill";
-      pillB.innerHTML = "<b>" + pair.internB.department + "</b>";
-      internInfoB.appendChild(pillB);
-
-      const nameB = document.createElement("p"); //Name
-      nameB.textContent = pair.internB.name;
-      internInfoB.appendChild(nameB);
-
-      const locationB = document.createElement("p"); //Location
-      locationB.textContent = pair.internB.location;
-      internInfoB.appendChild(locationB);
-
-      internB.appendChild(internInfoB);
+      const internB = organizeInternInfo(pair.internB);
 
       row.appendChild(groupNum);
       row.appendChild(internA);
@@ -120,5 +85,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       table.appendChild(row);
     });
+
+    function organizeInternInfo(intern) {
+      const internA = document.createElement("td"); //Create column for first intern
+
+      const internInfo = document.createElement("div"); //Column info div
+      internInfo.className = "intern-pill-name-location";
+
+      const pill = document.createElement("div"); //Department pill div
+      pill.className = "pill";
+      pill.innerHTML = "<b>" + intern.department + "</b>";
+      internInfo.appendChild(pill);
+
+      const name = document.createElement("p"); //Name
+      name.textContent = intern.name;
+      internInfo.appendChild(name);
+
+      const location = document.createElement("p"); //Location
+      location.textContent = intern.location;
+      internInfo.appendChild(location);
+
+      internA.appendChild(internInfo);
+
+      return internA;
+    }
   }
 });
