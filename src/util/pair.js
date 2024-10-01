@@ -1,5 +1,10 @@
 export default function pair(arr) {
   const pairsArray = []; //return array with the pairings
+
+  if (arr.length === 0) {
+    return pairsArray;
+  }
+
   const arrLast = arr.length - 1;
 
   //iterate by twos, create item tuples and add then to return array

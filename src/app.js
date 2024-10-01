@@ -33,38 +33,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const generateButton = document.getElementById("schedule-button");
 
-  let internPairs = [];
+  //let internPairs = [];
   async function pairInterns() {
-    let interns = await getInterns(); // fetch interns
+    const interns = await getInterns(); // fetch interns
     shuffle(interns); // shuffle them
-    internPairs = pair(interns); //pair them
+    return pair(interns); //pair them
   }
-  pairInterns();
 
   generateButton.addEventListener("click", function () {
-    pairInterns();
     displayInternPairs();
     displayQuestions();
   });
 
-  function displayInternPairs() {
-    let count = 0;
+  async function displayInternPairs() {
+    const internPairs = await pairInterns();
     const table = document.getElementById("interns-table");
     table.innerHTML = ""; //clear out any previous pairings
 
-    internPairs.forEach((pair) => {
-      count++;
+    internPairs.forEach((pair, index) => {
       const row = document.createElement("tr"); //creating group row
 
       const groupNum = document.createElement("td"); //Group num column
-      groupNum.textContent = "Group " + count;
+      groupNum.textContent = "Group " + (index + 1);
       row.appendChild(groupNum);
 
       //add intern info columns
-      for (let i = 0; i < pair.length; i++) {
-        console.log(pair[i]);
-        const intern = organizeInternInfo(pair[i]);
-        row.appendChild(intern);
+      for (const intern of pair) {
+        row.appendChild(organizeInternInfo(intern));
       }
 
       //add to table

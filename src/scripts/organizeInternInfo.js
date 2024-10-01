@@ -5,7 +5,7 @@ export default function organizeInternInfo(intern) {
 
   const pill = document.createElement("div"); //Department pill div
   pill.className = "pill";
-  pill.innerHTML = "<b>" + intern.department + "</b>";
+  pill.innerHTML = `<b>${intern.department}</b>`;
   internInfo.appendChild(pill);
 
   const name = document.createElement("p"); //Name
