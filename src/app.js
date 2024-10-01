@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const generateButton = document.getElementById("schedule-button");
 
-  const internPairs = {};
+  const internPairs = [];
 
   async function pairInterns() {
     let interns = await getInterns(); // fetch interns
@@ -41,42 +41,40 @@ document.addEventListener("DOMContentLoaded", () => {
     //console.log(interns.length);
 
     for (let i = 0; i < interns.length; i += 2) {
-      const pair = {};
-      pair.internA = interns[i];
-      pair.internB = interns[i + 1];
-
-      internPairs[i] = pair;
+      const pair = [interns[i], interns[i + 1]];
+      internPairs.push(pair);
     }
     //need to add conditions for odd number of interns
     //if odd, get last pair (index = num_pairs - 1) and add third person
     //also need to figure out how we want to display that
 
-    //console.log(internPairs);
+    console.log(internPairs);
   }
 
   pairInterns();
 
   generateButton.addEventListener("click", function () {
     displayInternPairs(internPairs);
+    displayQuestions();
   });
 
   function displayInternPairs(pair) {
-    pairInterns();
+    //pairInterns();
     const internPairsValues = Object.values(internPairs);
 
     let count = 0;
     const table = document.getElementById("interns-table");
 
-    internPairsValues.forEach((pair) => {
+    internPairs.forEach((pair) => {
       count++;
       const row = document.createElement("tr");
 
       const groupNum = document.createElement("td");
       groupNum.textContent = "Group " + count;
 
-      const internA = organizeInternInfo(pair.internA);
+      const internA = organizeInternInfo(pair[0]);
 
-      const internB = organizeInternInfo(pair.internB);
+      const internB = organizeInternInfo(pair[1]);
 
       row.appendChild(groupNum);
       row.appendChild(internA);
@@ -86,8 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function organizeInternInfo(intern) {
-      const internA = document.createElement("td"); //Create column for first intern
-
+      const col = document.createElement("td"); //Create column for first intern
       const internInfo = document.createElement("div"); //Column info div
       internInfo.className = "intern-pill-name-location";
 
@@ -104,9 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
       location.textContent = intern.location;
       internInfo.appendChild(location);
 
-      internA.appendChild(internInfo);
+      col.appendChild(internInfo);
 
-      return internA;
+      return col;
     }
   }
 });
