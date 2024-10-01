@@ -1,0 +1,578 @@
+{
+    "interns": [
+        {
+            "name": "Ali Taquie",
+            "location": "Watsonville",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": []
+            }
+        },
+        {
+            "name": "Sergio Medina-Ixta",
+            "location": "Watsonville",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:00 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                }    
+            }
+        },
+        {            
+            "name": "Yuliana Morales-Galvan",
+            "location": "Watsonville",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Wednesday": [],
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "12:00 PM"
+                    }
+                }    
+            }
+        },
+        {
+            "name": "Joel Mariscal",
+            "location": "Watsonville",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": []
+            }   
+        },
+        {
+            "name": "Tyler Nguyen",
+            "location": "Stockton",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": []   
+            }
+                   
+        },
+        {
+            "name": "Christopher Loya",
+            "location": "Stockton",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": []   
+            }
+                   
+        },
+        {
+            "name": "Bledine Messa Nguente",
+            "location": "Stockton",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": [],
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",   
+                        "end": "5:00 PM"
+                    }
+                }
+            }           
+        },
+        {
+            "name": "Jose Velarde-Ruiz",
+            "location": "Modesto",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": [],
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",  
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                }    
+            }
+                   
+        },
+        {
+            "name": "Alan Buenrostro",
+            "location": "Modesto",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": [],
+                "Friday": {
+                    "time":{
+                        "start": "9:00 AM",  
+                        "end": "5:30 PM" 
+                    }
+                }        
+                
+            }
+                   
+        },
+        {
+            "name": "Leo Masellis",
+            "location": "Modesto",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": []   
+            }
+                   
+        },
+        {
+            "name": "Karl Legson",
+            "location": "Modesto",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "2:00 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",  
+                        "end": "2:00 PM"
+                    }
+                }        
+            }
+                   
+        },
+        {
+            "name": "Victor Lomeli Ponce",
+            "location": "Modesto",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": []   
+            }
+                   
+        },
+        {
+            "name": "Adrean Cajigas",
+            "location": "Modesto",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": [],
+                "Wednesday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30"
+            }
+                   
+        },
+        {
+            "name": "Benjamin Schoolland",
+            "location": "Modesto",
+            "department": "web Development",
+            "schedule": {
+                "start": "9:00 AM",
+                "end": "5:30 PM"
+            
+            "name": "Eli Manzo",
+            "location": "Salinas",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": []   
+            }
+                   
+        },
+        {
+            "name": "Liliana Constantino",
+            "location": "Salinas",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": []  
+            }
+        },
+        {   
+            "name": "Jacqueline Perez",
+            "location": "Salinas",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": [] 
+            }
+        },
+        {
+            "name": "Alonzo Cabrera",
+            "location": "Salinas",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "2:00 PM"
+                    }
+                },
+                "Wednesday": [],
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "1:00 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                }
+            }
+        },
+        {   
+            "name": "Youssef Bazzi",
+            "location": "Gilroy",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": [],
+                "Thursday": {
+                    "time": {
+                        "start": "12:30 PM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Lisandro Jimenez",
+            "location": "Gilroy",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": [],                    
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",   
+                        "end": "5:30 PM"
+                    }
+                }
+            }    
+        },
+        {
+            "name": "Ian Ellis",
+            "location": "Gilroy",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": [],                    
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",   
+                        "end": "5:30 PM"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Lisandro Jimenez",
+            "location": "Gilroy",
+            "department": "Web Development",
+            "schedule": {
+                "Tuesday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Wednesday": [],                    
+                "Thursday": {
+                    "time": {
+                        "start": "9:00 AM",
+                        "end": "5:30 PM"
+                    }
+                },
+                "Friday": {
+                    "time": {
+                        "start": "9:00 AM",   
+                        "end": "5:30 PM"
+
+         
+    
+
+
+
+    
+        
+       
