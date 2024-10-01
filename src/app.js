@@ -1,6 +1,8 @@
 import getQuestions from "./scripts/getQuestions.js";
 import getInterns from "./scripts/getInterns.js";
 import shuffle from "./util/shuffle.js";
+import pair from "./util/pair.js";
+import organizeInternInfo from "./scripts/organizeInternInfo.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggleIcon = document.getElementById("toggle-icon");
@@ -27,83 +29,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  displayQuestions();
+  //displayQuestions();
 
   const generateButton = document.getElementById("schedule-button");
 
-  const internPairs = [];
-
+  let internPairs = [];
   async function pairInterns() {
     let interns = await getInterns(); // fetch interns
     shuffle(interns); // shuffle them
-
-    let num_pairs = Math.floor(interns.length / 2);
-    //console.log(interns.length);
-
-    for (let i = 0; i < interns.length; i += 2) {
-      const pair = [interns[i], interns[i + 1]];
-      internPairs.push(pair);
-    }
-    //need to add conditions for odd number of interns
-    //if odd, get last pair (index = num_pairs - 1) and add third person
-    //also need to figure out how we want to display that
-
-    console.log(internPairs);
+    internPairs = pair(interns); //pair them
   }
-
   pairInterns();
 
   generateButton.addEventListener("click", function () {
-    displayInternPairs(internPairs);
+    pairInterns();
+    displayInternPairs();
     displayQuestions();
   });
 
-  function displayInternPairs(pair) {
-    //pairInterns();
-    const internPairsValues = Object.values(internPairs);
-
+  function displayInternPairs() {
     let count = 0;
     const table = document.getElementById("interns-table");
+    table.innerHTML = ""; //clear out any previous pairings
 
     internPairs.forEach((pair) => {
       count++;
-      const row = document.createElement("tr");
+      const row = document.createElement("tr"); //creating group row
 
-      const groupNum = document.createElement("td");
+      const groupNum = document.createElement("td"); //Group num column
       groupNum.textContent = "Group " + count;
-
-      const internA = organizeInternInfo(pair[0]);
-
-      const internB = organizeInternInfo(pair[1]);
-
       row.appendChild(groupNum);
-      row.appendChild(internA);
-      row.appendChild(internB);
 
+      //add intern info columns
+      for (let i = 0; i < pair.length; i++) {
+        console.log(pair[i]);
+        const intern = organizeInternInfo(pair[i]);
+        row.appendChild(intern);
+      }
+
+      //add to table
       table.appendChild(row);
     });
-
-    function organizeInternInfo(intern) {
-      const col = document.createElement("td"); //Create column for first intern
-      const internInfo = document.createElement("div"); //Column info div
-      internInfo.className = "intern-pill-name-location";
-
-      const pill = document.createElement("div"); //Department pill div
-      pill.className = "pill";
-      pill.innerHTML = "<b>" + intern.department + "</b>";
-      internInfo.appendChild(pill);
-
-      const name = document.createElement("p"); //Name
-      name.textContent = intern.name;
-      internInfo.appendChild(name);
-
-      const location = document.createElement("p"); //Location
-      location.textContent = intern.location;
-      internInfo.appendChild(location);
-
-      col.appendChild(internInfo);
-
-      return col;
-    }
   }
 });

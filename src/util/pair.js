@@ -1,18 +1,17 @@
 export default function pair(arr) {
-  const pairsArray = [];
+  const pairsArray = []; //return array with the pairings
+  const arrLast = arr.length - 1;
 
-  let num_pairs = Math.floor(arr.length / 2);
-  //console.log(arr.length);
-
-  for (let i = 0; i < arr.length; i += 2) {
+  //iterate by twos, create item tuples and add then to return array
+  for (let i = 0; i < arrLast; i += 2) {
     const pair = [arr[i], arr[i + 1]];
     pairsArray.push(pair);
   }
-  //need to add conditions for odd number of interns
-  //if odd, get last pair (index = num_pairs - 1) and add third person
-  //also need to figure out how we want to display that
 
-  //console.log(pairsArray);
+  //if odd then add last item to last pair
+  if (arr.length % 2 !== 0) {
+    pairsArray[pairsArray.length - 1].push(arr[arrLast]);
+  }
 
   return pairsArray;
 }
