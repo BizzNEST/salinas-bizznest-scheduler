@@ -21,7 +21,7 @@
 
         {
             "name": "Luke Skywalker",
-            "department": "Film Production",
+            "department": "Video Production",
             "location": "Modesto"
         },
 
@@ -48,14 +48,14 @@
 
         {
             "name": "Avatar Aang",
-            "department": "Film Production",
+            "department": "Video Production",
             "location": "Watsonville"
 
         },
 
         {
             "name": "Tinker Bell",
-            "department": "Film Production",
+            "department": "Video Production",
             "location": "Gilroy"
 
         }
