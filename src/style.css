@@ -14,7 +14,7 @@ main {
   align-items: center;
   width: 100%;
   min-height: 100vh;
-}  
+}
 footer {
   text-align: center;
   font-family: Outfit, sans-serif;
@@ -167,18 +167,18 @@ section.week-card {
 
 /* Add background colors for each department */
 .pill.web-dev {
-  background-color: #e8cbe9; 
+  background-color: #e8cbe9;
 }
 .pill.design {
-  background-color: #cec2eb; 
+  background-color: #cec2eb;
 }
 
 .pill.video {
-  background-color: #e9cac9; 
+  background-color: #e9cac9;
 }
 
 .pill.it {
-  background-color: #c8e4e9; 
+  background-color: #c8e4e9;
 }
 
 /* Ice Breakers Section */
