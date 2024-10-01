@@ -46,6 +46,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
   background-color: #bde3d0;
   width: 100%;
 }
@@ -242,6 +243,49 @@ i#toggle-icon.rotate {
   list-style-type: decimal;
 }
 
+/* Filter and Generate Buttons */
+.buttons-filters {
+  position: sticky;
+  background-color: #ededed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+}
+ 
+.buttons-filters button {
+  width: 170px;
+  height: 50px;
+  padding: 3px;
+  border-radius: 10px;
+  border: none;
+  font-size: medium;
+}
+
+#schedule-button {
+  background-color: #BEBDE3 ;
+}
+
+#clear-button {
+  background-color: #E3BDBD;
+}
+
+.dropdown {
+  display: flex;
+  width: 170px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #BDE3D0;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+}
+
 @media screen and (width <= 600px) {
   #desktop-logo {
     display: none;
@@ -281,4 +325,20 @@ i#toggle-icon.rotate {
   .ice-breakers h3 {
     width: 100%;
   }
+
+  .buttons-filters {
+    column-gap: 5px;
+    width: 100%;
+    padding: 10px 0 10px 0;
+  }
+
+  .buttons-filters button {
+    padding: 1px;
+    font-size: small;
+  }
+
+  .dropdown {
+    font-size: small;
+  }
 }
+ 
