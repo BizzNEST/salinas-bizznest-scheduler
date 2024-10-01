@@ -14,8 +14,7 @@ main {
   align-items: center;
   width: 100%;
   min-height: 100vh;
-}
-
+}  
 footer {
   text-align: center;
   font-family: Outfit, sans-serif;
@@ -156,6 +155,30 @@ section.week-card {
   background-color: #bde3d0;
   color: black;
   margin-bottom: 0;
+}
+.pill {
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  color: white; /* Change text color to white for contrast */
+  font-weight: bold;
+}
+
+/* Add background colors for each department */
+.pill.web-dev {
+  background-color: #e8cbe9; 
+}
+.pill.design {
+  background-color: #cec2eb; 
+}
+
+.pill.video {
+  background-color: #e9cac9; 
+}
+
+.pill.it {
+  background-color: #c8e4e9; 
 }
 
 /* Ice Breakers Section */
