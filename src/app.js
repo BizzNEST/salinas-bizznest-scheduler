@@ -1,4 +1,5 @@
 import getQuestions from "./scripts/getQuestions.js";
+import getInterns from "./scripts/getInterns.js";
 import shuffle from "./util/shuffle.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,41 +29,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   displayQuestions();
 
-  const generateButton = document.getElementById("card-header");
+  const generateButton = document.getElementById("schedule-button");
 
-  const internPairs = {
-    pairOne: {
-      internA: {
-        name: "SpongeBob Squarepants",
-        department: "Web Development",
-        location: "Salinas",
-      },
-      internB: {
-        name: "Kim Possible",
-        department: "Design",
-        location: "Gilroy",
-      },
-    },
+  const internPairs = {};
 
-    pairTwo: {
-      internA: {
-        name: "Danny Phantom",
-        department: "IT",
-        location: "Watsonville",
-      },
-      internB: {
-        name: "Luke Skywalker",
-        department: "Film Production",
-        location: "Modesto",
-      },
-    },
-  };
+  async function pairInterns() {
+    let interns = await getInterns(); // fetch interns
+    shuffle(interns); // shuffle them
+
+    let num_pairs = Math.floor(interns.length / 2);
+    //console.log(interns.length);
+
+    for (let i = 0; i < interns.length; i += 2) {
+      const pair = {};
+      pair.internA = interns[i];
+      pair.internB = interns[i + 1];
+
+      internPairs[i] = pair;
+    }
+    //need to add conditions for odd number of interns
+    //if odd, get last pair (index = num_pairs - 1) and add third person
+    //also need to figure out how we want to display that
+
+    //console.log(internPairs);
+  }
+
+  pairInterns();
 
   generateButton.addEventListener("click", function () {
     displayInternPairs(internPairs);
   });
 
   function displayInternPairs(pair) {
+    pairInterns();
     const internPairsValues = Object.values(internPairs);
 
     let count = 0;
