@@ -29,11 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  //displayQuestions();
-
   const generateButton = document.getElementById("schedule-button");
 
-  //let internPairs = [];
   async function pairInterns() {
     const interns = await getInterns(); // fetch interns
     shuffle(interns); // shuffle them
