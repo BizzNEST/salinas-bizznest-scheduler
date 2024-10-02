@@ -29,9 +29,15 @@ function formatInternDetails(intern) {
   return col;
 }
 
-export async function displayInternPairs() {
+export async function displayInternTable() {
   const internPairs = await pairInterns();
   const table = document.getElementById("interns-table");
+
+  const tableHeader = document.getElementById("interns-table-header");
+  tableHeader.innerHTML = "";
+  tableHeader.innerHTML = `<tr><th>Group</th><th>Intern 1</th><th>Intern 2</th></tr>`;
+
+  const tableBody = document.getElementById("interns-table-body");
   table.innerHTML = ""; //clear out any previous pairings
 
   internPairs.forEach((pair, index) => {
@@ -47,6 +53,6 @@ export async function displayInternPairs() {
     }
 
     //add to table
-    table.appendChild(row);
+    tableBody.appendChild(row);
   });
 }

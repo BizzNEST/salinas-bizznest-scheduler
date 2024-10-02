@@ -1,6 +1,6 @@
 import displayQuestions from "./scripts/questions.js";
 import { displayFilters } from "./scripts/filters.js";
-import { displayInternPairs } from "./scripts/interns.js";
+import { displayInternTable } from "./scripts/interns.js";
 
 function main() {
   displayFilters();
@@ -18,7 +18,7 @@ function main() {
   const generateButton = document.getElementById("schedule-button");
 
   generateButton.addEventListener("click", function () {
-    displayInternPairs();
+    displayInternTable();
     displayQuestions();
   });
 }

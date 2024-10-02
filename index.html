@@ -59,7 +59,7 @@
           </div>
         </div>
         <div id="week-card-content" class="inner-week-card">
-          <div class="departments">
+          <div id="department-pills" class="departments">
             <h3>Departments</h3>
             <!-- TODO: Dynamically display the department pill with their style (only background color needs to change)-->
             <ul>
@@ -69,19 +69,10 @@
               <li class="pill">IT</li>
             </ul>
           </div>
-          <div class="ice-breakers">
-            <h3>Ice Breakers</h3>
-            <ol id="ice-breaker-questions"></ol>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Group</th>
-                <th>Intern 1</th>
-                <th>Intern 2</th>
-              </tr>
-            </thead>
-            <tbody id="interns-table"></tbody>
+          <div id="ice-breakers" class="ice-breakers"></div>
+          <table id="interns-table">
+            <thead id="interns-table-header"></thead>
+            <tbody id="interns-table-body"></tbody>
           </table>
         </div>
       </section>
