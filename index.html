@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="./src/app.js"></script>
-    <script
-      src="https://kit.fontawesome.com/0227bd90ba.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>Nest Meetup</title>
     <link rel="stylesheet" href="./src/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,7 +15,16 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
-    <title>Nest Meetup</title>
+    <link
+      rel="icon"
+      href="./src/assets/images/fav_icon_meet.png"
+      type="image/x-icon"
+    />
+    <script
+      src="https://kit.fontawesome.com/0227bd90ba.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./src/app.js"></script>
   </head>
   <body>
     <header>
@@ -47,7 +52,6 @@
     </header>
     <main>
       <section class="week-card">
-        <!-- TODO: Dynamically display the card info (interns, departments, etc..)-->
         <div class="inner-week-card">
           <div class="week-header">
             <h2 id="card-header">Week</h2>
@@ -57,7 +61,7 @@
         <div id="week-card-content" class="inner-week-card">
           <div class="departments">
             <h3>Departments</h3>
-            <!-- TODO: Dynamically display the department pill with their style (only background color should change)-->
+            <!-- TODO: Dynamically display the department pill with their style (only background color needs to change)-->
             <ul>
               <li class="pill">Web Developer</li>
               <li class="pill">Design</li>
@@ -67,7 +71,6 @@
           </div>
           <div class="ice-breakers">
             <h3>Ice Breakers</h3>
-            <!-- TODO: Dynamically display the questions -->
             <ol id="ice-breaker-questions"></ol>
           </div>
           <table>
@@ -78,51 +81,7 @@
                 <th>Intern 2</th>
               </tr>
             </thead>
-            <tbody id="interns-table">
-              <!--
-              <tr>
-                <td>Group 1</td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>Web Development</b>
-                    </div>
-                    <p>Intern Name 1</p>
-                    <p>Location 1</p>
-                  </div>
-                </td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>Design</b>
-                    </div>
-                    <p>Intern Name 2</p>
-                    <p>Location 2</p>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Group 2</td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>Video Production</b>
-                    </div>
-                    <p>Intern Name 3</p>
-                    <p>Location 3</p>
-                  </div>
-                </td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>IT</b>
-                    </div>
-                    <p>Intern Name 4</p>
-                    <p>Location 4</p>
-                  </div>
-                </td>
-              </tr>
-            --></tbody>
+            <tbody id="interns-table"></tbody>
           </table>
         </div>
       </section>

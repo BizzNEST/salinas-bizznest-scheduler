@@ -29,7 +29,7 @@ function formatInternDetails(intern) {
   return col;
 }
 
-export default async function displayInternPairs() {
+export async function displayInternPairs() {
   const internPairs = await pairInterns();
   const table = document.getElementById("interns-table");
   table.innerHTML = ""; //clear out any previous pairings

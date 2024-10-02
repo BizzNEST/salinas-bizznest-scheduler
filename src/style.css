@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: Roboto, Outfit, sans-serif;
   background-color: #ededed;
   display: flex;
   flex-direction: column;
@@ -159,7 +159,6 @@ section.week-card {
 }
 
 /* Ice Breakers Section */
-
 .ice-breakers h3 {
   font-size: 1.25rem;
   margin-bottom: 10px;
@@ -217,7 +216,7 @@ table tbody td {
   font-size: 0.9rem;
 }
 
-/* Toggle Icons + Callapsing Content */
+/* Toggle Icons + Collapsing Content */
 #week-card-content {
   overflow: hidden;
   transition: max-height 0.3s ease-out;
@@ -236,6 +235,11 @@ i#toggle-icon {
 
 i#toggle-icon.rotate {
   transform: rotate(180deg);
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s;
 }
 
 #ice-breaker-questions {
@@ -401,6 +405,12 @@ i#toggle-icon.rotate {
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
+}
+
+.filter-config {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
 }
 
 @media screen and (width <= 768px) {
