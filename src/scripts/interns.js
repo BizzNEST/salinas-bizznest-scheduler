@@ -2,9 +2,10 @@ import getInterns from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
 import { filterByLocation } from "./filters.js";
+import { filterByDepartment } from "./filters.js";
 
 async function pairInterns() {
-  const interns = [];
+  let interns = [];
   const departments = await getInterns();
   for (const department in departments) {
     for (const [intern, internInfo] of Object.entries(
@@ -17,9 +18,9 @@ async function pairInterns() {
       });
     }
   }
-  const filtered = filterByLocation(interns);
-  shuffle(filtered);
-  return pair(filtered);
+  interns = filterByDepartment(filterByLocation(interns));
+  shuffle(interns);
+  return pair(interns);
 }
 
 function formatInternDetails(intern) {
@@ -50,7 +51,10 @@ export async function displayInternTable() {
 
   const tableHeader = document.getElementById("interns-table-header");
   tableHeader.innerHTML = "";
-  tableHeader.innerHTML = `<tr><th>Group</th><th>Intern 1</th><th>Intern 2</th></tr>`;
+
+  internPairs.length === 0
+    ? (tableHeader.innerHTML = `<tr><th>Not enough Interns selected to pair.</th></tr>`)
+    : (tableHeader.innerHTML = `<tr><th>Group</th><th>Intern 1</th><th>Intern 2</th></tr>`);
 
   const tableBody = document.getElementById("interns-table-body");
   tableBody.innerHTML = ""; //clear out any previous pairings
