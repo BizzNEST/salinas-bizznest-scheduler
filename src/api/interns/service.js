@@ -1,6 +1,6 @@
 export default async function getInterns() {
   try {
-    const response = await fetch("src/documents/temp_interns.json");
+    const response = await fetch("src/documents/interns.json");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }

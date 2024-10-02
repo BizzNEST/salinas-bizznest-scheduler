@@ -11,28 +11,30 @@ export default function displayFilters() {
   generateScheduleButton.textContent = "Generate Schedule";
   filtersContainer.appendChild(generateScheduleButton);
 
-  filters.forEach((filter, index) => {
+  for (const filter of filters) {
     const filterContainer = document.createElement("div");
     filterContainer.className = "filter-container";
     filterContainer.innerHTML = `
                   <button class="filter-button">${filter.name}</button>
                   <div class="modal">
-                      <div class="modal-content">
-                          <button class="close-modal-button"><i class="fa-solid fa-x"></i></button>
-                          <ul class="option-list">
-                              ${filter.options
-                                .map(
-                                  (option) => `
-                                  <li class="option-item">
-                                      <label>
-                                          <input type="checkbox" value="${option}"> ${option}
-                                      </label>
-                                  </li>
-                              `,
-                                )
-                                .join("")}
-                          </ul>
-                          <button class="apply-filter">Apply</button>
+                    <div class="fixed-modal-content">
+                        <div class="modal-content">
+                            <button class="close-modal-button"><i class="fa-solid fa-x"></i></button>
+                            <ul class="option-list">
+                                ${filter.options
+                                  .map(
+                                    (option) => `
+                                    <li class="option-item">
+                                        <label>
+                                            <input type="checkbox" value="${option}"> ${option}
+                                        </label>
+                                    </li>
+                                `,
+                                  )
+                                  .join("")}
+                            </ul>
+                            <button class="apply-filter">Apply</button>
+                        </div>
                       </div>
                   </div>
               `;
@@ -42,9 +44,6 @@ export default function displayFilters() {
     const modal = filterContainer.querySelector(".modal");
     const applyButton = filterContainer.querySelector(".apply-filter");
     const closeButton = filterContainer.querySelector(".close-modal-button");
-    const checkboxes = filterContainer.querySelectorAll(
-      'input[type="checkbox"]',
-    );
 
     filterButton.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -63,7 +62,7 @@ export default function displayFilters() {
     closeButton.addEventListener("click", () => {
       modal.style.display = "none";
     });
-  });
+  }
 
   const clearFiltersButton = document.createElement("button");
   clearFiltersButton.className = "filter-button";
