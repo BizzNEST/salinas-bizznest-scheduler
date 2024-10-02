@@ -1,7 +1,7 @@
 export default function pair(arr) {
   const pairsArray = []; //return array with the pairings
 
-  if (arr.length === 0) {
+  if (arr.length <= 1) {
     return pairsArray;
   }
 
