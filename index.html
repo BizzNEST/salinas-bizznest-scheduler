@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="./src/app.js"></script>
-    <script
-      src="https://kit.fontawesome.com/0227bd90ba.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>Nest Meetup</title>
     <link rel="stylesheet" href="./src/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,46 +15,43 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
-    <title>Nest Meetup</title>
+    <link
+      rel="icon"
+      href="./src/assets/images/fav_icon_meet.png"
+      type="image/x-icon"
+    />
+    <script
+      src="https://kit.fontawesome.com/0227bd90ba.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./src/app.js"></script>
   </head>
   <body>
     <header>
-      <div class="logo">
-        <img
-          id="desktop-logo"
-          src="src/assets/images/Digital-NEST-logo.png"
-          alt="Digital NEST logo"
-        />
-        <img
-          id="mobile-logo"
-          src="src/assets/images/DN-logo.png"
-          alt="Digital NEST logo"
-        />
+      <div class="header-top">
+        <div class="logo">
+          <img
+            id="desktop-logo"
+            src="src/assets/images/Digital-NEST-logo.png"
+            alt="Digital NEST logo"
+          />
+          <img
+            id="mobile-logo"
+            src="src/assets/images/DN-logo.png"
+            alt="Digital NEST logo"
+          />
+        </div>
+        <h1 class="name">Nest Meet</h1>
+        <div class="header-spacer"></div>
       </div>
-      <h1 class="name">Nest Meet</h1>
-      <div class="header-spacer"></div>
+      <div class="header-bottom">
+        <div class="buttons-filters">
+          <div class="filters-container" id="filtersContainer"></div>
+        </div>
+      </div>
     </header>
     <main>
-      <div class="buttons-filters">
-        <button id="schedule-button" type="button">Generate Schedule</button>
-
-        <div class="dropdown">
-          <label class="location-label">Location</label>
-        </div>
-
-        <div class="dropdown">
-          <label class="department-label">Department</label>
-        </div>
-
-        <div class="dropdown">
-          <label class="pairing-label">Unique Pairing</label>
-        </div>
-
-        <button id="clear-button" type="button">Clear Filters</button>
-      </div>
-
       <section class="week-card">
-        <!-- TODO: Dynamically display the card info (interns, departments, etc..)-->
         <div class="inner-week-card">
           <div class="week-header">
             <h2 id="card-header">Week</h2>
@@ -66,9 +59,9 @@
           </div>
         </div>
         <div id="week-card-content" class="inner-week-card">
-          <div class="departments">
+          <div id="department-pills" class="departments">
             <h3>Departments</h3>
-            <!-- TODO: Dynamically display the department pill with their style (only background color should change)-->
+            <!-- TODO: Dynamically display the department pill with their style (only background color needs to change)-->
             <ul>
               <li class="pill">Web Developer</li>
               <li class="pill">Design</li>
@@ -76,64 +69,10 @@
               <li class="pill">IT</li>
             </ul>
           </div>
-          <div class="ice-breakers">
-            <h3>Ice Breakers</h3>
-            <!-- TODO: Dynamically display the questions -->
-            <ol id="ice-breaker-questions"></ol>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Group</th>
-                <th>Intern 1</th>
-                <th>Intern 2</th>
-              </tr>
-            </thead>
-            <tbody id="interns-table">
-              <!--
-              <tr>
-                <td>Group 1</td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>Web Development</b>
-                    </div>
-                    <p>Intern Name 1</p>
-                    <p>Location 1</p>
-                  </div>
-                </td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>Design</b>
-                    </div>
-                    <p>Intern Name 2</p>
-                    <p>Location 2</p>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Group 2</td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>Video Production</b>
-                    </div>
-                    <p>Intern Name 3</p>
-                    <p>Location 3</p>
-                  </div>
-                </td>
-                <td>
-                  <div class="intern-pill-name-location">
-                    <div class="pill">
-                      <b>IT</b>
-                    </div>
-                    <p>Intern Name 4</p>
-                    <p>Location 4</p>
-                  </div>
-                </td>
-              </tr>
-            --></tbody>
+          <div id="ice-breakers" class="ice-breakers"></div>
+          <table id="interns-table">
+            <thead id="interns-table-header"></thead>
+            <tbody id="interns-table-body"></tbody>
           </table>
         </div>
       </section>
