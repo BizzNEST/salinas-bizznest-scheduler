@@ -8,7 +8,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Sergio Medina-Inta": {
@@ -26,7 +26,7 @@
             "department": "Web Development",
             "schedule": {
                 "Tuesday": "Morning",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Morning",
                 "Friday": "Full Day"
             }
@@ -38,7 +38,7 @@
                 "Tuesday": "Morning",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Tyler Nguyen": {
@@ -48,7 +48,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Christopher Loya": {
@@ -58,14 +58,14 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Bledine Messa Ngunte": {
             "location": "Stockton",
             "department": "Web Development",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
                 "Friday": "Full Day"
@@ -75,7 +75,7 @@
             "location": "Modesto",
             "department": "Web Development",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
                 "Friday": "Full Day"
@@ -98,7 +98,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Karl Legson": {
@@ -118,14 +118,14 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Adriaan Cajijas": {
             "location": "Modesto",
             "department": "Web Development",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Afternoon",
                 "Thursday": "Morning",
                 "Friday": "Afternoon"
@@ -138,7 +138,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Liliana Constantino": {
@@ -148,7 +148,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Jacqueline Perez": {
@@ -158,7 +158,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Alonzo Cabrera": {
@@ -166,9 +166,9 @@
             "department": "Web Development",
             "schedule": {
                 "Tuesday": "Morning",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Youssef Bazzi": {
@@ -176,7 +176,7 @@
             "department": "Web Development",
             "schedule": {
                 "Tuesday": "Afternoon",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Afternoon",
                 "Friday": "Full Day"
             }
@@ -186,7 +186,7 @@
             "department": "Web Development",
             "schedule": {
                 "Tuesday": "Full Day",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Full Day",
                 "Friday": "Full Day"
             }
@@ -196,8 +196,8 @@
             "department": "Web Development",
              "schedule": {
                 "Tuesday": "Full Day",
-                "Wednesday": "No Available",
-                "Thursday": "No Available",
+                "Wednesday": "Unavailable",
+                "Thursday": "Unavailable",
                 "Friday": "Full Day"
             }
         }
@@ -207,7 +207,7 @@
             "location": "Watsonville",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
                 "Friday": "Full Day"
@@ -220,14 +220,14 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Julian Guerrero": {
             "location": "Watsonville",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
                 "Friday": "Full Day"
@@ -237,9 +237,9 @@
             "location": "Watsonville",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
-                "Thursday": "No Available",
+                "Thursday": "Unavailable",
                 "Friday": "Full Day"
             }
         },
@@ -247,7 +247,7 @@
             "location": "Watsonville",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
                 "Friday": "Morning"
@@ -260,7 +260,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Melanie Torres": {
@@ -269,7 +269,7 @@
             "schedule": {
                 "Tuesday": "Afternoon",
                 "Wednesday": "Full Day",
-                "Thursday": "No Available",
+                "Thursday": "Unavailable",
                 "Friday": "Full Day"
             }
         },
@@ -277,9 +277,9 @@
             "location": "Watsonville",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
-                "Thursday": "No Available",
+                "Thursday": "Unavailable",
                 "Friday": "Full Day"
             }
         },
@@ -287,7 +287,7 @@
             "location": "Salinas",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
                 "Friday": "Full Day"
@@ -300,16 +300,16 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Emiliano Margarito": {
             "location": "Salinas",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Afternoon",
-                "Thursday": "No Available",
+                "Thursday": "Unavailable",
                 "Friday": "Full Day"
             }
         },
@@ -318,7 +318,7 @@
             "department": "Video",
             "schedule": {
                 "Tuesday": "Full Day",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Full Day",
                 "Friday": "Morning"
             }   
@@ -328,7 +328,7 @@
             "department": "Video",
             "schedule": {
                 "Tuesday": "Morning",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Morning",
                 "Friday": "Full Day"
             }
@@ -337,7 +337,7 @@
             "location": "Salinas",
             "department": "Video",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Afternoon",
                 "Friday": "Full Day"
@@ -349,7 +349,7 @@
             "schedule": {
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
-                "Thursday": "No Available",
+                "Thursday": "Unavailable",
                 "Friday": "Morning"
             }
         },
@@ -358,7 +358,7 @@
             "department": "Video",
             "schedule": {
                 "Tuesday": "Morning",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Morning",
                 "Friday": "Full Day"
             }
@@ -372,7 +372,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Seneca Rubianes": {
@@ -381,7 +381,7 @@
             "schedule": {
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
-                "Thursday": "No Available",
+                "Thursday": "Unavailable",
                 "Friday": "Full Day"
             }
         },
@@ -402,14 +402,14 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Nazgol Ghafourian": {
             "location": "Modesto",
             "department": "Design",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Afternoon",
                 "Friday": "Full Day"
@@ -422,7 +422,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Thalia Gu": {
@@ -430,7 +430,7 @@
             "department": "Design",
             "schedule": {
                 "Tuesday": "Full Day",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Full Day",
                 "Friday": "Afternoon"
             }
@@ -442,16 +442,16 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Sebi Perry": {
             "location": "Watsonville",
             "department": "Design",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Morning",
-                "Thursday": "No Available",
+                "Thursday": "Unavailable",
                 "Friday": "Full Day"
             }
         },
@@ -462,7 +462,7 @@
                 "Tuesday": "Afternoon",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Mirna Gonzalez": {
@@ -472,7 +472,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }   
         },
         "Nancy Cervantes-Herrera": {
@@ -492,7 +492,7 @@
                 "Tuesday": "Morning",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Princess Rodriguez": {
@@ -512,7 +512,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Xavier Cruz": {
@@ -522,7 +522,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Alexa Zavala": {
@@ -542,7 +542,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         },
         "Cristian Reyes": {
@@ -552,7 +552,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         }
     },
@@ -561,7 +561,7 @@
             "location": "Modesto",
             "department": "Marketing",
             "schedule": {
-                "Tuesday": "No Available",
+                "Tuesday": "Unavailable",
                 "Wednesday": "Full Day",
                 "Thursday": "Full Day",
                 "Friday": "Morning"
@@ -572,7 +572,7 @@
             "department": "Marketing",
             "schedule": {
                 "Tuesday": "Afternoon",
-                "Wednesday": "No Available",
+                "Wednesday": "Unavailable",
                 "Thursday": "Afternoon",
                 "Friday": "Full Day"
             }
@@ -586,7 +586,7 @@
                 "Tuesday": "Full Day",
                 "Wednesday": "Full Day",
                 "Thursday": "Morning",
-                "Friday": "No Available"
+                "Friday": "Unavailable"
             }
         }
     },
