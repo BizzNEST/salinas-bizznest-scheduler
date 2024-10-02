@@ -5,7 +5,13 @@ const filters = [
   },
   {
     name: "Departments",
-    options: ["Web Development", "Design", "Video Production", "IT"],
+    options: [
+      "Web Development",
+      "Design",
+      "Video Production",
+      "IT",
+      "Marketing",
+    ],
   },
   {
     name: "Unique Pairing",

@@ -1,7 +1,21 @@
 import getInterns from "../api/interns/service.js";
+import shuffle from "../util/shuffle.js";
+import pair from "../util/pair.js";
 
 async function pairInterns() {
-  const interns = await getInterns();
+  const interns = [];
+  const departments = await getInterns();
+  for (const department in departments) {
+    for (const [intern, internInfo] of Object.entries(
+      departments[department],
+    )) {
+      interns.push({
+        name: intern,
+        department: internInfo.department,
+        location: internInfo.location,
+      });
+    }
+  }
   shuffle(interns);
   return pair(interns);
 }
@@ -31,14 +45,13 @@ function formatInternDetails(intern) {
 
 export async function displayInternTable() {
   const internPairs = await pairInterns();
-  const table = document.getElementById("interns-table");
 
   const tableHeader = document.getElementById("interns-table-header");
   tableHeader.innerHTML = "";
   tableHeader.innerHTML = `<tr><th>Group</th><th>Intern 1</th><th>Intern 2</th></tr>`;
 
   const tableBody = document.getElementById("interns-table-body");
-  table.innerHTML = ""; //clear out any previous pairings
+  tableBody.innerHTML = ""; //clear out any previous pairings
 
   internPairs.forEach((pair, index) => {
     const row = document.createElement("tr"); //creating group row
