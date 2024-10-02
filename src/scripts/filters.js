@@ -5,6 +5,14 @@ export function filterByLocation(interns) {
     ? interns
     : interns.filter((intern) => selected.has(intern.location));
 }
+
+export function filterByDepartment(interns) {
+  const selected = new Set(getSelectedOptions().Departments);
+  return selected.size === 0
+    ? interns
+    : interns.filter((intern) => selected.has(intern.department));
+}
+
 // Function to get all of our filters selected
 export function getSelectedOptions() {
   const selectedOptions = {};
