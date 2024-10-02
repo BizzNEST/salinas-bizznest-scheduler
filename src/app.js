@@ -1,10 +1,11 @@
-import getQuestions from "./scripts/getQuestions.js";
+import displayQuestions from "./scripts/questions.js";
+import displayFilters from "./scripts/filters.js";
 import getInterns from "./scripts/getInterns.js";
 import shuffle from "./util/shuffle.js";
 import pair from "./util/pair.js";
 import organizeInternInfo from "./scripts/organizeInternInfo.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+function main() {
   const toggleIcon = document.getElementById("toggle-icon");
   const weekCardContent = document.getElementById("week-card-content");
 
@@ -15,20 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Toggle the chevron icon rotation
     toggleIcon.classList.toggle("rotate");
   });
-
-  async function displayQuestions(amountOfQuestions = 2) {
-    let questions = await getQuestions(); // fetch questions
-    shuffle(questions); // shuffle them
-    questions = questions.slice(0, Math.max(0, amountOfQuestions)); // get the amountOfQuestions
-    const ol = document.getElementById("ice-breaker-questions");
-    ol.innerHTML = ""; // Clear any existing questions
-    for (const question of questions) {
-      const li = document.createElement("li");
-      li.textContent = question;
-      ol.appendChild(li);
-    }
-  }
-
   const generateButton = document.getElementById("schedule-button");
 
   async function pairInterns() {
@@ -63,4 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       table.appendChild(row);
     });
   }
-});
+}
+
+document.addEventListener("DOMContentLoaded", displayFilters());
+document.addEventListener("DOMContentLoaded", main, { once: true });
