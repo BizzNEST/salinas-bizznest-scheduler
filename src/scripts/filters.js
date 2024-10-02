@@ -1,5 +1,10 @@
 import filters from "../constants/constants.js";
-
+export function filterByLocation(interns) {
+  const selected = new Set(getSelectedOptions().Location);
+  return selected.size === 0
+    ? interns
+    : interns.filter((intern) => selected.has(intern.location));
+}
 // Function to get all of our filters selected
 export function getSelectedOptions() {
   const selectedOptions = {};

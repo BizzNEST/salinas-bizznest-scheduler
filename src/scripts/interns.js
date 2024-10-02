@@ -1,6 +1,7 @@
 import getInterns from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
+import { filterByLocation } from "./filters.js";
 
 async function pairInterns() {
   const interns = [];
@@ -16,8 +17,9 @@ async function pairInterns() {
       });
     }
   }
-  shuffle(interns);
-  return pair(interns);
+  const filtered = filterByLocation(interns);
+  shuffle(filtered);
+  return pair(filtered);
 }
 
 function formatInternDetails(intern) {
