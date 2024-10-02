@@ -409,7 +409,7 @@ i#toggle-icon.rotate {
 
 .filter-config {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 20px;
 }
 

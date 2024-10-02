@@ -30,7 +30,7 @@ export function displayFilters() {
     filterContainer.innerHTML = `
       <button class="filter-button filter-config" id="filter-button-${index}">
         <div>${filter.name}</div>
-        <i id="toggle-icon-${index}" class="fa-solid fa-chevron-up"></i>
+        <i id="toggle-icon-${index}" class="fa-solid fa-chevron-up" style="font-size: 14px;"></i>
       </button>
       <div class="modal" id="modal-${index}">
         <div class="fixed-modal-content">
