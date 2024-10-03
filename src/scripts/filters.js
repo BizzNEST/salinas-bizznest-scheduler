@@ -66,12 +66,30 @@ export function getSelectedOptions() {
 export function displayFilters() {
   const filtersContainer = document.getElementById("filtersContainer");
 
+  // Create the parent container to hold both the button and the Lottie animation
+  const parentContainer = document.createElement("div");
+  parentContainer.style.position = "relative";
+  parentContainer.style.display = "inline-block";
+
+  // Create the button
   const generateScheduleButton = document.createElement("button");
   generateScheduleButton.className = "filter-button";
   generateScheduleButton.id = "schedule-button";
   generateScheduleButton.type = "button";
   generateScheduleButton.textContent = "Generate Schedule";
-  filtersContainer.appendChild(generateScheduleButton);
+  parentContainer.appendChild(generateScheduleButton);
+
+  // Create the container for the Lottie animation
+  const lottieContainer = document.createElement("div");
+  lottieContainer.id = "generate-button-lottie";
+  parentContainer.style.overflow = "hidden";
+
+  // Append the Lottie container and the button to the parent container
+  parentContainer.appendChild(lottieContainer);
+  parentContainer.appendChild(generateScheduleButton);
+
+  // Append the parent container to the filters container
+  filtersContainer.appendChild(parentContainer);
 
   filters.forEach((filter, index) => {
     const filterContainer = document.createElement("div");
