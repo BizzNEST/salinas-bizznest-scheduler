@@ -75,3 +75,13 @@ export async function displayInternTable() {
     tableBody.appendChild(row);
   });
 }
+
+function findInterns(interns, query) {
+  const lowerCasedQuery = query.toLowerCase();
+  return interns.filter(
+    (intern) =>
+      intern.name.toLowerCase().includes(lowerCasedQuery) ||
+      intern.department.toLowerCase().includes(lowerCasedQuery) ||
+      intern.location.toLowerCase().includes(lowerCasedQuery),
+  );
+}
