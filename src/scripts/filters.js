@@ -1,5 +1,4 @@
 import filters from "../constants/constants.js";
-import pair from "../util/pair.js";
 import swap from "../util/swap.js";
 
 export function uniquePairing(interns) {
@@ -91,9 +90,13 @@ export function displayFilters() {
                 .map(
                   (option) => `
                 <li class="option-item">
-                  <label>
-                    <input type="checkbox" value="${option}"> ${option}
-                  </label>
+                   <div class="checkbox-wrapper-39">
+                    <label>
+                      <input type="checkbox" value="${option}"/>
+                      <span class="checkbox"></span>
+                    </label>
+                  </div>
+                  <span class="option-label">${option}</span>
                 </li>
               `,
                 )
