@@ -1,8 +1,8 @@
 import getInterns from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
-import { filterByLocation } from "./filters.js";
-import { filterByDepartment } from "./filters.js";
+import { filterByLocation, uniquePairing } from "./filters.js";
+import { filterByDepartment, getSelectedOptions } from "./filters.js";
 
 async function pairInterns() {
   let interns = [];
@@ -19,7 +19,16 @@ async function pairInterns() {
     }
   }
   interns = filterByDepartment(filterByLocation(interns));
+
+  const selected = getSelectedOptions()["Unique Pairing"];
+
   shuffle(interns);
+  //console.log(interns);
+  //console.log(selected);
+  if (selected.length !== 0) {
+    return uniquePairing(interns, selected);
+    //console.log(interns);
+  }
   return pair(interns);
 }
 

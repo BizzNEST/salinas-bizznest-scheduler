@@ -1,4 +1,77 @@
 import filters from "../constants/constants.js";
+import pair from "../util/pair.js";
+import swap from "../util/swap.js";
+
+export function uniquePairing(arr, selected) {
+  if (
+    selected.includes("Unique Locations") &&
+    selected.includes("Unique Departments")
+  ) {
+    return uniquePairingDeptAndLoc(arr);
+  }
+
+  if (selected.includes("Unique Locations")) {
+    return uniquePairingLoc(arr);
+  }
+
+  return uniquePairingDept(arr);
+}
+
+function uniquePairingDeptAndLoc(arr) {
+  let pairsArray = [];
+  //console.log("both");
+  for (let i = 0; i < arr.length - 1; i += 2) {
+    if (
+      arr[i].department === arr[i + 1].department ||
+      arr[i].location === arr[i + 1].location
+    ) {
+      for (let j = i + 2; j < arr.length; j++) {
+        if (
+          arr[i].department !== arr[j].department &&
+          arr[i].location !== arr[j].location
+        ) {
+          swap(arr, i + 1, j);
+        }
+      }
+    }
+  }
+  pairsArray = pair(arr);
+  return pairsArray;
+}
+
+function uniquePairingDept(arr) {
+  let pairsArray = []; //return array with the pairings
+  //console.log("dept");
+  for (let i = 0; i < arr.length - 1; i += 2) {
+    if (arr[i].department === arr[i + 1].department) {
+      for (let j = i + 2; j < arr.length; j++) {
+        if (arr[i].department !== arr[j].department) {
+          swap(arr, i + 1, j);
+        }
+      }
+    }
+  }
+  pairsArray = pair(arr);
+  return pairsArray;
+}
+
+export function uniquePairingLoc(arr) {
+  let pairsArray = []; //return array with the pairings
+  //console.log("loc");
+  for (let i = 0; i < arr.length - 1; i += 2) {
+    if (arr[i].location === arr[i + 1].location) {
+      for (let j = i + 2; j < arr.length; j++) {
+        if (arr[i].location !== arr[j].location) {
+          swap(arr, i + 1, j);
+          break;
+        }
+      }
+    }
+  }
+  pairsArray = pair(arr);
+  return pairsArray;
+}
+
 export function filterByLocation(interns) {
   const selected = new Set(getSelectedOptions().Location);
   return selected.size === 0
