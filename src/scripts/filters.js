@@ -2,8 +2,13 @@ import filters from "../constants/constants.js";
 import pair from "../util/pair.js";
 import swap from "../util/swap.js";
 
-export function uniquePairing(interns, selected) {
-  return uniquePairingHelper(
+export function uniquePairing(interns) {
+  const selected = getSelectedOptions()["Unique Pairing"];
+  if (selected.length < 1) {
+    return;
+  }
+
+  uniquePairingHelper(
     interns,
     selected.includes("Unique Departments"),
     selected.includes("Unique Locations"),
@@ -22,8 +27,6 @@ function uniquePairingHelper(interns, isUniqueDept, isUniqueLoc) {
       }
     }
   }
-
-  return pair(interns);
 }
 
 function isValidPair(firstIntern, secondIntern, isUniqueDept, isUniqueLoc) {
