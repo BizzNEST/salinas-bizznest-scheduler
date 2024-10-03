@@ -23,11 +23,8 @@ async function pairInterns() {
   const selected = getSelectedOptions()["Unique Pairing"];
 
   shuffle(interns);
-  //console.log(interns);
-  //console.log(selected);
   if (selected.length !== 0) {
     return uniquePairing(interns, selected);
-    //console.log(interns);
   }
   return pair(interns);
 }

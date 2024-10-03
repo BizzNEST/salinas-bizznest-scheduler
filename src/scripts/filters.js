@@ -2,66 +2,35 @@ import filters from "../constants/constants.js";
 import pair from "../util/pair.js";
 import swap from "../util/swap.js";
 
-export function uniquePairing(arr, selected) {
-  let isDept,
-    isLocation = false;
-
-  if (
-    selected.includes("Unique Locations") &&
-    selected.includes("Unique Departments")
-  ) {
-    isDept = true;
-    isLocation = true;
-  } else if (selected.includes("Unique Locations")) {
-    isLocation = true;
-  } else if (selected.includes("Unique Departments")) {
-    isDept = true;
-  }
-
-  return uniquePairingHelper(arr, isDept, isLocation);
+export function uniquePairing(interns, selected) {
+  return uniquePairingHelper(
+    interns,
+    selected.includes("Unique Departments"),
+    selected.includes("Unique Locations"),
+  );
 }
 
-function uniquePairingHelper(arr, isDept, isLocation) {
-  let pairsArray = [];
-  //console.log("both");
-  for (let i = 0; i < arr.length - 1; i += 2) {
-    if (isDept && isLocation) {
-      if (
-        arr[i].department === arr[i + 1].department ||
-        arr[i].location === arr[i + 1].location
-      ) {
-        for (let j = i + 2; j < arr.length; j++) {
-          if (
-            arr[i].department !== arr[j].department &&
-            arr[i].location !== arr[j].location
-          ) {
-            swap(arr, i + 1, j);
-            break;
-          }
-        }
-      }
-    } else if (isDept) {
-      if (arr[i].department === arr[i + 1].department) {
-        for (let j = i + 2; j < arr.length; j++) {
-          if (arr[i].department !== arr[j].department) {
-            swap(arr, i + 1, j);
-            break;
-          }
-        }
-      }
-    } else if (isLocation) {
-      if (arr[i].location === arr[i + 1].location) {
-        for (let j = i + 2; j < arr.length; j++) {
-          if (arr[i].location !== arr[j].location) {
-            swap(arr, i + 1, j);
-            break;
-          }
-        }
+function uniquePairingHelper(interns, isUniqueDept, isUniqueLoc) {
+  for (let i = 0; i < interns.length - 1; i += 2) {
+    if (isValidPair(interns[i], interns[i + 1], isUniqueDept, isUniqueLoc)) {
+      continue;
+    }
+    for (let j = i + 2; j < interns.length; j++) {
+      if (isValidPair(interns[i], interns[j], isUniqueDept, isUniqueLoc)) {
+        swap(interns, i + 1, j);
+        break;
       }
     }
   }
-  pairsArray = pair(arr);
-  return pairsArray;
+
+  return pair(interns);
+}
+
+function isValidPair(firstIntern, secondIntern, isUniqueDept, isUniqueLoc) {
+  return (
+    (!isUniqueDept || firstIntern.department !== secondIntern.department) &&
+    (!isUniqueLoc || firstIntern.location !== secondIntern.location)
+  );
 }
 
 export function filterByLocation(interns) {
