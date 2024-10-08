@@ -28,25 +28,15 @@ function pairInterns(isUniqueDept, isUniqueLoc) {
 }
 
 function uniquePairingTest(test) {
-  let count = 0;
   const pairs = pairInterns(test.isUniqueDept, test.isUniqueLoc);
 
-  count = pairs.reduce((accumultor, currentValue) => {
-    // eslint-disable-next-line prettier/prettier
-    return isValidPair(currentValue[0], currentValue[1], test.isUniqueDept, test.isUniqueLoc,)
-      ? accumultor + 1
-      : accumultor;
-  }, 0);
-
-  /*pairs.forEach((pair) => {
-    if (pair.length === 2) {
-      const [intern1, intern2] = pair;
-
-      if (isValidPair(intern1, intern2, test.isUniqueDept, test.isUniqueLoc)) {
-        count++;
-      }
-    }
-  });*/
+  const count = pairs.reduce(
+    (accumultor, [intern1, intern2]) =>
+      isValidPair(intern1, intern2, test.isUniqueDept, test.isUniqueLoc)
+        ? accumultor + 1
+        : accumultor,
+    0,
+  );
 
   console.log(test.testMessage, accuracy(count, pairs.length));
 }
