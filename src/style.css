@@ -175,12 +175,6 @@ th {
   padding: 10px;
 }
 
-table thead th {
-  background-color: #bde3d0;
-  color: black;
-  text-align: center;
-}
-
 table tbody td {
   padding: 10px;
   border: 1px solid #ececec;
@@ -205,10 +199,6 @@ table tbody td {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center content within the flex container */
-}
-
-.intern-pill-name-location .pill {
-  margin-bottom: 5px;
 }
 
 .intern-pill-name-location p {
@@ -412,115 +402,72 @@ i#toggle-icon.rotate {
   justify-content: center;
   gap: 20px;
 }
+
 .container-intern-list-wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin: 20px;
 }
-/*list-card-wrapper-alonzo*/
+
+/* list-card-wrapper-alonzo */
 .departments-text {
-  font-family: "roboto", sans-serif;
+  font-family: roboto, sans-serif;
   font-size: 20px;
   font-weight: bold;
   margin-right: 14px;
 }
 
-.pill {
-  font-size: 12px;
-  font-family: "Roboto", sans-serif;
-  padding: 0.5em 1em;
-  margin: 0.25em;
-  border-radius: 1em;
-  border: none;
-  outline: none;
-  background: #ddd;
-  cursor: pointer;
+.intern-pill-name-location .pill {
+  margin-bottom: 5px;
 }
-.pill:not(.pill--dev):hover {
+
+.pill:not(.pill-dev):hover {
   background-color: #ccc;
 }
 
-.pill--dev {
+.pill-dev {
   background-color: #e8cbe9;
   color: black;
   font-weight: bold;
+  border: 0.5px solid black;
 }
-.pill:not(.pill--design):hover {
+
+.pill:not(.pill-design):hover {
   background-color: #ccc;
 }
 
-.pill--design {
+.pill-design {
   background-color: #cec2eb;
   color: black;
   font-weight: bold;
+  border: 0.5px solid black;
 }
-.pill:not(.pill--vid):hover {
+
+.pill:not(.pill-vid):hover {
   background-color: #ccc;
 }
 
-.pill--vid {
+.pill-vid {
   background-color: #e9cac9;
   color: black;
   font-weight: bold;
+  border: 0.5px solid black;
 }
-.pill:not(.pill--it):hover {
+
+.pill:not(.pill-it):hover {
   background-color: #ccc;
 }
 
-.pill--it {
+.pill-it {
   background-color: #c8e4e9;
   color: black;
   font-weight: bold;
-}
-.pill--design {
-  color: black;
-  border: 0.5px solid black;
-}
-.pill--dev {
-  color: black;
-  border: 0.5px solid black;
-}
-.pill--vid {
-  color: black;
-  border: 0.5px solid black;
-}
-.pill--it {
-  color: black;
   border: 0.5px solid black;
 }
 
-/* Table Styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th {
-  padding: 10px;
-}
-
-table thead th {
-  background-color: #bde3d0;
-  color: black;
-  text-align: center;
-}
-
-table tbody td {
-  padding: 10px;
-  border: 1px solid #ececec;
-  vertical-align: top;
-  text-align: center; /* Center content within the table cell */
-}
-/* General Table Styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
+th,
+td {
   padding: 10px; /* Default padding */
 }
 
@@ -530,43 +477,32 @@ table thead th {
   text-align: center;
 }
 
-table tbody td {
-  padding: 10px;
-  border: 1px solid #ececec;
-  vertical-align: middle; 
-  text-align: center; 
-}
-
 /* Custom padding for specific columns */
-table tbody td:nth-child(1), 
-table tbody td:nth-child(2), 
-table thead th:nth-child(1), 
-table thead th:nth-child(2)   {
-  padding-left: 20px; 
-  padding-right: 20px; 
-  vertical-align: middle; 
+table thead th:nth-child(1),
+table thead th:nth-child(2) {
+  padding-left: 20px;
+  padding-right: 20px;
+  vertical-align: middle;
 }
-/*select button colors*/
-.pill--select {
+
+/* select button colors */
+.pill-select {
   background-color: #bde3d0;
   color: black;
   border: 0.5px solid black;
   font-weight: bold;
 }
-.pill--select:hover {
-  background-color: #bde3d0;
-}
 
-.pill--selected {
+.pill-selected {
   background-color: #bde3d0;
   color: black;
   border: 0.5px solid black;
   font-weight: bold;
 }
-.pill--select:hover {
+
+.pill-select:hover {
   background-color: #bde3d0;
 }
-
 
 #generate-button-lottie {
   width: 300px;

@@ -1,7 +1,7 @@
 import displayQuestions from "./scripts/questions.js";
 import { displayFilters } from "./scripts/filters.js";
-import { displayInternTable } from "./scripts/interns.js";    
- 
+import { displayInternTable } from "./scripts/interns.js";
+
 function main() {
   displayFilters();
   const toggleIcon = document.getElementById("toggle-icon");
