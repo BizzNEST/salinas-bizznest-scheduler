@@ -413,6 +413,49 @@ i#toggle-icon.rotate {
   gap: 20px;
 }
 
+#generate-button-lottie {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #8dd9b3; /* Match the main color */
+  color: #fff;
+  text-align: center;
+  line-height: 49px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+  z-index: 9999; /* Ensure it is above other elements */
+}
+
+.scroll-to-top:hover {
+  background-color: rgb(
+    99 194 145
+  ); /* Slightly darker shade for hover effect */
+
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.scroll-to-top i {
+  font-size: 24px; /* Slightly larger icon */
+}
+
 @media screen and (width <= 768px) {
   #desktop-logo {
     display: none;

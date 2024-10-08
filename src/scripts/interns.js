@@ -20,8 +20,6 @@ async function pairInterns() {
   }
   interns = filterByDepartment(filterByLocation(interns));
 
-  const selected = getSelectedOptions()["Unique Pairing"];
-
   shuffle(interns);
   uniquePairing(interns);
   return pair(interns);
@@ -80,6 +78,7 @@ export async function displayInternTable() {
   });
 }
 
+// TODO: Use this search for interns card / week cards
 function findInterns(interns, query) {
   const lowerCasedQuery = query.toLowerCase();
   return interns.filter(
