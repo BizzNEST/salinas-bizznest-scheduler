@@ -6,18 +6,15 @@ import { filterByDepartment, getSelectedOptions } from "./filters.js";
 
 async function pairInterns() {
   let interns = [];
-  const departments = await getInterns();
-  for (const department in departments) {
-    for (const [intern, internInfo] of Object.entries(
-      departments[department],
-    )) {
-      interns.push({
-        name: intern,
-        department: internInfo.department,
-        location: internInfo.location,
-      });
-    }
+  const fetchedInterns = await getInterns();
+  for (const [intern, internInfo] of Object.entries(fetchedInterns)) {
+    interns.push({
+      name: intern,
+      department: internInfo.department,
+      location: internInfo.location,
+    });
   }
+
   interns = filterByDepartment(filterByLocation(interns));
 
   shuffle(interns);

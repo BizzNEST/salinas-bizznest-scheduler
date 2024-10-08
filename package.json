@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A brief description of what this project does and who it's for.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "lint:eslint": "eslint --config eslint.config.mjs . --fix",
     "lint:style": "stylelint \"**/*.css\" --fix",
