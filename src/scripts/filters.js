@@ -14,7 +14,7 @@ export function uniquePairing(interns) {
   );
 }
 
-function uniquePairingHelper(interns, isUniqueDept, isUniqueLoc) {
+export function uniquePairingHelper(interns, isUniqueDept, isUniqueLoc) {
   for (let i = 0; i < interns.length - 1; i += 2) {
     if (isValidPair(interns[i], interns[i + 1], isUniqueDept, isUniqueLoc)) {
       continue;
@@ -28,7 +28,12 @@ function uniquePairingHelper(interns, isUniqueDept, isUniqueLoc) {
   }
 }
 
-function isValidPair(firstIntern, secondIntern, isUniqueDept, isUniqueLoc) {
+export function isValidPair(
+  firstIntern,
+  secondIntern,
+  isUniqueDept,
+  isUniqueLoc,
+) {
   return (
     (!isUniqueDept || firstIntern.department !== secondIntern.department) &&
     (!isUniqueLoc || firstIntern.location !== secondIntern.location)
