@@ -17,8 +17,7 @@ async function pairInterns(isUniqueDept, isUniqueLoc) {
   for (const [intern, internInfo] of Object.entries(fetchedInterns)) {
     interns.push({
       name: intern,
-      department: internInfo.department,
-      location: internInfo.location,
+      ...internInfo,
     });
   }
 

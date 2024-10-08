@@ -19,5 +19,6 @@ fs.readdir(testsDirectory, async (err, files) => {
   for (const file of files.filter((file) => path.extname(file) === ".js")) {
     console.log(`Running test file: ${file}`);
     await import(path.join(testsDirectory, file));
+    console.log("\n");
   }
 });
