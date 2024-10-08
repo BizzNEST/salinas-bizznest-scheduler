@@ -48,14 +48,14 @@ function formatInternDetails(intern) {
 export async function displayInternTable() {
   const internPairs = await pairInterns();
 
-  const tableHeader = document.getElementById("interns-table-header");
+  const tableHeader = document.getElementById("interns-week-table-header");
   tableHeader.innerHTML = "";
 
   internPairs.length === 0
     ? (tableHeader.innerHTML = `<tr><th>Not enough Interns selected to pair.</th></tr>`)
     : (tableHeader.innerHTML = `<tr><th>Group</th><th>Intern 1</th><th>Intern 2</th></tr>`);
 
-  const tableBody = document.getElementById("interns-table-body");
+  const tableBody = document.getElementById("interns-week-table-body");
   tableBody.innerHTML = ""; //clear out any previous pairings
 
   internPairs.forEach((pair, index) => {

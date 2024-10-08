@@ -4,8 +4,10 @@ import { displayInternTable } from "./scripts/interns.js";
 
 function main() {
   displayFilters();
-  const toggleIcon = document.getElementById("toggle-icon");
+  const toggleIconWeek = document.getElementById("toggle-icon-week");
+  const toggleIconInterns = document.getElementById("toggle-icon-interns");
   const weekCardContent = document.getElementById("week-card-content");
+  const internCardContent = document.getElementById("intern-card-content");
   const generateButtonAnimation = lottie.loadAnimation({
     container: document.getElementById("generate-button-lottie"),
     renderer: "svg",
@@ -14,14 +16,21 @@ function main() {
     path: "src/assets/lottie/lottie_confetti.json",
   });
 
-  toggleIcon.addEventListener("click", () => {
+  toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
     weekCardContent.classList.toggle("collapsed");
 
     // Toggle the chevron icon rotation
-    toggleIcon.classList.toggle("rotate");
+    toggleIconWeek.classList.toggle("rotate");
   });
 
+  toggleIconInterns.addEventListener("click", () => {
+    // Toggle the collapsed class to control max-height
+    internCardContent.classList.toggle("collapsed");
+
+    // Toggle the chevron icon rotation
+    toggleIconInterns.classList.toggle("rotate");
+  });
   const generateButton = document.getElementById("schedule-button");
 
   generateButton.addEventListener("click", function () {

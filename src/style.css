@@ -153,7 +153,6 @@ section.week-card {
   font-weight: bold;
   white-space: nowrap; /* Prevents wrapping of list items */
   display: inline-block; /* Ensure the pill does not take full width */
-  background-color: #bde3d0;
   color: black;
   margin-bottom: 0;
 }
@@ -207,23 +206,27 @@ table tbody td {
 }
 
 /* Toggle Icons + Collapsing Content */
-#week-card-content {
+#week-card-content,
+#intern-card-content {
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   max-height: 500px;
   overflow-y: auto;
 }
 
-#week-card-content.collapsed {
+#week-card-content.collapsed,
+#intern-card-content.collapsed {
   max-height: 0;
 }
 
-i#toggle-icon {
+i#toggle-icon-week,
+i#toggle-icon-interns {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-i#toggle-icon.rotate {
+i#toggle-icon-week.rotate,
+i#toggle-icon-week.interns {
   transform: rotate(180deg);
 }
 
@@ -422,48 +425,28 @@ i#toggle-icon.rotate {
   margin-bottom: 5px;
 }
 
-.pill:not(.pill-dev):hover {
-  background-color: #ccc;
-}
-
 .pill-dev {
   background-color: #e8cbe9;
   color: black;
   font-weight: bold;
-  border: 0.5px solid black;
-}
-
-.pill:not(.pill-design):hover {
-  background-color: #ccc;
 }
 
 .pill-design {
   background-color: #cec2eb;
   color: black;
   font-weight: bold;
-  border: 0.5px solid black;
-}
-
-.pill:not(.pill-vid):hover {
-  background-color: #ccc;
 }
 
 .pill-vid {
   background-color: #e9cac9;
   color: black;
   font-weight: bold;
-  border: 0.5px solid black;
-}
-
-.pill:not(.pill-it):hover {
-  background-color: #ccc;
 }
 
 .pill-it {
   background-color: #c8e4e9;
   color: black;
   font-weight: bold;
-  border: 0.5px solid black;
 }
 
 th,
@@ -489,14 +472,12 @@ table thead th:nth-child(2) {
 .pill-select {
   background-color: #bde3d0;
   color: black;
-  border: 0.5px solid black;
   font-weight: bold;
 }
 
 .pill-selected {
   background-color: #bde3d0;
   color: black;
-  border: 0.5px solid black;
   font-weight: bold;
 }
 

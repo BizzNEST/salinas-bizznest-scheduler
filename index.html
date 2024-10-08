@@ -53,11 +53,38 @@
       </div>
     </header>
     <main>
+      <!--list-card-wrapper-alonzo-->
+      <section class="week-card">
+        <div class="inner-week-card">
+          <div class="week-header">
+            <h2 id="card-header">Interns</h2>
+            <i id="toggle-icon-interns" class="fa-solid fa-chevron-up"></i>
+          </div>
+        </div>
+        <div id="intern-card-content" class="inner-week-card">
+          <div id="department-pills" class="departments">
+            <h3>Departments</h3>
+            <!-- TODO: Dynamically display the department pill with their style (only background color needs to change)-->
+            <ul>
+              <li class="pill pill-dev">Web Developer</li>
+              <li class="pill pill-design">Design</li>
+              <li class="pill pill-vid">Video Production</li>
+              <li class="pill pill-it">IT</li>
+            </ul>
+          </div>
+        </div>
+          <table>
+            <thead id="interns-table-header"></thead>
+            <tbody id="interns-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
       <section class="week-card">
         <div class="inner-week-card">
           <div class="week-header">
             <h2 id="card-header">Week</h2>
-            <i id="toggle-icon" class="fa-solid fa-chevron-up"></i>
+            <i id="toggle-icon-week" class="fa-solid fa-chevron-up"></i>
           </div>
         </div>
         <div id="week-card-content" class="inner-week-card">
@@ -72,119 +99,12 @@
             </ul>
           </div>
           <div id="ice-breakers" class="ice-breakers"></div>
-          <table id="interns-table">
-            <thead id="interns-table-header"></thead>
-            <tbody id="interns-table-body"></tbody>
+          <table id="interns-week-table">
+            <thead id="interns-week-table-header"></thead>
+            <tbody id="interns-week-table-body"></tbody>
           </table>
         </div>
       </section>
-      <!--list-card-wrapper-alonzo-->
-      <div class="container-intern-list-wrapper">
-        <div class="departments-text">Departments</div>
-
-        <button class="pill pill-dev" type="button">Development</button>
-        <button class="pill pill-design" type="button">Design</button>
-        <button class="pill pill-vid" type="button">Video production</button>
-        <button class="pill pill-it" type="button">IT</button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Option</th>
-            <th>Intern</th>
-            <th>Location</th>
-            <th>Department</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <button class="pill pill--select" type="button">Select</button>
-            </td>
-            <!--R1C1-->
-            <td>Ex. Eli</td>
-            <!--R1C2-->
-            <td>
-              <div class="intern-pill-name-location">
-                <p>Ex. Salinas</p>
-                <!--R1C3-->
-              </div>
-            </td>
-            <td>
-              <div class="intern-pill-name-location">
-                <div class="pill pill-dev">
-                  <b>Web Development</b
-                  ><!--R1C4-->
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="pill pill--select" type="button">Select</button>
-            </td>
-            <!--R2C1-->
-            <td>Ex. Lonzo</td>
-            <!--R2C2-->
-            <td>
-              <div class="intern-pill-name-location">
-                <p>Ex. Salinas</p>
-              </div>
-            </td>
-            <td>
-              <div class="intern-pill-name-location">
-                <div class="pill pill-dev">
-                  <b>Web Development</b>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="pill pill--select" type="button">Select</button>
-            </td>
-            <!--R2C1-->
-            <td>Ex. Lily</td>
-            <!--R2C2-->
-            <td>
-              <div class="intern-pill-name-location">
-                <p>Ex. Salinas</p>
-                <!--R3C2-->
-              </div>
-            </td>
-            <td>
-              <div class="intern-pill-name-location">
-                <div class="pill pill-dev">
-                  <b>Web Development</b
-                  ><!--R4C2-->
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="pill pill--select" type="button">Select</button>
-            </td>
-            <!--R2C1-->
-            <td>Ex. Jacky</td>
-            <!--R2C2-->
-            <td>
-              <div class="intern-pill-name-location">
-                <p>Ex. Salinas</p>
-                <!--R3C2-->
-              </div>
-            </td>
-            <td>
-              <div class="intern-pill-name-location">
-                <div class="pill pill-dev">
-                  <b>Web Development</b
-                  ><!--R4C2-->
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </main>
     <div id="scrollToTop" class="scroll-to-top">
       <i class="fas fa-arrow-up"></i>
