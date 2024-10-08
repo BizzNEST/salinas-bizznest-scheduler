@@ -1,6 +1,9 @@
 import displayQuestions from "./scripts/questions.js";
 import { displayFilters } from "./scripts/filters.js";
-import { displayInternTable } from "./scripts/interns.js";
+import {
+  displayInternWeekTable,
+  displayInternTable,
+} from "./scripts/interns.js";
 
 function main() {
   displayFilters();
@@ -15,7 +18,7 @@ function main() {
     autoplay: false,
     path: "src/assets/lottie/lottie_confetti.json",
   });
-
+  displayInternTable();
   toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
     weekCardContent.classList.toggle("collapsed");
@@ -34,7 +37,7 @@ function main() {
   const generateButton = document.getElementById("schedule-button");
 
   generateButton.addEventListener("click", function () {
-    displayInternTable();
+    displayInternWeekTable();
     displayQuestions();
     generateButtonAnimation.goToAndPlay(0, true);
   });
