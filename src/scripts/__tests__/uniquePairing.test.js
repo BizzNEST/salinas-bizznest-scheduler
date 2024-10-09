@@ -1,5 +1,5 @@
 import shuffle from "../../util/shuffle.js";
-import { isValidPair, uniquePairingHelper } from "../filters.js";
+import { isValidPair, uniquePairingHelper } from "../../util/uniquePairing.js";
 import pair from "../../util/pair.js";
 import accuracy from "../../util/accuracy.js";
 import { readFileSync } from "fs";
