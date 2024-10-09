@@ -31,7 +31,8 @@ export function tableToCSV() {
   );
 
   // Get each row data starting after header
-  let rows = document.getElementsByTagName("tr");
+  let table = document.getElementById("interns-week-table");
+  let rows = table.getElementsByTagName("tr");
   for (let i = 1; i < rows.length; i++) {
     // Get each column data
     let cols = rows[i].querySelectorAll("td,th");
