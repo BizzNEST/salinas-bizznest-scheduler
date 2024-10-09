@@ -1,17 +1,18 @@
 import getInterns from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
-import { filterByLocation, uniquePairing } from "./filters.js";
-import { filterByDepartment } from "./filters.js";
+import { filterByDepartment } from "../util/filterByDepartment.js";
+import { filterByLocation } from "../util/filterByLocation.js";
+import { uniquePairing } from "../util/uniquePairing.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
-import { renderDepartmentLists } from "./filters.js";
+import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
 import { internsSet } from "../constants/constants.js";
 
 async function pairInterns() {
   const interns = getSelectedInterns();
   shuffle(interns);
-  uniquePairing(interns);
+  uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
   return pair(interns);
 }
 
@@ -129,6 +130,9 @@ function formatInternDetails(intern) {
 }
 
 export async function displayInternTable() {
+  const filterSelections = getSelectedOptions();
+
+  // Fetches, Filters, and Searches for Interns
   const interns = searchInterns(
     filterByDepartment(
       filterByLocation(
@@ -136,7 +140,9 @@ export async function displayInternTable() {
           name: intern,
           ...internInfo,
         })),
+        filterSelections.Locations,
       ),
+      filterSelections.Departments,
     ),
     currentSearchQuery,
   );

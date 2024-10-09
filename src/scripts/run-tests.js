@@ -1,24 +1,21 @@
-import fs from "fs";
+import { readdirSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Get the directory name of the current module
+// Convert import.meta.url to __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Path to the __tests__ directory
 const testsDirectory = path.join(__dirname, "__tests__");
+const files = readdirSync(testsDirectory);
 
-// Read all files in the __tests__ directory
-fs.readdir(testsDirectory, async (err, files) => {
-  if (err) {
-    return console.error("Unable to scan directory:", err);
-  }
-
-  // Filter for .js files and import each one
-  for (const file of files.filter((file) => path.extname(file) === ".js")) {
-    console.log(`Running test file: ${file}`);
+for (const file of files.filter((file) => path.extname(file) === ".js")) {
+  console.log(`Running test file: ${file}`);
+  try {
     await import(path.join(testsDirectory, file));
-    console.log("\n");
+  } catch (error) {
+    console.error(`Error running test file: ${file}`);
+    console.error(error);
   }
-});
+  console.log("\n");
+}
