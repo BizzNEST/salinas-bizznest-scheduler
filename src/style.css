@@ -585,6 +585,10 @@ table thead th:nth-child(2) {
   font-size: 24px; /* Slightly larger icon */
 }
 
+#week-card-content {
+  display: none;
+}
+
 @media screen and (width <= 768px) {
   #desktop-logo {
     display: none;
