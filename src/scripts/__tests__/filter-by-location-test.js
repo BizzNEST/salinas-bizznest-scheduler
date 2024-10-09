@@ -1,23 +1,16 @@
 import accuracy from "../../util/accuracy.js";
-import swap from "../../util/swap.js";
 import pair from "../../util/pair.js";
 import shuffle from "../../util/shuffle.js";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import { filterByLocation } from "../../util/filterByLocation.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const internsPath = join(__dirname, "../../documents/interns.json");
 const internInfo = JSON.parse(readFileSync(internsPath, "utf-8"));
-
-function filterByLocation2(interns, listOfLocations) {
-  const selected = new Set(listOfLocations);
-  return selected.size === 0
-    ? interns
-    : interns.filter((intern) => selected.has(intern.location));
-}
 
 function pairInterns(listOfOurLocations) {
   let interns = [];
@@ -30,7 +23,7 @@ function pairInterns(listOfOurLocations) {
   }
 
   shuffle(interns);
-  interns = filterByLocation2(interns, listOfOurLocations);
+  interns = filterByLocation(interns, listOfOurLocations);
   return pair(interns);
 }
 function filterByLocationTest(test) {
@@ -46,7 +39,7 @@ function filterByLocationTest(test) {
     }
   }
 
-  console.log(test.testMessage, accuracy(count, pairs.length));
+  console.log(test.message, accuracy(count, pairs.length));
 }
 
 filterByLocationTest({
