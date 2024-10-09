@@ -7,10 +7,10 @@ export function displayExportButton() {
 
   // Create the button
   const exportButton = document.createElement("button");
-  exportButton.className = "ex-button";
+  exportButton.className = "export-button";
   exportButton.id = "export-button";
   exportButton.type = "button";
-  exportButton.textContent = "Download CSV";
+  exportButton.textContent = "Download CSV 🗒";
   parentContainer.appendChild(exportButton);
 
   weekCard.appendChild(parentContainer);
