@@ -65,9 +65,6 @@ export function tableToCSV() {
   // Combine each row data with new line character
   csv_data = csv_data.join("\n");
 
-  /* We will use this function later to download
-  the data in a csv file downloadCSVFile(csv_data);
-  */
   downloadCSVFile(csv_data);
 }
 
