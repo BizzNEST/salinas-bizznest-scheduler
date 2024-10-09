@@ -35,6 +35,10 @@ footer img {
   height: 30px;
 }
 
+td {
+  font-size: 0.9rem;
+}
+
 .outfit-header-font {
   font-family: Outfit, sans-serif;
   font-optical-sizing: auto;
@@ -95,6 +99,7 @@ section.week-card {
   max-width: 800px;
   margin: 20px auto;
   overflow: hidden;
+  min-width: 600px;
 }
 
 /* Inner Week Card */
@@ -390,16 +395,6 @@ i#toggle-icon-week.interns {
   font-weight: bold;
 }
 
-.apply-filter {
-  margin-top: 10px;
-  padding: 8px 15px;
-  background-color: #bde3d0;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
 .filter-config {
   display: flex;
   justify-content: center;
@@ -425,7 +420,7 @@ i#toggle-icon-week.interns {
   margin-bottom: 5px;
 }
 
-.pill-dev {
+.pill-web-development {
   background-color: #e8cbe9;
   color: black;
   font-weight: bold;
@@ -437,7 +432,7 @@ i#toggle-icon-week.interns {
   font-weight: bold;
 }
 
-.pill-vid {
+.pill-video-production {
   background-color: #e9cac9;
   color: black;
   font-weight: bold;
@@ -447,6 +442,17 @@ i#toggle-icon-week.interns {
   background-color: #c8e4e9;
   color: black;
   font-weight: bold;
+}
+
+.pill-marketing {
+  background-color: #e0ee81;
+  color: black;
+  font-weight: bold;
+}
+
+.intern-list-text {
+  display: grid;
+  align-items: center;
 }
 
 th,
@@ -469,20 +475,71 @@ table thead th:nth-child(2) {
 }
 
 /* select button colors */
-.pill-select {
+.pill-select,
+.pill-select-all {
   background-color: #bde3d0;
   color: black;
   font-weight: bold;
 }
 
-.pill-selected {
-  background-color: #bde3d0;
+.pill-selected,
+.pill-deselect-all {
+  background-color: #e3c4bd;
   color: black;
   font-weight: bold;
 }
 
-.pill-select:hover {
-  background-color: #bde3d0;
+.pill-deselect-all:hover {
+  background-color: #e08b78;
+}
+
+.pill-selected,
+.pill-select,
+.pill-select-all,
+.pill-deselect-all {
+  min-width: 96px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+.pill-select:hover,
+.pill-select-all:hover {
+  background-color: #65daa0;
+}
+
+.interns-config-settings {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.selection-config {
+  display: flex;
+  gap: 20px;
+}
+
+.search-bar {
+  padding: 10px 20px; /* Match padding with pills */
+  border-radius: 20px; /* Match border radius with pills */
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: auto; /* Adjust width to fit content */
+  transition: border-color 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%); /* Match box shadow with pills */
+  height: 20px;
+}
+
+.search-bar:focus {
+  border-color: #bde3d0;
+  outline: none;
 }
 
 #generate-button-lottie {

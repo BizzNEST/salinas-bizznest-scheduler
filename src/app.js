@@ -5,6 +5,8 @@ import {
   displayInternTable,
 } from "./scripts/interns.js";
 
+export let currentSearchQuery = "";
+
 function main() {
   displayFilters();
   const toggleIconWeek = document.getElementById("toggle-icon-week");
@@ -19,6 +21,7 @@ function main() {
     path: "src/assets/lottie/lottie_confetti.json",
   });
   displayInternTable();
+
   toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
     weekCardContent.classList.toggle("collapsed");
@@ -55,6 +58,16 @@ function main() {
   scrollToTop.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  const searchInput = document.getElementById("search-bar");
+  if (searchInput) {
+    searchInput.addEventListener("input", async function () {
+      currentSearchQuery = searchInput.value;
+      await displayInternTable();
+    });
+  } else {
+    console.error("Search input element not found");
+  }
 }
 
 document.addEventListener("DOMContentLoaded", main, { once: true });

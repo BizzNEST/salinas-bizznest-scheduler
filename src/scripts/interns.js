@@ -2,11 +2,15 @@ import getInterns from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
 import { filterByLocation, uniquePairing } from "./filters.js";
-import { filterByDepartment, getSelectedOptions } from "./filters.js";
+import { filterByDepartment } from "./filters.js";
+import { stringToKebabCase } from "../util/stringToKebabCase.js";
+import { renderDepartmentLists } from "./filters.js";
+import { currentSearchQuery } from "../app.js";
+
+export let internsSet = new Set();
 
 async function pairInterns() {
-  let interns = getSelectedInterns();
-  interns = filterByDepartment(filterByLocation(interns));
+  const interns = getSelectedInterns();
   shuffle(interns);
   uniquePairing(interns);
   return pair(interns);
@@ -18,7 +22,7 @@ function formatInternWeekDetails(intern) {
   internInfo.className = "intern-pill-name-location";
 
   const pill = document.createElement("div"); //Department pill div
-  pill.className = "pill";
+  pill.className = `pill pill-${stringToKebabCase(intern.department)}`;
   pill.innerHTML = `<b>${intern.department}</b>`;
   internInfo.appendChild(pill);
 
@@ -37,7 +41,7 @@ function formatInternWeekDetails(intern) {
 
 export async function displayInternWeekTable() {
   const internPairs = await pairInterns();
-
+  renderDepartmentLists("department-list-2");
   const tableHeader = document.getElementById("interns-week-table-header");
   tableHeader.innerHTML = "";
 
@@ -72,17 +76,24 @@ function formatInternDetails(intern, index) {
   // Create column for the select button
   const selectCol = document.createElement("td");
   const selectButton = document.createElement("button");
-  selectButton.className = "pill-select";
-  selectButton.textContent = "Select";
+  if (internsSet.has(intern.name)) {
+    selectButton.className = "pill-selected";
+    selectButton.textContent = "Deselect";
+  } else {
+    selectButton.className = "pill-select";
+    selectButton.textContent = "Select";
+  }
   selectButton.addEventListener("click", function () {
     if (selectButton.classList.contains("pill-select")) {
-      selectButton.textContent = "Selected";
+      selectButton.textContent = "Deselect";
       selectButton.classList.remove("pill-select");
       selectButton.classList.add("pill-selected");
+      internsSet.add(intern.name);
     } else {
       selectButton.textContent = "Select";
       selectButton.classList.remove("pill-selected");
       selectButton.classList.add("pill-select");
+      internsSet.delete(intern.name);
     }
   });
   selectCol.appendChild(selectButton);
@@ -90,18 +101,23 @@ function formatInternDetails(intern, index) {
 
   // Create column for the intern name
   const nameCol = document.createElement("td");
-  nameCol.textContent = intern.name;
+  const namePtag = document.createElement("p");
+  namePtag.textContent = intern.name;
+  namePtag.className = "intern-list-text";
+  nameCol.appendChild(namePtag);
   row.appendChild(nameCol);
 
-  // Create column for the intern location
   const locationCol = document.createElement("td");
-  locationCol.textContent = intern.location;
+  const locationPtag = document.createElement("p");
+  locationPtag.textContent = intern.location;
+  locationPtag.className = "intern-list-text";
+  locationCol.appendChild(locationPtag);
   row.appendChild(locationCol);
 
   // Create column for the intern department
   const departmentCol = document.createElement("td");
   const pill = document.createElement("div"); // Department pill div
-  pill.className = "pill";
+  pill.className = `pill pill-${stringToKebabCase(intern.department)}`;
   pill.innerHTML = `<b>${intern.department}</b>`;
   departmentCol.appendChild(pill);
   row.appendChild(departmentCol);
@@ -110,13 +126,17 @@ function formatInternDetails(intern, index) {
 }
 
 export async function displayInternTable() {
-  const interns = Object.entries(await getInterns()).map(
-    ([intern, internInfo]) => ({
-      name: intern,
-      ...internInfo,
-    }),
+  const interns = searchInterns(
+    filterByDepartment(
+      filterByLocation(
+        Object.entries(await getInterns()).map(([intern, internInfo]) => ({
+          name: intern,
+          ...internInfo,
+        })),
+      ),
+    ),
+    currentSearchQuery,
   );
-
   const tableHeader = document.getElementById("interns-table-header");
   tableHeader.innerHTML = "";
 
@@ -135,9 +155,11 @@ export async function displayInternTable() {
   document.getElementById("select-all").addEventListener("click", () => {
     const buttons = document.querySelectorAll(".pill-select");
     buttons.forEach((button) => {
-      button.textContent = "Selected";
+      button.textContent = "Deselect";
       button.classList.remove("pill-select");
       button.classList.add("pill-selected");
+      const internName = button.closest("tr").dataset.name;
+      internsSet.add(internName);
     });
   });
 
@@ -147,6 +169,8 @@ export async function displayInternTable() {
       button.textContent = "Select";
       button.classList.remove("pill-selected");
       button.classList.add("pill-select");
+      const internName = button.closest("tr").dataset.name;
+      internsSet.delete(internName);
     });
   });
 }
@@ -164,14 +188,14 @@ function getSelectedInterns() {
         department: row.cells[3].textContent,
       };
       selectedInterns.push(intern);
+      internsSet.add(intern);
     }
   });
 
   return selectedInterns;
 }
 
-// TODO: Use this search for interns card / week cards
-function findInterns(interns, query) {
+function searchInterns(interns, query) {
   const lowerCasedQuery = query.toLowerCase();
   return interns.filter(
     (intern) =>
