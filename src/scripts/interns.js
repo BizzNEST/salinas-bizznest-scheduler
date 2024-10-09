@@ -5,18 +5,8 @@ import { filterByLocation, uniquePairing } from "./filters.js";
 import { filterByDepartment, getSelectedOptions } from "./filters.js";
 
 async function pairInterns() {
-  let interns = [];
-  const fetchedInterns = await getInterns();
-  for (const [intern, internInfo] of Object.entries(fetchedInterns)) {
-    interns.push({
-      name: intern,
-      department: internInfo.department,
-      location: internInfo.location,
-    });
-  }
-
+  let interns = getSelectedInterns();
   interns = filterByDepartment(filterByLocation(interns));
-
   shuffle(interns);
   uniquePairing(interns);
   return pair(interns);
