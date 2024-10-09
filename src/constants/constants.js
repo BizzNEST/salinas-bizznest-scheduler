@@ -1,4 +1,4 @@
-const filters = [
+export const filters = [
   {
     name: "Location",
     options: ["Salinas", "Watsonville", "Gilroy", "Modesto", "Stockton"],
@@ -19,4 +19,4 @@ const filters = [
   },
 ];
 
-export default filters;
+export const internsSet = new Set();
