@@ -1,4 +1,4 @@
-import filters from "../constants/constants.js";
+import { filters } from "../constants/constants.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import swap from "../util/swap.js";
 import { displayInternTable } from "./interns.js";
@@ -73,12 +73,14 @@ export function getSelectedOptions() {
 export function renderDepartmentLists(...containerIds) {
   const selectedOptions = getSelectedOptions().Departments;
 
+  const selection =
+    selectedOptions.length === 0 ? filters[1].options : selectedOptions;
   containerIds.forEach((containerId) => {
     const departmentList = document.getElementById(containerId);
     departmentList.innerHTML = ""; // Clear existing list items
 
     if (selectedOptions) {
-      selectedOptions.forEach((department) => {
+      selection.forEach((department) => {
         const listItem = document.createElement("li");
         listItem.className = `pill pill-${stringToKebabCase(department)}`;
         listItem.textContent = department;

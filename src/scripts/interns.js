@@ -6,8 +6,7 @@ import { filterByDepartment } from "./filters.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
-
-export let internsSet = new Set();
+import { internsSet } from "../constants/constants.js";
 
 async function pairInterns() {
   const interns = getSelectedInterns();
@@ -42,6 +41,10 @@ function formatInternWeekDetails(intern) {
 export async function displayInternWeekTable() {
   const internPairs = await pairInterns();
   renderDepartmentLists("department-list-2");
+  const weekCard = document.getElementById("week-card-content");
+  weekCard.style.display = "block";
+  const departmentHeader = document.getElementById("department-headers-week");
+  departmentHeader.innerText = "Departments";
   const tableHeader = document.getElementById("interns-week-table-header");
   tableHeader.innerHTML = "";
 
@@ -69,9 +72,9 @@ export async function displayInternWeekTable() {
   });
 }
 
-function formatInternDetails(intern, index) {
+function formatInternDetails(intern) {
   const row = document.createElement("tr"); // Create a row for the intern
-  row.dataset.index = index; // Add a unique identifier to the row
+  row.dataset.name = intern.name;
 
   // Create column for the select button
   const selectCol = document.createElement("td");
@@ -137,6 +140,7 @@ export async function displayInternTable() {
     ),
     currentSearchQuery,
   );
+  renderDepartmentLists("department-list-1");
   const tableHeader = document.getElementById("interns-table-header");
   tableHeader.innerHTML = "";
 
@@ -158,8 +162,7 @@ export async function displayInternTable() {
       button.textContent = "Deselect";
       button.classList.remove("pill-select");
       button.classList.add("pill-selected");
-      const internName = button.closest("tr").dataset.name;
-      internsSet.add(internName);
+      internsSet.add(button.closest("tr").dataset.name);
     });
   });
 
@@ -169,8 +172,7 @@ export async function displayInternTable() {
       button.textContent = "Select";
       button.classList.remove("pill-selected");
       button.classList.add("pill-select");
-      const internName = button.closest("tr").dataset.name;
-      internsSet.delete(internName);
+      internsSet.delete(button.closest("tr").dataset.name);
     });
   });
 }
