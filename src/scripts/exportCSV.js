@@ -31,11 +31,12 @@ export function tableToCSV() {
   );
 
   // Get each row data by getting table and starting after header
-  let table = document.getElementById("interns-week-table");
-  let rows = table.getElementsByTagName("tr");
+  const rows = document
+    .getElementById("interns-week-table")
+    .getElementsByTagName("tr");
   for (let i = 1; i < rows.length; i++) {
     // Get each column data
-    let cols = rows[i].querySelectorAll("td,th");
+    const cols = rows[i].querySelectorAll("td,th");
 
     //If more than 3 columns means a group of 3 so we have to modify header
     if (cols.length === 4) {
@@ -45,7 +46,7 @@ export function tableToCSV() {
     }
 
     // Stores each csv row data
-    let csvrow = [];
+    const csvrow = [];
     for (let j = 0; j < cols.length; j++) {
       // Get the text data of each cell
       const internText = cols[j].innerText.replace(/\n\n/g, ",");
@@ -72,15 +73,15 @@ export function tableToCSV() {
 export function downloadCSVFile(csv_data) {
   // Create CSV file object and feed our
   // csv_data into it
-  let CSVFile = new Blob([csv_data], { type: "text/csv" });
+  const CSVFile = new Blob([csv_data], { type: "text/csv" });
 
   // Create to temporary link to initiate
   // download process
-  let temp_link = document.createElement("a");
+  const temp_link = document.createElement("a");
 
   // Download csv file
   temp_link.download = "InternPairs.csv";
-  let url = window.URL.createObjectURL(CSVFile);
+  const url = window.URL.createObjectURL(CSVFile);
   temp_link.href = url;
 
   // This link should not be displayed
