@@ -53,28 +53,63 @@
       </div>
     </header>
     <main>
+      <!--list-card-wrapper-alonzo-->
       <section class="week-card">
         <div class="inner-week-card">
           <div class="week-header">
-            <h2 id="card-header">Week</h2>
-            <i id="toggle-icon" class="fa-solid fa-chevron-up"></i>
+            <h2>Interns</h2>
+            <i id="toggle-icon-interns" class="fa-solid fa-chevron-up"></i>
+          </div>
+        </div>
+        <div id="intern-card-content" class="inner-week-card">
+          <div class="departments">
+            <h3>Departments</h3>
+            <!-- TODO: Dynamically display the department pill with their style (only background color needs to change)-->
+            <div id="department-list-container-1">
+              <ul id="department-list-1"></ul>
+            </div>
+          </div>
+          <div class="interns-config-settings">
+            <div class="selection-config">
+              <button id="select-all" class="pill-select-all">
+                Select All
+              </button>
+              <button id="deselect-all" class="pill-deselect-all">
+                Deselect All
+              </button>
+            </div>
+            <input
+              type="text"
+              id="search-bar"
+              class="search-bar"
+              placeholder="Search..."
+            />
+          </div>
+          <table>
+            <thead id="interns-table-header"></thead>
+            <tbody id="interns-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="week-card">
+        <div class="inner-week-card">
+          <div class="week-header">
+            <h2>Week</h2>
+            <i id="toggle-icon-week" class="fa-solid fa-chevron-up"></i>
           </div>
         </div>
         <div id="week-card-content" class="inner-week-card">
-          <div id="department-pills" class="departments">
+          <div class="departments">
             <h3>Departments</h3>
-            <!-- TODO: Dynamically display the department pill with their style (only background color needs to change)-->
-            <ul>
-              <li class="pill">Web Developer</li>
-              <li class="pill">Design</li>
-              <li class="pill">Video Production</li>
-              <li class="pill">IT</li>
-            </ul>
+            <div id="department-list-container-2">
+              <ul id="department-list-2"></ul>
+            </div>
           </div>
           <div id="ice-breakers" class="ice-breakers"></div>
-          <table id="interns-table">
-            <thead id="interns-table-header"></thead>
-            <tbody id="interns-table-body"></tbody>
+          <table id="interns-week-table">
+            <thead id="interns-week-table-header"></thead>
+            <tbody id="interns-week-table-body"></tbody>
           </table>
         </div>
       </section>

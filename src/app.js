@@ -1,11 +1,18 @@
 import displayQuestions from "./scripts/questions.js";
 import { displayFilters } from "./scripts/filters.js";
-import { displayInternTable } from "./scripts/interns.js";
+import {
+  displayInternWeekTable,
+  displayInternTable,
+} from "./scripts/interns.js";
+
+export let currentSearchQuery = "";
 
 function main() {
   displayFilters();
-  const toggleIcon = document.getElementById("toggle-icon");
+  const toggleIconWeek = document.getElementById("toggle-icon-week");
+  const toggleIconInterns = document.getElementById("toggle-icon-interns");
   const weekCardContent = document.getElementById("week-card-content");
+  const internCardContent = document.getElementById("intern-card-content");
   const generateButtonAnimation = lottie.loadAnimation({
     container: document.getElementById("generate-button-lottie"),
     renderer: "svg",
@@ -13,19 +20,27 @@ function main() {
     autoplay: false,
     path: "src/assets/lottie/lottie_confetti.json",
   });
+  displayInternTable();
 
-  toggleIcon.addEventListener("click", () => {
+  toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
     weekCardContent.classList.toggle("collapsed");
 
     // Toggle the chevron icon rotation
-    toggleIcon.classList.toggle("rotate");
+    toggleIconWeek.classList.toggle("rotate");
   });
 
+  toggleIconInterns.addEventListener("click", () => {
+    // Toggle the collapsed class to control max-height
+    internCardContent.classList.toggle("collapsed");
+
+    // Toggle the chevron icon rotation
+    toggleIconInterns.classList.toggle("rotate");
+  });
   const generateButton = document.getElementById("schedule-button");
 
   generateButton.addEventListener("click", function () {
-    displayInternTable();
+    displayInternWeekTable();
     displayQuestions();
     generateButtonAnimation.goToAndPlay(0, true);
   });
@@ -43,6 +58,16 @@ function main() {
   scrollToTop.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  const searchInput = document.getElementById("search-bar");
+  if (searchInput) {
+    searchInput.addEventListener("input", async function () {
+      currentSearchQuery = searchInput.value;
+      await displayInternTable();
+    });
+  } else {
+    console.error("Search input element not found");
+  }
 }
 
 document.addEventListener("DOMContentLoaded", main, { once: true });
