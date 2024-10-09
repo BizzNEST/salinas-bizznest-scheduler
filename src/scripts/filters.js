@@ -1,5 +1,7 @@
 import filters from "../constants/constants.js";
+import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import swap from "../util/swap.js";
+import { displayInternTable } from "./interns.js";
 
 export function uniquePairing(interns) {
   const selected = getSelectedOptions()["Unique Pairing"];
@@ -68,6 +70,24 @@ export function getSelectedOptions() {
   return selectedOptions;
 }
 
+export function renderDepartmentLists(...containerIds) {
+  const selectedOptions = getSelectedOptions().Departments;
+
+  containerIds.forEach((containerId) => {
+    const departmentList = document.getElementById(containerId);
+    departmentList.innerHTML = ""; // Clear existing list items
+
+    if (selectedOptions) {
+      selectedOptions.forEach((department) => {
+        const listItem = document.createElement("li");
+        listItem.className = `pill pill-${stringToKebabCase(department)}`;
+        listItem.textContent = department;
+        departmentList.appendChild(listItem);
+      });
+    }
+  });
+}
+
 export function displayFilters() {
   const filtersContainer = document.getElementById("filtersContainer");
 
@@ -125,7 +145,6 @@ export function displayFilters() {
                 )
                 .join("")}
             </ul>
-            <button class="apply-filter">Apply</button>
           </div>
         </div>
       </div>
@@ -134,8 +153,19 @@ export function displayFilters() {
 
     const filterButton = filterContainer.querySelector(".filter-button");
     const modal = filterContainer.querySelector(".modal");
-    const applyButton = filterContainer.querySelector(".apply-filter");
     const closeButton = filterContainer.querySelector(".close-modal-button");
+
+    function addCheckboxListeners() {
+      const checkboxes = filterContainer.querySelectorAll(
+        'input[type="checkbox"]',
+      );
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", async () => {
+          await displayInternTable();
+          renderDepartmentLists("department-list-1");
+        });
+      });
+    }
 
     filterButton.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -147,10 +177,7 @@ export function displayFilters() {
         modal.style.display = "block";
         toggleIcon(index);
       }
-    });
-
-    applyButton.addEventListener("click", () => {
-      closeModal(index);
+      addCheckboxListeners();
     });
 
     closeButton.addEventListener("click", () => {
@@ -184,10 +211,11 @@ export function displayFilters() {
     });
   }
 
-  clearFiltersButton.addEventListener("click", () => {
+  clearFiltersButton.addEventListener("click", async () => {
     document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
       checkbox.checked = false;
     });
+    await displayInternTable();
   });
 
   // Close the modals when clicking outside of them
