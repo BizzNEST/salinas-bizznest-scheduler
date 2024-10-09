@@ -6,6 +6,7 @@ import {
 } from "./scripts/interns.js";
 
 export let currentSearchQuery = "";
+import { displayExportButton } from "./scripts/exportCSV.js";
 
 function main() {
   displayFilters();
@@ -42,6 +43,7 @@ function main() {
   generateButton.addEventListener("click", function () {
     displayInternWeekTable();
     displayQuestions();
+    displayExportButton();
     generateButtonAnimation.goToAndPlay(0, true);
   });
 
