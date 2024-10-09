@@ -140,7 +140,7 @@ export async function displayInternTable() {
           name: intern,
           ...internInfo,
         })),
-        filterSelections.Locations,
+        filterSelections.Location,
       ),
       filterSelections.Departments,
     ),
