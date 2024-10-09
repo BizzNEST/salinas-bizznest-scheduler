@@ -1,3 +1,4 @@
+import accuracy from "../../util/accuracy.js";
 import swap from "../../util/swap.js";
 import pair from "../../util/pair.js";
 import shuffle from "../../util/shuffle.js";
@@ -44,9 +45,8 @@ function filterByLocationTest(test) {
       count++;
     }
   }
-  const accuracy = (count / pairs.length) * 100 + "%";
 
-  console.log(test.message, accuracy);
+  console.log(test.testMessage, accuracy(count, pairs.length));
 }
 
 filterByLocationTest({
