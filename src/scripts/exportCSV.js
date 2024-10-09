@@ -30,7 +30,7 @@ export function tableToCSV() {
     "Group, (Intern 1) Name, (Intern 1) Department, (Intern 1) Location, (Intern 2) Name, (Intern 2) Department, (Intern 2) Location",
   );
 
-  // Get each row data starting after header
+  // Get each row data by getting table and starting after header
   let table = document.getElementById("interns-week-table");
   let rows = table.getElementsByTagName("tr");
   for (let i = 1; i < rows.length; i++) {
