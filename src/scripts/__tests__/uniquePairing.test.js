@@ -38,21 +38,25 @@ function uniquePairingTest(test) {
     0,
   );
 
-  console.log(test.testMessage, accuracy(count, pairs.length));
+  console.log(
+    test.message,
+    `\nPair Count: ${count} out of ${pairs.length} pairs\nAcurracy: `,
+    accuracy(count, pairs.length) + "\n",
+  );
 }
 
 uniquePairingTest({
   isUniqueDept: true,
   isUniqueLoc: false,
-  testMessage: "Testing accuracy unique departments:",
+  message: "Test: Accuracy for unique departments filter:",
 });
 uniquePairingTest({
   isUniqueDept: false,
   isUniqueLoc: true,
-  testMessage: "Testing accuracy unique locations:",
+  message: "Test: Accuracy for unique locations filter:",
 });
 uniquePairingTest({
   isUniqueDept: true,
   isUniqueLoc: true,
-  testMessage: "Testing accuracy unique departments & locations:",
+  message: "Test: Acuracy for unique departments & locationsfilter:",
 });
