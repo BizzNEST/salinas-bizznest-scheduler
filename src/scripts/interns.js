@@ -60,7 +60,14 @@ export async function displayInternWeekTable() {
     const row = document.createElement("tr"); //creating group row
 
     const groupNum = document.createElement("td"); //Group num column
-    groupNum.textContent = "Group " + (index + 1);
+    //groupNum.textContent = "Group " + (index + 1);
+    groupNum.innerHTML = `
+      <p>Group ${index + 1}</p>
+
+      <button class="edit" id="add-intern-${index + 1}">+</button>
+      <button class="edit" id="remove">-</button>
+    `;
+
     row.appendChild(groupNum);
 
     //add intern info columns
