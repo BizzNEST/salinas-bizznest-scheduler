@@ -100,7 +100,7 @@ section.week-card {
   max-width: 800px;
   margin: 10px;
   overflow: hidden;
-  min-width: 500px;
+  min-width: 400px;
 }
 
 /* Inner Week Card */
@@ -520,7 +520,7 @@ table thead th:nth-child(2) {
 .pill-select,
 .pill-select-all,
 .pill-deselect-all {
-  padding: 10px 20px;
+  padding: 10px 10px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
@@ -685,6 +685,7 @@ tr:nth-child(odd) {
     flex-direction: column-reverse;
   }
 }
+
 
 @media screen and (width <= 950px) {
   .filter-container {
