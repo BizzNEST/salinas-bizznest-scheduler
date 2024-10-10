@@ -7,6 +7,7 @@ import {
 
 export let currentSearchQuery = "";
 import { displayExportButton } from "./scripts/exportCSV.js";
+import { displayEditModal } from "./scripts/edit.js";
 
 function main() {
   displayFilters();
@@ -49,6 +50,7 @@ function main() {
     displayInternWeekTable();
     displayQuestions();
     displayExportButton();
+    displayEditModal();
     generateButtonAnimation.goToAndPlay(0, true);
   });
 
