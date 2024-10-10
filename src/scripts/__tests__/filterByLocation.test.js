@@ -39,34 +39,38 @@ function filterByLocationTest(test) {
     }
   }
 
-  console.log(test.message, accuracy(count, pairs.length));
+  console.log(
+    test.message,
+    `\nPair Count: ${count} out of ${pairs.length} pairs\nAcurracy: `,
+    accuracy(count, pairs.length) + "\n",
+  );
 }
 
 filterByLocationTest({
   locations: ["Salinas"],
-  message: "Testing accuracy for Salinas only:",
+  message: "Test: Accuracy for Salinas filter:",
 });
 filterByLocationTest({
   locations: ["Salinas", "Gilroy"],
-  message: "Testing accuracy for Salinas and Gilroy:",
+  message: "Test: Accuracy for Salinas and Gilroy filter:",
 });
 filterByLocationTest({
   locations: ["Salinas", "Gilroy", "Watsonville", "Modesto", "Stockton"],
-  message: "Testing accuracy for all locations:",
+  message: "Test: accuracy for all locations filter:",
 });
 filterByLocationTest({
   locations: ["Watsonville"],
-  message: "Testing accuracy for Watsonville only:",
+  message: "Test: Accuracy for Watsonville filter:",
 });
 filterByLocationTest({
   locations: ["Modesto"],
-  message: "Testing accuracy for Modesto only:",
+  message: "Test: Accuracy for Modesto filter:",
 });
 filterByLocationTest({
   locations: ["Stockton"],
-  message: "Testing accuracy for Stockton only:",
+  message: "Test: Accuracy for Stockton filter:",
 });
 filterByLocationTest({
   locations: [],
-  message: "Testing accuracy for empty list:",
+  message: "Test: Accuracy for empty list filter:",
 });
