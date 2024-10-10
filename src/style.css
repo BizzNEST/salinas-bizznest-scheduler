@@ -519,7 +519,6 @@ table thead th:nth-child(2) {
 .pill-select,
 .pill-select-all,
 .pill-deselect-all {
-  /* min-width: 96px; */
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
