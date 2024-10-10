@@ -10,9 +10,9 @@ body {
 
 main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 95%;
   min-height: 100vh;
 }
 
@@ -97,9 +97,9 @@ section.week-card {
   box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
   padding: 30px;
   max-width: 800px;
-  margin: 20px auto;
+  margin: 10px;
   overflow: hidden;
-  min-width: 600px;
+  min-width: 500px;
 }
 
 /* Inner Week Card */
@@ -519,7 +519,6 @@ table thead th:nth-child(2) {
 .pill-select,
 .pill-select-all,
 .pill-deselect-all {
-  min-width: 96px;
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
@@ -611,6 +610,10 @@ table thead th:nth-child(2) {
   display: none;
 }
 
+tr:nth-child(odd) {
+  background: #e8f2ea;
+}
+
 @media screen and (width <= 768px) {
   #desktop-logo {
     display: none;
@@ -676,6 +679,10 @@ table thead th:nth-child(2) {
     width: 150px !important;
     font-size: 16px;
   }
+
+  .interns-config-settings {
+    flex-direction: column-reverse;
+  }
 }
 
 @media screen and (width <= 950px) {
@@ -692,5 +699,80 @@ table thead th:nth-child(2) {
     overflow-x: auto;
     display: flex;
     justify-content: flex-start;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    min-height: 100vh;
+  }
+
+  section.week-card {
+    min-width: 1px;
+    width: 90%;
+  }
+}
+
+@media screen and (width <= 500px) {
+  section.week-card {
+    min-width: 1px;
+    width: 80%;
+  }
+
+  .week-header h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead,
+  tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin: 0 0 1rem;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td::before {
+    /* Top/left values mimic padding */
+    top: 0;
+    left: 6px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  /*
+  Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+  */
+  .interns-table td:nth-of-type(2)::before {
+    content: "Name";
+  }
+
+  .interns-table td:nth-of-type(3)::before {
+    content: "Location";
   }
 }
