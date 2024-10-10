@@ -408,6 +408,28 @@ i#toggle-icon-week.interns {
   margin: 20px;
 }
 
+.export-button-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.export-button {
+  background-color: white;
+  font-weight: bold;
+  border: 4px, solid, rgb(243, 174, 142);
+  border-radius: 25px;
+  padding: 10px;
+  color: rgb(221, 156, 126);
+  cursor: pointer;
+}
+
+.export-button:hover {
+  background-color: rgb(243, 174, 142);
+  color: white;
+}
+
 /* list-card-wrapper-alonzo */
 .departments-text {
   font-family: roboto, sans-serif;
