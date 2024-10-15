@@ -49,7 +49,7 @@ function main() {
 
   const addPairToGeneratedSchedule = document.getElementById("add-pair-button");
   addPairToGeneratedSchedule.addEventListener("click", function () {
-    console.log("addPairToGeneratedSchedule was click");
+    // TODO: Add pair functionality
   });
 
   const scrollToTop = document.getElementById("scrollToTop");
