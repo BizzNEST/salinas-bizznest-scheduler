@@ -19,7 +19,6 @@ async function pairInterns() {
   const interns = getSelectedInterns();
   shuffle(interns);
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
-  internPairsSet.clear();
   return pair(interns);
 }
 function formatInternWeekDetails(intern) {
@@ -46,9 +45,15 @@ function formatInternWeekDetails(intern) {
 }
 
 export async function displayInternWeekTable() {
-  const pairingSet = await pairInterns();
-  const internPairs = Array.from(pairingSet);
-  console.log(internPairsSet);
+  let internPairs = [];
+  if (internPairsSet.size === 0) {
+    const pairingSet = await pairInterns();
+    internPairs = Array.from(pairingSet);
+    console.log(internPairsSet);
+  } else {
+    internPairs = Array.from(internPairsSet);
+  }
+
   renderDepartmentLists("department-list-2");
   const weekCard = document.getElementById("week-card-content");
   weekCard.style.display = "block";
@@ -85,7 +90,9 @@ export async function displayInternWeekTable() {
 
     row.appendChild(groupNum);
 
-    displayEditModal(addBtn, pair, getUnselectedInterns());
+    displayEditModal(addBtn, pair, internPairs);
+
+    //console.log(pair);
 
     //add intern info columns
     for (const intern of pair) {
