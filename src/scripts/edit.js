@@ -1,20 +1,20 @@
-import { stringToKebabCase } from "../util/stringToKebabCase.js";
+import { internsSet } from "../constants/constants.js";
 import {
-  internPairsSet,
-  unselectedInternsSet,
-} from "../constants/constants.js";
-import { displayInternWeekTable, getUnselectedInterns } from "./interns.js";
+  displayInternWeekTable,
+  getUnselectedInterns,
+  displayInternTable,
+} from "./interns.js";
 import { formatInternDetails } from "./interns.js";
 
 export function displayEditModal(button, pair, interns) {
   button.onclick = function () {
     var modal = document.getElementById("edit-pair-modal");
 
-    //console.log(interns);
+    //display the modal
     modal.style.display = "block";
+
+    //show interns to be added
     displayInternModal(pair, interns);
-    // Get the button that opens the modal
-    var btn = document.getElementById("add");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("edit-close")[0];
@@ -34,41 +34,42 @@ export function displayEditModal(button, pair, interns) {
 }
 
 function displayInternModal(pair, interns) {
-  const modal = document.getElementsByClassName("edit-modal-content");
-  modal.innerHTML = "";
+  const modal = document.getElementById("edit-pair-modal");
 
   const table = document.getElementById("intern-options");
-
-  //console.log(unselectedInternsSet);
+  table.innerHTML = "";
 
   for (const intern of getUnselectedInterns()) {
     table.appendChild(formatInternDetails(intern));
   }
 
   const index = interns.indexOf(pair);
-  console.log("before:", interns);
 
   document.getElementById("submit-modal").addEventListener("click", () => {
-    const addedIntern = getSelectedInternsEdit();
+    const addedInterns = getSelectedInternsEdit();
 
-    console.log(addedIntern);
-    console.log("pair:", pair);
+    if (addedInterns.length > 0) {
+      //modify global selected interns
+      const names = addedInterns.map((intern) => intern.name);
+      internsSet.add(names);
 
-    if (addedIntern.length > 0) {
-      pair.push(...addedIntern);
-      console.log("new Pair:", pair);
+      //add new interns to pair
+      pair.push(...addedInterns);
       interns[index] = pair;
 
-      console.log("after:", interns);
+      //display new changes to week & intern card
       displayInternWeekTable();
+      displayInternTable();
+
+      modal.style.display = "none";
     }
   });
 }
 
 function getSelectedInternsEdit() {
+  //get interns selected to be added
   const selectedInterns = [];
   const rows = document.querySelectorAll("#intern-options tr");
-  console.log(rows);
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-selected");
@@ -79,7 +80,6 @@ function getSelectedInternsEdit() {
         department: row.cells[3].textContent,
       };
       selectedInterns.push(intern);
-      //internsSet.add(intern);
     }
   });
 
