@@ -7,7 +7,6 @@ import {
 
 export let currentSearchQuery = "";
 import { displayExportButton } from "./scripts/exportCSV.js";
-import { displayEditModal } from "./scripts/edit.js";
 
 function main() {
   displayFilters();
