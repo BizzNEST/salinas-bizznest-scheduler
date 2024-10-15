@@ -36,6 +36,11 @@ Step-by-step instructions on how to get the development environment running.
 4. Run the development server:
    - run live server
 
+5. Run tests:
+   ```sh
+   npm run test
+   ```
+
 ## Project Requirements
 
 ### Key Features and Functional Requirements
