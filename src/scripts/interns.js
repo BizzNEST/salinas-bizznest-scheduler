@@ -7,7 +7,11 @@ import { uniquePairing } from "../util/uniquePairing.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
-import { internsSet } from "../constants/constants.js";
+import {
+  internPairsSet,
+  internsSet,
+  unselectedInternsSet,
+} from "../constants/constants.js";
 import { displayExportButton } from "./exportCSV.js";
 import { displayEditModal } from "./edit.js";
 
@@ -15,6 +19,7 @@ async function pairInterns() {
   const interns = getSelectedInterns();
   shuffle(interns);
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
+  internPairsSet.clear();
   return pair(interns);
 }
 function formatInternWeekDetails(intern) {
@@ -41,7 +46,9 @@ function formatInternWeekDetails(intern) {
 }
 
 export async function displayInternWeekTable() {
-  const internPairs = await pairInterns();
+  const pairingSet = await pairInterns();
+  const internPairs = Array.from(pairingSet);
+  console.log(internPairsSet);
   renderDepartmentLists("department-list-2");
   const weekCard = document.getElementById("week-card-content");
   weekCard.style.display = "block";
@@ -70,7 +77,7 @@ export async function displayInternWeekTable() {
 
     const addBtn = document.createElement("button");
     addBtn.className = "edit";
-    addBtn.id = "add-intern";
+    addBtn.id = `add-intern-${index + 1}`;
     addBtn.type = "button";
     addBtn.textContent = "+";
 
@@ -78,7 +85,7 @@ export async function displayInternWeekTable() {
 
     row.appendChild(groupNum);
 
-    displayEditModal(addBtn);
+    displayEditModal(addBtn, pair, getUnselectedInterns());
 
     //add intern info columns
     for (const intern of pair) {
@@ -90,7 +97,7 @@ export async function displayInternWeekTable() {
   });
 }
 
-function formatInternDetails(intern) {
+export function formatInternDetails(intern) {
   const row = document.createElement("tr"); // Create a row for the intern
   row.dataset.name = intern.name;
 
@@ -110,11 +117,13 @@ function formatInternDetails(intern) {
       selectButton.classList.remove("pill-select");
       selectButton.classList.add("pill-selected");
       internsSet.add(intern.name);
+      unselectedInternsSet.delete(intern.name);
     } else {
       selectButton.textContent = "Select";
       selectButton.classList.remove("pill-selected");
       selectButton.classList.add("pill-select");
       internsSet.delete(intern.name);
+      unselectedInternsSet.add(intern.name);
     }
   });
   selectCol.appendChild(selectButton);
@@ -186,6 +195,7 @@ export async function displayInternTable() {
       button.classList.remove("pill-select");
       button.classList.add("pill-selected");
       internsSet.add(button.closest("tr").dataset.name);
+      unselectedInternsSet.delete(button.closest("tr").dataset.name);
     });
   });
 
@@ -196,6 +206,7 @@ export async function displayInternTable() {
       button.classList.remove("pill-selected");
       button.classList.add("pill-select");
       internsSet.delete(button.closest("tr").dataset.name);
+      unselectedInternsSet.add(button.closest("tr").dataset.name);
     });
   });
 }
@@ -213,11 +224,31 @@ function getSelectedInterns() {
         department: row.cells[3].textContent,
       };
       selectedInterns.push(intern);
-      internsSet.add(intern);
+      //internsSet.add(intern);
     }
   });
 
   return selectedInterns;
+}
+
+export function getUnselectedInterns() {
+  const unselectedInterns = [];
+  const rows = document.querySelectorAll("#interns-table-body tr");
+
+  rows.forEach((row) => {
+    const selectButton = row.querySelector(".pill-select");
+    if (selectButton) {
+      const intern = {
+        name: row.cells[1].textContent,
+        location: row.cells[2].textContent,
+        department: row.cells[3].textContent,
+      };
+      unselectedInterns.push(intern);
+      //unselectedInternsSet.add(intern);
+    }
+  });
+
+  return unselectedInterns;
 }
 
 function searchInterns(interns, query) {
