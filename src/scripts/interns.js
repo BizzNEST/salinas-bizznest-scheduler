@@ -8,6 +8,7 @@ import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
 import { internsSet } from "../constants/constants.js";
+import { displayExportButton } from "./exportCSV.js";
 
 async function pairInterns() {
   const interns = getSelectedInterns();
