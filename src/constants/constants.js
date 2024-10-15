@@ -20,3 +20,7 @@ export const filters = [
 ];
 
 export const internsSet = new Set();
+
+export const unselectedInternsSet = new Set();
+
+export const internPairsSet = new Set();

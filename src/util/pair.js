@@ -1,3 +1,5 @@
+import { internPairsSet } from "../constants/constants.js";
+
 export default function pair(arr) {
   const pairsArray = []; //return array with the pairings
 
@@ -11,12 +13,19 @@ export default function pair(arr) {
   for (let i = 0; i < arrLast; i += 2) {
     const pair = [arr[i], arr[i + 1]];
     pairsArray.push(pair);
+    internPairsSet.add(pair);
   }
 
   //if odd then add last item to last pair
   if (arr.length % 2 !== 0) {
+    internPairsSet.delete(pairsArray[pairsArray.length - 1]);
     pairsArray[pairsArray.length - 1].push(arr[arrLast]);
+    internPairsSet.add(pairsArray[pairsArray.length - 1]);
   }
 
-  return pairsArray;
+  console.log(pairsArray);
+
+  //internPairs = await pairsArray;
+
+  return internPairsSet;
 }
