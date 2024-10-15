@@ -7,6 +7,7 @@ import {
 
 export let currentSearchQuery = "";
 import { displayExportButton } from "./scripts/exportCSV.js";
+import { internPairsSet } from "./constants/constants.js";
 
 function main() {
   displayFilters();
@@ -41,6 +42,7 @@ function main() {
   const generateButton = document.getElementById("schedule-button");
 
   generateButton.addEventListener("click", function () {
+    internPairsSet.clear();
     displayInternWeekTable();
     displayQuestions();
     displayExportButton();
