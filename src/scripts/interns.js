@@ -13,7 +13,7 @@ import {
   unselectedInternsSet,
 } from "../constants/constants.js";
 import { displayExportButton } from "./exportCSV.js";
-import { displayAddModal } from "./edit.js";
+import { displayAddModal, displayRemoveModal } from "./edit.js";
 
 async function pairInterns() {
   const interns = getSelectedInterns();
@@ -80,9 +80,18 @@ export async function displayInternWeekTable() {
     addBtn.type = "button";
     addBtn.textContent = "+";
     groupNum.appendChild(addBtn);
-    row.appendChild(groupNum);
 
     displayAddModal(addBtn, pair, internPairs); //display add functionality
+
+    const rmBtn = document.createElement("button"); //add edit button
+    rmBtn.className = "edit";
+    rmBtn.id = `remove-intern-${index + 1}`;
+    rmBtn.type = "button";
+    rmBtn.textContent = "-";
+    groupNum.appendChild(rmBtn);
+    row.appendChild(groupNum);
+
+    displayRemoveModal(rmBtn, pair, internPairs); //display add functionality
 
     //add intern info columns
     for (const intern of pair) {
