@@ -316,6 +316,26 @@ i#toggle-icon-week.interns {
   cursor: pointer;
 }
 
+#add-pair-button {
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+#add-pair-button:hover,
+.add-pair-button-all:hover {
+  background-color: #65daa0;
+}
+
 .modal {
   display: none;
   position: absolute;
