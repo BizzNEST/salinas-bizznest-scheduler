@@ -1,4 +1,4 @@
-import { internsSet } from "../constants/constants.js";
+import { internPairsSet, internsSet } from "../constants/constants.js";
 import {
   displayInternWeekTable,
   getUnselectedInterns,
@@ -6,7 +6,7 @@ import {
 } from "./interns.js";
 import { formatInternDetails } from "./interns.js";
 
-export function displayEditModal(button, pair, interns) {
+export function displayAddModal(button, pair, interns) {
   button.onclick = function () {
     var modal = document.getElementById("edit-pair-modal");
 
@@ -14,7 +14,7 @@ export function displayEditModal(button, pair, interns) {
     modal.style.display = "block";
 
     //show interns to be added
-    displayInternModal(pair, interns);
+    addIntern(pair, interns);
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("edit-close")[0];
@@ -33,7 +33,7 @@ export function displayEditModal(button, pair, interns) {
   };
 }
 
-function displayInternModal(pair, interns) {
+function addIntern(pair, interns) {
   const modal = document.getElementById("edit-pair-modal");
 
   const table = document.getElementById("intern-options");
@@ -43,10 +43,13 @@ function displayInternModal(pair, interns) {
     table.appendChild(formatInternDetails(intern));
   }
 
-  const index = interns.indexOf(pair);
+  const idx = interns.indexOf(pair);
+  console.log(idx);
 
   document.getElementById("submit-modal").addEventListener("click", () => {
     const addedInterns = getSelectedInternsEdit();
+
+    //console.log(addedInterns.length);
 
     if (addedInterns.length > 0) {
       //modify global selected interns
@@ -55,14 +58,21 @@ function displayInternModal(pair, interns) {
 
       //add new interns to pair
       pair.push(...addedInterns);
-      interns[index] = pair;
+      interns[idx] = pair;
+
+      console.log(pair);
+
+      internPairsSet.clear();
+      for (const pair of interns) {
+        internPairsSet.add(pair);
+      }
 
       //display new changes to week & intern card
       displayInternWeekTable();
       displayInternTable();
-
-      modal.style.display = "none";
     }
+
+    modal.style.display = "none";
   });
 }
 
