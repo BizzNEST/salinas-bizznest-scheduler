@@ -45,7 +45,6 @@ function main() {
     displayInternWeekTable();
     displayQuestions();
     displayExportButton();
-    displayEditModal();
     generateButtonAnimation.goToAndPlay(0, true);
   });
 

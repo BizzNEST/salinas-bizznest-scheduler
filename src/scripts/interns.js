@@ -9,6 +9,7 @@ import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
 import { internsSet } from "../constants/constants.js";
 import { displayExportButton } from "./exportCSV.js";
+import { displayEditModal } from "./edit.js";
 
 async function pairInterns() {
   const interns = getSelectedInterns();
@@ -62,14 +63,23 @@ export async function displayInternWeekTable() {
 
     const groupNum = document.createElement("td"); //Group num column
     //groupNum.textContent = "Group " + (index + 1);
-    groupNum.innerHTML = `
-      <p>Group ${index + 1}</p>
+    groupNum.innerHTML = `<p>Group ${index + 1}</p>`;
 
-      <button class="edit" id="add-intern-${index + 1}">+</button>
+    /*  <button class="edit" id="add-intern-${index + 1}">+</button>
       <button class="edit" id="remove">-</button>
-    `;
+    `;*/
+
+    const addBtn = document.createElement("button");
+    addBtn.className = "edit";
+    addBtn.id = "add-intern";
+    addBtn.type = "button";
+    addBtn.textContent = "+";
+
+    groupNum.appendChild(addBtn);
 
     row.appendChild(groupNum);
+
+    displayEditModal(addBtn);
 
     //add intern info columns
     for (const intern of pair) {
