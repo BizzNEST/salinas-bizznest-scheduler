@@ -47,6 +47,11 @@ function main() {
     generateButtonAnimation.goToAndPlay(0, true);
   });
 
+  const addPairToGeneratedSchedule = document.getElementById("add-pair-button");
+  addPairToGeneratedSchedule.addEventListener("click", function () {
+    console.log("addPairToGeneratedSchedule was click");
+  });
+
   const scrollToTop = document.getElementById("scrollToTop");
 
   window.addEventListener("scroll", function () {
