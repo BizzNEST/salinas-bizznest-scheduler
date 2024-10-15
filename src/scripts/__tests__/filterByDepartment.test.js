@@ -31,7 +31,7 @@ function pairInterns(listofOurDepartments) {
   return pair(interns);
 }
 
-function filterByLocationTest(test) {
+function filterByDepartmentTest(test) {
   const pairs = pairInterns(test.department);
   let count = 0;
   for (const [intern1, intern2] of pairs) {
@@ -51,15 +51,15 @@ function filterByLocationTest(test) {
   );
 }
 
-filterByLocationTest({
+filterByDepartmentTest({
   department: ["Web Development"],
   message: "Test: Accuracy for Salinas filter:",
 });
-filterByLocationTest({
+filterByDepartmentTest({
   department: ["Web Development", "Design"],
   message: "Test: Accuracy for Web Development and Design filter:",
 });
-filterByLocationTest({
+filterByDepartmentTest({
   department: [
     "Web Development",
     "Design",
@@ -69,23 +69,23 @@ filterByLocationTest({
   ],
   message: "Test: accuracy for all departments filter:",
 });
-filterByLocationTest({
+filterByDepartmentTest({
   department: ["Design"],
   message: "Test: Accuracy for Design filter:",
 });
-filterByLocationTest({
+filterByDepartmentTest({
   department: ["Video Production"],
   message: "Test: Accuracy for Video Production filter:",
 });
-filterByLocationTest({
+filterByDepartmentTest({
   department: ["IT"],
   message: "Test: Accuracy for IT filter:",
 });
-filterByLocationTest({
+filterByDepartmentTest({
   department: ["Marketing"],
   message: "Test: Accuracy for Marketing filter:",
 });
-filterByLocationTest({
+filterByDepartmentTest({
   department: [],
   message: "Test: Accuracy for empty list filter:",
 });
