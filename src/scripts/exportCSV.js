@@ -1,14 +1,4 @@
 export function displayExportButton() {
-  const rows = document
-    .getElementById("interns-week-table")
-    .getElementsByTagName("tr");
-
-  console.log(rows.length);
-
-  if (rows.length === 0) {
-    return;
-  }
-
   const weekCard = document.getElementById("week-card-content");
 
   //get export button div & clear if re-generated

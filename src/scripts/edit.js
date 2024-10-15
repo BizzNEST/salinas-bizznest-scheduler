@@ -1,8 +1,5 @@
-export function displayEditModal() {
-  const table = document.getElementById("interns-week-table");
-  const addIntern = document.getElementById("add-intern-1");
-  console.log(table);
-  addIntern.addEventListener("click", function () {
+export function displayEditModal(button) {
+  button.onclick = function () {
     var modal = document.getElementById("edit-pair-modal");
 
     modal.style.display = "block";
@@ -24,6 +21,5 @@ export function displayEditModal() {
         modal.style.display = "none";
       }
     };
-  });
-  // Get the modal
+  };
 }
