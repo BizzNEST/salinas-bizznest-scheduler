@@ -14,8 +14,7 @@ async function pairInterns() {
   shuffle(interns);
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
   return pair(interns);
-}
-
+} 
 function formatInternWeekDetails(intern) {
   const col = document.createElement("td"); //Create column for intern
   const internInfo = document.createElement("div"); //Column info div

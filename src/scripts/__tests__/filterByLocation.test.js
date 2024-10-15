@@ -1,3 +1,6 @@
+//accuracy: accuracy on matching the departments and locations
+//pairing: pairing the groups of two and three
+//shuffle: switching the pairing after each click on generate schedule
 import accuracy from "../../util/accuracy.js";
 import pair from "../../util/pair.js";
 import shuffle from "../../util/shuffle.js";
