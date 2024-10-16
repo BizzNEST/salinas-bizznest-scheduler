@@ -212,7 +212,7 @@ export async function displayInternTable() {
     });
   });
 }
-export function updateInternsTable(newInterns) {
+export function updateInternsTable(newInterns, isAdd) {
   const tableBody = document.getElementById("interns-table-body");
   const rows = tableBody.querySelectorAll("tr");
 
@@ -231,10 +231,15 @@ export function updateInternsTable(newInterns) {
       ) {
         return;
       }
-
-      selectButton.textContent = "Deselect";
-      selectButton.classList.add("pill-selected");
-      selectButton.classList.remove("pill-select");
+      if (isAdd) {
+        selectButton.textContent = "Deselect";
+        selectButton.classList.add("pill-selected");
+        selectButton.classList.remove("pill-select");
+      } else {
+        selectButton.textContent = "Select";
+        selectButton.classList.add("pill-select");
+        selectButton.classList.remove("pill-selected");
+      }
     });
   });
 }
