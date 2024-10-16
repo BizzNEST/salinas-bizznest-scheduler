@@ -273,8 +273,16 @@ i#toggle-icon-week.interns {
   background-color: #bebde3;
 }
 
+#schedule-button:hover {
+  background-color: #aca9ef;
+}
+
 #clear-filters-button {
   background-color: #e3bdbd;
+}
+
+#clear-filters-button:hover {
+  background-color: #e5aaaa;
 }
 
 .dropdown {
@@ -313,6 +321,10 @@ i#toggle-icon-week.interns {
   font-size: medium;
   border: none;
   cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #8be1b6;
 }
 
 #add-pair-button {
@@ -699,22 +711,29 @@ tr:nth-child(odd) {
 /*ADD/REMOVE buttons*/
 .edit {
   border-radius: 50%;
-  width: 23px;
-  height: 23px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
 }
 #add-intern {
   margin-right: 5px;
   border: 2px solid rgb(53, 166, 53);
   background-color: rgba(153, 205, 50, 0.279);
-  font-weight: bold;
   color: rgb(53, 166, 53);
+}
+
+#add-intern:hover {
+  background-color: rgba(153, 205, 50, 0.636);
+}
+
+#remove-intern:hover {
+  background-color: rgba(255, 0, 0, 0.356);
 }
 
 #remove-intern {
   border: 2px solid rgb(255, 68, 68);
-  background-color: rgba(255, 0, 0, 0.175);
-  font-weight: bold;
-  font-size: small;
+  background-color: rgba(255, 0, 0, 0.114);
   color: rgb(255, 68, 68);
 }
 
