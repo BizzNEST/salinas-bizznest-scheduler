@@ -668,7 +668,7 @@ tr:nth-child(odd) {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px 40px;
   border-radius: 25px;
-  width: 70%; /* Could be more or less, depending on screen size */
+  width: fit-content; /* Could be more or less, depending on screen size */
   font-weight: bold;
   max-height: 500px; /* Ensure the modal itself has a max height */
   overflow-y: auto; /* Enable vertical scrolling for the modal */
