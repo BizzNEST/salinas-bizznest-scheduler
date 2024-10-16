@@ -25,6 +25,7 @@ async function pairInterns() {
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
   return pair(interns);
 }
+
 function formatInternWeekDetails(intern) {
   const col = document.createElement("td"); //Create column for intern
   const internInfo = document.createElement("div"); //Column info div
@@ -90,7 +91,7 @@ export async function displayInternWeekTable(savedPairs) {
     groupNum.appendChild(rmBtn);
     row.appendChild(groupNum);
 
-    displayRemoveModal(rmBtn, pair, internPairs); //display add functionality
+    displayRemoveModal(rmBtn, pair, index); //display add functionality
 
     //add intern info columns
     for (const intern of pair) {
