@@ -75,27 +75,27 @@ export async function displayInternWeekTable(savedPairs) {
     const groupNum = document.createElement("td"); //Group num column
     groupNum.innerHTML = `<p>Group ${index + 1}</p>`;
 
-    const addBtn = document.createElement("button"); //add edit button
-    addBtn.className = "edit";
-    addBtn.id = "add-intern";
-    addBtn.type = "button";
-    addBtn.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
-    groupNum.appendChild(addBtn);
+    const addInternToPairButton = document.createElement("button"); //add edit button
+    addInternToPairButton.className = "edit";
+    addInternToPairButton.id = "add-intern";
+    addInternToPairButton.type = "button";
+    addInternToPairButton.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
+    groupNum.appendChild(addInternToPairButton);
 
-    displayAddModal(addBtn, pair, index); //display add functionality
+    displayAddModal(addInternToPairButton, pair, index); //display add functionality
 
-    const rmBtn = document.createElement("button"); //remove edit button
-    rmBtn.className = "edit";
-    rmBtn.id = "remove-intern";
-    rmBtn.type = "button";
-    rmBtn.innerHTML = `<i class="fa-solid fa-user-minus"></i>`;
-    groupNum.appendChild(rmBtn);
+    const removeInternFromPairButton = document.createElement("button"); //remove edit button
+    removeInternFromPairButton.className = "edit";
+    removeInternFromPairButton.id = "remove-intern";
+    removeInternFromPairButton.type = "button";
+    removeInternFromPairButton.innerHTML = `<i class="fa-solid fa-user-minus"></i>`;
+    groupNum.appendChild(removeInternFromPairButton);
     row.appendChild(groupNum);
 
-    displayRemoveModal(rmBtn, pair, index);
+    displayRemoveModal(removeInternFromPairButton, pair, index);
 
     if (pair.length === 0) {
-      rmBtn.innerHTML = `<i class="fa-solid fa-minus"></i>`;
+      removeInternFromPairButton.innerHTML = `<i class="fa-solid fa-minus"></i>`;
     }
 
     //add intern info columns
