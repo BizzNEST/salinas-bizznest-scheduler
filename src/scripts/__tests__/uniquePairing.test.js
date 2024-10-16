@@ -40,9 +40,13 @@ function uniquePairingTest(test) {
 
   console.log(
     test.message,
-    `\nPair Count: ${count} out of ${pairs.length} pairs\nAcurracy: `,
-    accuracy(count, pairs.length) + "\n",
+    `\nPair Count: ${count} out of ${pairs.length} pairs `,
   );
+  try {
+    console.log("Acurracy: " + accuracy(count, pairs.length) + "\n");
+  } catch (error) {
+    console.log("0 Pairs were made because there was only 1 Intern\n");
+  }
 }
 
 uniquePairingTest({

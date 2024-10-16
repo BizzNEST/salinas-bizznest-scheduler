@@ -1,8 +1,4 @@
-//accuracy: accuracy on matching the departments and locations
-//pairing: pairing the groups of two and three
-//shuffle: switching the pairing after each click on generate schedule
 import shuffle from "../../util/shuffle.js";
-import { isValidPair, uniquePairingHelper } from "../filters.js";
 import pair from "../../util/pair.js";
 import accuracy from "../../util/accuracy.js";
 import { readFileSync } from "fs";
@@ -16,8 +12,8 @@ const __dirname = dirname(__filename);
 const internsPath = join(__dirname, "../../documents/interns.json");
 const internInfo = JSON.parse(readFileSync(internsPath, "utf-8"));
 
-function pairInterns(listofOurDepartments) {
-  const interns = [];
+function pairInterns(listOfOurDepartments) {
+  let interns = [];
   const fetchedInterns = internInfo;
   for (const [intern, internInfo] of Object.entries(fetchedInterns.interns)) {
     interns.push({
@@ -32,13 +28,13 @@ function pairInterns(listofOurDepartments) {
 }
 
 function filterByDepartmentTest(test) {
-  const pairs = pairInterns(test.department);
+  const pairs = pairInterns(test.departments);
   let count = 0;
   for (const [intern1, intern2] of pairs) {
     if (
-      test.department.length === 0 ||
-      (test.department.includes(intern1.department) &&
-        test.department.includes(intern2.department))
+      test.departments.length === 0 ||
+      (test.departments.includes(intern1.department) &&
+        test.departments.includes(intern2.department))
     ) {
       count++;
     }
@@ -46,21 +42,25 @@ function filterByDepartmentTest(test) {
 
   console.log(
     test.message,
-    `\nPair Count: ${count} out of ${pairs.length} pairs\nAcurracy: `,
-    accuracy(count, pairs.length) + "\n",
+    `\nPair Count: ${count} out of ${pairs.length} pairs `,
   );
+  try {
+    console.log("Acurracy: " + accuracy(count, pairs.length) + "\n");
+  } catch (error) {
+    console.log("0 Pairs were made because there was only 1 Intern\n");
+  }
 }
 
 filterByDepartmentTest({
-  department: ["Web Development"],
+  departments: ["Web Development"],
   message: "Test: Accuracy for Salinas filter:",
 });
 filterByDepartmentTest({
-  department: ["Web Development", "Design"],
+  departments: ["Web Development", "Design"],
   message: "Test: Accuracy for Web Development and Design filter:",
 });
 filterByDepartmentTest({
-  department: [
+  departments: [
     "Web Development",
     "Design",
     "Video Production",
@@ -70,22 +70,22 @@ filterByDepartmentTest({
   message: "Test: accuracy for all departments filter:",
 });
 filterByDepartmentTest({
-  department: ["Design"],
+  departments: ["Design"],
   message: "Test: Accuracy for Design filter:",
 });
 filterByDepartmentTest({
-  department: ["Video Production"],
+  departments: ["Video Production"],
   message: "Test: Accuracy for Video Production filter:",
 });
 filterByDepartmentTest({
-  department: ["IT"],
+  departments: ["IT"],
   message: "Test: Accuracy for IT filter:",
 });
 filterByDepartmentTest({
-  department: ["Marketing"],
+  departments: ["Marketing"],
   message: "Test: Accuracy for Marketing filter:",
 });
 filterByDepartmentTest({
-  department: [],
+  departments: [],
   message: "Test: Accuracy for empty list filter:",
 });
