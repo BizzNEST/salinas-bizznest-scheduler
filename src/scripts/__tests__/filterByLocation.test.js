@@ -1,3 +1,6 @@
+//accuracy: accuracy on matching the departments and locations
+//pairing: pairing the groups of two and three
+//shuffle: switching the pairing after each click on generate schedule
 import accuracy from "../../util/accuracy.js";
 import pair from "../../util/pair.js";
 import shuffle from "../../util/shuffle.js";
@@ -41,9 +44,13 @@ function filterByLocationTest(test) {
 
   console.log(
     test.message,
-    `\nPair Count: ${count} out of ${pairs.length} pairs\nAcurracy: `,
-    accuracy(count, pairs.length) + "\n",
+    `\nPair Count: ${count} out of ${pairs.length} pairs `,
   );
+  try {
+    console.log("Acurracy: " + accuracy(count, pairs.length) + "\n");
+  } catch (error) {
+    console.log("0 Pairs were made because there was only 1 Intern\n");
+  }
 }
 
 filterByLocationTest({
