@@ -4,9 +4,9 @@ import {
   displayInternWeekTable,
   displayInternTable,
 } from "./scripts/interns.js";
+import { displayExportButton } from "./scripts/exportCSV.js";
 
 export let currentSearchQuery = "";
-import { displayExportButton } from "./scripts/exportCSV.js";
 
 function main() {
   displayFilters();
@@ -50,11 +50,6 @@ function main() {
     displayQuestions();
     displayExportButton();
     generateButtonAnimation.goToAndPlay(0, true);
-  });
-
-  const addPairToGeneratedSchedule = document.getElementById("add-pair-button");
-  addPairToGeneratedSchedule.addEventListener("click", function () {
-    // TODO: Add pair functionality
   });
 
   const scrollToTop = document.getElementById("scrollToTop");
