@@ -76,22 +76,22 @@ export async function displayInternWeekTable(savedPairs) {
 
     const addBtn = document.createElement("button"); //add edit button
     addBtn.className = "edit";
-    addBtn.id = `add-intern-${index + 1}`;
+    addBtn.id = "add-intern";
     addBtn.type = "button";
     addBtn.textContent = "+";
     groupNum.appendChild(addBtn);
 
     displayAddModal(addBtn, pair, index); //display add functionality
 
-    const rmBtn = document.createElement("button"); //add edit button
+    const rmBtn = document.createElement("button"); //remove edit button
     rmBtn.className = "edit";
-    rmBtn.id = `remove-intern-${index + 1}`;
+    rmBtn.id = "remove-intern";
     rmBtn.type = "button";
     rmBtn.textContent = "-";
     groupNum.appendChild(rmBtn);
     row.appendChild(groupNum);
 
-    displayRemoveModal(rmBtn, pair, index); //display add functionality
+    displayRemoveModal(rmBtn, pair, index);
 
     //add intern info columns
     for (const intern of pair) {
