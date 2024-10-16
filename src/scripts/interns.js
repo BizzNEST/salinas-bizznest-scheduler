@@ -15,6 +15,15 @@ import {
 import { displayExportButton } from "./exportCSV.js";
 import { displayAddModal, displayRemoveModal } from "./edit.js";
 
+export function savePairsToLocalStorage(pairs) {
+  localStorage.setItem("internPairs", JSON.stringify(pairs));
+}
+
+export function loadPairsFromLocalStorage() {
+  const pairs = localStorage.getItem("internPairs");
+  return pairs ? JSON.parse(pairs) : [];
+}
+
 async function pairInterns() {
   const interns = getSelectedInterns();
   shuffle(interns);
@@ -45,14 +54,9 @@ function formatInternWeekDetails(intern) {
   return col;
 }
 
-export async function displayInternWeekTable() {
-  let internPairs = [];
-  if (internPairsSet.size === 0) {
-    const pairingSet = await pairInterns();
-    internPairs = Array.from(pairingSet);
-  } else {
-    internPairs = Array.from(internPairsSet);
-  }
+export async function displayInternWeekTable(savedPairs) {
+  const internPairs = savedPairs != null ? savedPairs : await pairInterns();
+  savePairsToLocalStorage(internPairs);
 
   renderDepartmentLists("department-list-2");
   const weekCard = document.getElementById("week-card-content");
@@ -82,7 +86,7 @@ export async function displayInternWeekTable() {
     addBtn.textContent = "+";
     groupNum.appendChild(addBtn);
 
-    displayAddModal(addBtn, pair, internPairs); //display add functionality
+    displayAddModal(addBtn, pair, index); //display add functionality
 
     const rmBtn = document.createElement("button"); //add edit button
     rmBtn.className = "edit";

@@ -5,6 +5,7 @@ import {
   displayInternTable,
 } from "./interns.js";
 import { formatInternDetails } from "./interns.js";
+import { savePairsToLocalStorage } from "./interns.js";
 
 export function displayAddModal(button, pair, interns) {
   button.onclick = function () {
@@ -48,29 +49,15 @@ function addIntern(pair, interns) {
 
   document.getElementById("submit-modal").addEventListener("click", () => {
     const addedInterns = getSelectedInternsEdit();
-
-    //console.log(addedInterns.length);
-
-    if (addedInterns.length > 0) {
-      //modify global selected interns
-      const names = addedInterns.map((intern) => intern.name);
-      internsSet.add(names);
-
-      //add new interns to pair
-      pair.push(...addedInterns);
-      interns[idx] = pair;
-
-      console.log(pair);
-
-      internPairsSet.clear();
-      for (const pair of interns) {
-        internPairsSet.add(pair);
-      }
-
-      //display new changes to week & intern card
-      displayInternWeekTable();
-      displayInternTable();
+    if (addedInterns.length < 1) {
+      return;
     }
+    interns[idx] = [...pair, ...addedInterns];
+
+    console.log(interns);
+
+    savePairsToLocalStorage(interns);
+    displayInternWeekTable(interns);
 
     modal.style.display = "none";
   });

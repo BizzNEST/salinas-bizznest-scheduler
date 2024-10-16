@@ -23,9 +23,5 @@ export default function pair(arr) {
     internPairsSet.add(pairsArray[pairsArray.length - 1]);
   }
 
-  console.log(pairsArray);
-
-  //internPairs = await pairsArray;
-
-  return internPairsSet;
+  return pairsArray;
 }
