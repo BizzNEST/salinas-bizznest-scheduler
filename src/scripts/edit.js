@@ -42,16 +42,16 @@ function addIntern(pair, index) {
     table.appendChild(formatInternDetails(intern));
   }
 
-  const interns = loadPairsFromLocalStorage();
+  const pairs = loadPairsFromLocalStorage();
 
   document.getElementById("submit-modal").addEventListener("click", () => {
     const addedInterns = getSelectedInternsEdit();
     if (addedInterns.length < 1) {
       return;
     }
-    interns[index] = [...pair, ...addedInterns];
-    savePairsToLocalStorage(interns);
-    displayInternWeekTable(interns);
+    pairs[index] = [...pair, ...addedInterns];
+    savePairsToLocalStorage(pairs);
+    displayInternWeekTable(pairs);
     updateInternsTable(addedInterns, true);
     modal.style.display = "none";
   });
@@ -99,16 +99,24 @@ function getDeselectedInternsEdit() {
 
 export function displayRemoveModal(button, pair, index) {
   button.onclick = function () {
-    var modal = document.getElementById("edit-pair-modal");
+    // If we remove the group with no interns, we just delete the group.
+    if (pair.length === 0) {
+      const pairs = loadPairsFromLocalStorage();
+      pairs.splice(index, 1);
+      savePairsToLocalStorage(pairs);
+      displayInternWeekTable(pairs);
+      return;
+    }
+
+    const modal = document.getElementById("edit-pair-modal");
 
     //display the modal
     modal.style.display = "block";
-
     //show interns to be added
     removeIntern(pair, index);
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("edit-close")[0];
+    const span = document.getElementsByClassName("edit-close")[0];
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
@@ -134,7 +142,7 @@ function removeIntern(pair, index) {
     table.appendChild(formatInternDetails(intern));
   }
 
-  const interns = loadPairsFromLocalStorage();
+  const pairs = loadPairsFromLocalStorage();
 
   document.getElementById("submit-modal").addEventListener("click", () => {
     const removedInterns = getDeselectedInternsEdit();
@@ -144,11 +152,18 @@ function removeIntern(pair, index) {
 
     //remove interns from pair by filtering out matched pairs
     const names = removedInterns.map((intern) => intern.name);
-    interns[index] = pair.filter((intern) => !names.includes(intern.name));
+    pairs[index] = pair.filter((intern) => !names.includes(intern.name));
 
-    savePairsToLocalStorage(interns);
-    displayInternWeekTable(interns);
+    savePairsToLocalStorage(pairs);
+    displayInternWeekTable(pairs);
     updateInternsTable(removedInterns, false);
     modal.style.display = "none";
   });
 }
+
+const addPairButton = document.getElementById("add-pair-button");
+addPairButton.addEventListener("click", function () {
+  const pairs = loadPairsFromLocalStorage();
+  savePairsToLocalStorage(pairs.unshift([]));
+  displayInternWeekTable(pairs);
+});
