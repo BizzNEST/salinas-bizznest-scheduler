@@ -124,48 +124,6 @@ export function displayRemoveModal(button, pair, index) {
   };
 }
 
-/*function removeIntern(pair, interns) {
-  const modal = document.getElementById("edit-pair-modal");
-
-  const table = document.getElementById("intern-options");
-  table.innerHTML = "";
-
-  for (const intern of pair) {
-    table.appendChild(formatInternDetails(intern));
-  }
-  const idx = interns.indexOf(pair);
-  console.log(idx);
-
-  document.getElementById("submit-modal").addEventListener("click", () => {
-    const removedInterns = getSelectedInternsEdit();
-
-    //console.log(addedInterns.length);
-
-    if (removedInterns.length !== 0) {
-      //modify global selected interns
-      const names = removedInterns.map((intern) => intern.name);
-      internsSet.delete(names);
-
-      //add new interns to pair
-      pair = pair.filter((intern) => names.includes(intern.name));
-      interns[idx] = pair;
-
-      console.log(pair);
-
-      internPairsSet.clear();
-      for (const pair of interns) {
-        internPairsSet.add(pair);
-      }
-
-      //display new changes to week & intern card
-      displayInternWeekTable();
-      displayInternTable();
-    }
-
-    modal.style.display = "none";
-  });
-}*/
-
 function removeIntern(pair, index) {
   const modal = document.getElementById("edit-pair-modal");
 
@@ -183,17 +141,11 @@ function removeIntern(pair, index) {
     if (removedInterns.length < 1) {
       return;
     }
-    console.log("removed:", removedInterns);
-    console.log("pair:", pair);
 
+    //remove interns from pair by filtering out matched pairs
     const names = removedInterns.map((intern) => intern.name);
+    interns[index] = pair.filter((intern) => !names.includes(intern.name));
 
-    //remove interns from pair
-    const newPair = pair.filter((intern) => !names.includes(intern.name));
-    console.log("new pair:", newPair);
-    console.log("index:", index);
-    interns[index] = newPair;
-    console.log("intern list:", interns);
     savePairsToLocalStorage(interns);
     displayInternWeekTable(interns);
     updateInternsTable(removedInterns, false);
