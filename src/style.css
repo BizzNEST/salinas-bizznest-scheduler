@@ -874,6 +874,7 @@ tr:nth-child(odd) {
     font-size: 1.5rem;
   }
 
+  }
   /* Force table to not be like tables anymore */
   table,
   thead,
@@ -972,4 +973,7 @@ tr:nth-child(odd) {
   .edit-modal-content {
     margin: 150px auto 10px;
   }
+}
+@media screen {
+  
 }
