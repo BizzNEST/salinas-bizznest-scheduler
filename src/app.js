@@ -4,10 +4,9 @@ import {
   displayInternWeekTable,
   displayInternTable,
 } from "./scripts/interns.js";
+import { displayExportButton } from "./scripts/exportCSV.js";
 
 export let currentSearchQuery = "";
-import { displayExportButton } from "./scripts/exportCSV.js";
-import { internPairsSet } from "./constants/constants.js";
 
 function main() {
   displayFilters();
