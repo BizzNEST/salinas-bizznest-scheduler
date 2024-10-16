@@ -9,6 +9,7 @@ import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
 import { displayAddModal, displayRemoveModal } from "./edit.js";
 import { internsSet } from "../constants/constants.js";
+import { dynamicHeader } from "../util/dynamicHeader.js";
 
 export function savePairsToLocalStorage(pairs) {
   localStorage.setItem("internPairs", JSON.stringify(pairs));
@@ -63,7 +64,7 @@ export async function displayInternWeekTable(savedPairs) {
 
   internPairs.length === 0
     ? (tableHeader.innerHTML = `<tr><th>Not enough Interns selected to pair.</th></tr>`)
-    : (tableHeader.innerHTML = `<tr><th>Group</th><th>Intern 1</th><th>Intern 2</th></tr>`);
+    : (tableHeader.innerHTML = dynamicHeader(internPairs));
 
   const tableBody = document.getElementById("interns-week-table-body");
   tableBody.innerHTML = ""; //clear out any previous pairings
