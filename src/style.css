@@ -659,6 +659,9 @@ tr:nth-child(odd) {
   width: 70%; /* Could be more or less, depending on screen size */
   font-weight: bold;
   max-height: 500px;
+}
+
+#intern-options {
   overflow: scroll;
 }
 
