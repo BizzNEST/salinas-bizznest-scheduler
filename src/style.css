@@ -268,9 +268,7 @@ i#toggle-icon-week.interns {
   white-space: nowrap;
   z-index: 999;
   overflow-x: auto;
-
 }
-
 #schedule-button {
   background-color: #bebde3;
 }
@@ -833,4 +831,3 @@ tr:nth-child(odd) {
     gap: 5px;
   }
 }
-
