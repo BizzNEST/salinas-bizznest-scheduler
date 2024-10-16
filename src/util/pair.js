@@ -11,8 +11,7 @@ export default function pair(arr) {
 
   //iterate by twos, create item tuples and add then to return array
   for (let i = 0; i < arrLast; i += 2) {
-    const pair = [arr[i], arr[i + 1]];
-    pairs.push(pair);
+    pairs.push([arr[i], arr[i + 1]]);
   }
 
   //if odd then add last item to last pair
