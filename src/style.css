@@ -540,7 +540,7 @@ table thead th:nth-child(2) {
 .pill-select,
 .pill-select-all,
 .pill-deselect-all {
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
@@ -706,7 +706,6 @@ tr:nth-child(odd) {
   }
 }
 
-
 @media screen and (width <= 950px) {
   .filter-container {
     width: 100%;
@@ -818,7 +817,7 @@ tr:nth-child(odd) {
   }
 
   .buttons-filters {
-    padding: 10px 0px;
+    padding: 10px 0;
   }
 
   .filter-container,
@@ -832,5 +831,4 @@ tr:nth-child(odd) {
   .filter-config {
     gap: 5px;
   }
-
 }
