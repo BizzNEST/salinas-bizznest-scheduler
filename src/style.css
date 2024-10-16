@@ -265,7 +265,7 @@ i#toggle-icon-week.interns {
   width: 100%;
   padding: 20px 0;
   white-space: nowrap;
-  z-index: 999;
+  z-index: 9999;
   overflow-x: auto;
 }
 #schedule-button {
@@ -652,10 +652,17 @@ tr:nth-child(odd) {
 .edit-modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 20px 40px;
   border-radius: 25px;
   width: 70%; /* Could be more or less, depending on screen size */
   font-weight: bold;
+  max-height: 500px;
+  overflow: scroll;
+}
+
+#edit-modal-header {
+  font-size: 20px;
+  text-align: center;
 }
 
 /* The Close Button */
@@ -676,12 +683,13 @@ tr:nth-child(odd) {
 /*Submit Button*/
 #submit-modal {
   margin-top: 10px;
-  padding: 7px;
+  padding: 10px;
   background-color: rgb(192, 222, 255);
   color: rgb(35, 110, 189);
   border: 2px solid rgb(35, 110, 189);
   border-radius: 20px;
   font-weight: bold;
+  font-size: 15px;
 }
 
 /*ADD/REMOVE buttons*/

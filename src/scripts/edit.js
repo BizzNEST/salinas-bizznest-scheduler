@@ -29,16 +29,29 @@ export function displayAddModal(button, pair, index) {
         modal.style.display = "none";
       }
     };
+
+    document.getElementById("submit-modal").addEventListener("click", () => {
+      modal.style.display = "none";
+    });
   };
 }
 
 function addIntern(pair, index) {
   const modal = document.getElementById("edit-pair-modal");
+  const modalHeader = document.getElementById("edit-modal-header");
+  modalHeader.textContent = "Select Intern(s) to Add";
 
   const table = document.getElementById("intern-options");
   table.innerHTML = "";
 
-  for (const intern of getUnselectedInterns()) {
+  const internPool = getUnselectedInterns();
+
+  if (internPool.length === 0) {
+    modalHeader.textContent = "No Available Interns to Pair";
+    return;
+  }
+
+  for (const intern of internPool) {
     table.appendChild(formatInternDetails(intern));
   }
 
@@ -134,6 +147,8 @@ export function displayRemoveModal(button, pair, index) {
 
 function removeIntern(pair, index) {
   const modal = document.getElementById("edit-pair-modal");
+  const modalHeader = document.getElementById("edit-modal-header");
+  modalHeader.textContent = "Deselect Intern(s) to Remove";
 
   const table = document.getElementById("intern-options");
   table.innerHTML = "";
