@@ -52,7 +52,7 @@ function addIntern(pair, index) {
     interns[index] = [...pair, ...addedInterns];
     savePairsToLocalStorage(interns);
     displayInternWeekTable(interns);
-    updateInternsTable(addedInterns);
+    updateInternsTable(addedInterns, true);
     modal.style.display = "none";
   });
 }
@@ -196,7 +196,7 @@ function removeIntern(pair, index) {
     console.log("intern list:", interns);
     savePairsToLocalStorage(interns);
     displayInternWeekTable(interns);
-    updateInternsTable(removedInterns);
+    updateInternsTable(removedInterns, false);
     modal.style.display = "none";
   });
 }
