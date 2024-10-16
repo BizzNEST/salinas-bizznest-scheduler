@@ -41,6 +41,11 @@ function main() {
   const generateButton = document.getElementById("schedule-button");
 
   generateButton.addEventListener("click", function () {
+    const generateScheduleButtonAudio = document.getElementById(
+      "generate-button-audio",
+    );
+    generateScheduleButtonAudio.volume = 0.5;
+    generateScheduleButtonAudio.play();
     displayInternWeekTable();
     displayQuestions();
     displayExportButton();
