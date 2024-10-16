@@ -7,13 +7,8 @@ import { uniquePairing } from "../util/uniquePairing.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
-import {
-  internPairsSet,
-  internsSet,
-  unselectedInternsSet,
-} from "../constants/constants.js";
-import { displayExportButton } from "./exportCSV.js";
 import { displayAddModal, displayRemoveModal } from "./edit.js";
+import { internsSet } from "../constants/constants.js";
 
 export function savePairsToLocalStorage(pairs) {
   localStorage.setItem("internPairs", JSON.stringify(pairs));
@@ -128,13 +123,11 @@ export function formatInternDetails(intern) {
       selectButton.classList.remove("pill-select");
       selectButton.classList.add("pill-selected");
       internsSet.add(intern.name);
-      unselectedInternsSet.delete(intern.name);
     } else {
       selectButton.textContent = "Select";
       selectButton.classList.remove("pill-selected");
       selectButton.classList.add("pill-select");
       internsSet.delete(intern.name);
-      unselectedInternsSet.add(intern.name);
     }
   });
   selectCol.appendChild(selectButton);
@@ -183,6 +176,7 @@ export async function displayInternTable() {
     ),
     currentSearchQuery,
   );
+
   renderDepartmentLists("department-list-1");
   const tableHeader = document.getElementById("interns-table-header");
   tableHeader.innerHTML = "";
@@ -195,8 +189,7 @@ export async function displayInternTable() {
   tableBody.innerHTML = ""; //clear out any previous pairings
 
   for (const intern of interns) {
-    const row = formatInternDetails(intern);
-    tableBody.appendChild(row);
+    tableBody.appendChild(formatInternDetails(intern));
   }
 
   document.getElementById("select-all").addEventListener("click", () => {
@@ -206,7 +199,6 @@ export async function displayInternTable() {
       button.classList.remove("pill-select");
       button.classList.add("pill-selected");
       internsSet.add(button.closest("tr").dataset.name);
-      unselectedInternsSet.delete(button.closest("tr").dataset.name);
     });
   });
 
@@ -217,7 +209,32 @@ export async function displayInternTable() {
       button.classList.remove("pill-selected");
       button.classList.add("pill-select");
       internsSet.delete(button.closest("tr").dataset.name);
-      unselectedInternsSet.add(button.closest("tr").dataset.name);
+    });
+  });
+}
+export function updateInternsTable(newInterns) {
+  const tableBody = document.getElementById("interns-table-body");
+  const rows = tableBody.querySelectorAll("tr");
+
+  // Finds every intern that we added and updates their selection
+  newInterns.forEach((newIntern) => {
+    rows.forEach((row) => {
+      const nameCell = row.cells[1];
+      const locationCell = row.cells[2];
+      const departmentCell = row.cells[3];
+      const selectButton = row.querySelector("button");
+
+      if (
+        nameCell.textContent !== newIntern.name ||
+        locationCell.textContent !== newIntern.location ||
+        departmentCell.textContent !== newIntern.department
+      ) {
+        return;
+      }
+
+      selectButton.textContent = "Deselect";
+      selectButton.classList.add("pill-selected");
+      selectButton.classList.remove("pill-select");
     });
   });
 }
@@ -228,15 +245,14 @@ function getSelectedInterns() {
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-selected");
-    if (selectButton) {
-      const intern = {
-        name: row.cells[1].textContent,
-        location: row.cells[2].textContent,
-        department: row.cells[3].textContent,
-      };
-      selectedInterns.push(intern);
-      //internsSet.add(intern);
+    if (selectButton == null) {
+      return;
     }
+    selectedInterns.push({
+      name: row.cells[1].textContent,
+      location: row.cells[2].textContent,
+      department: row.cells[3].textContent,
+    });
   });
 
   return selectedInterns;
@@ -248,20 +264,20 @@ export function getUnselectedInterns() {
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-select");
-    if (selectButton) {
-      const intern = {
-        name: row.cells[1].textContent,
-        location: row.cells[2].textContent,
-        department: row.cells[3].textContent,
-      };
-      unselectedInterns.push(intern);
-      //unselectedInternsSet.add(intern);
+    if (selectButton == null) {
+      return;
     }
+    unselectedInterns.push({
+      name: row.cells[1].textContent,
+      location: row.cells[2].textContent,
+      department: row.cells[3].textContent,
+    });
   });
 
   return unselectedInterns;
 }
 
+// linear search
 function searchInterns(interns, query) {
   const lowerCasedQuery = query.toLowerCase();
   return interns.filter(

@@ -1,24 +1,22 @@
-import { internPairsSet, internsSet } from "../constants/constants.js";
+import { displayInternWeekTable, getUnselectedInterns } from "./interns.js";
+import { formatInternDetails, updateInternsTable } from "./interns.js";
 import {
-  displayInternWeekTable,
-  getUnselectedInterns,
-  displayInternTable,
+  savePairsToLocalStorage,
+  loadPairsFromLocalStorage,
 } from "./interns.js";
-import { formatInternDetails } from "./interns.js";
-import { savePairsToLocalStorage } from "./interns.js";
 
-export function displayAddModal(button, pair, interns) {
+export function displayAddModal(button, pair, index) {
   button.onclick = function () {
-    var modal = document.getElementById("edit-pair-modal");
+    const modal = document.getElementById("edit-pair-modal");
 
     //display the modal
     modal.style.display = "block";
 
     //show interns to be added
-    addIntern(pair, interns);
+    addIntern(pair, index);
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("edit-close")[0];
+    const span = document.getElementsByClassName("edit-close")[0];
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
@@ -34,7 +32,7 @@ export function displayAddModal(button, pair, interns) {
   };
 }
 
-function addIntern(pair, interns) {
+function addIntern(pair, index) {
   const modal = document.getElementById("edit-pair-modal");
 
   const table = document.getElementById("intern-options");
@@ -44,21 +42,17 @@ function addIntern(pair, interns) {
     table.appendChild(formatInternDetails(intern));
   }
 
-  const idx = interns.indexOf(pair);
-  console.log(idx);
+  const interns = loadPairsFromLocalStorage();
 
   document.getElementById("submit-modal").addEventListener("click", () => {
     const addedInterns = getSelectedInternsEdit();
     if (addedInterns.length < 1) {
       return;
     }
-    interns[idx] = [...pair, ...addedInterns];
-
-    console.log(interns);
-
+    interns[index] = [...pair, ...addedInterns];
     savePairsToLocalStorage(interns);
     displayInternWeekTable(interns);
-
+    updateInternsTable(addedInterns);
     modal.style.display = "none";
   });
 }
