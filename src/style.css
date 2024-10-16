@@ -667,13 +667,32 @@ tr:nth-child(odd) {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px 40px;
   border-radius: 25px;
-  width: 70%; /* Could be more or less, depending on screen size */
+  width: fit-content; /* Could be more or less, depending on screen size */
   font-weight: bold;
-  max-height: 500px;
+  max-height: 500px; /* Ensure the modal itself has a max height */
+  overflow-y: auto; /* Enable vertical scrolling for the modal */
 }
 
+/* Container for the table to enable scrolling */
 #intern-options {
-  overflow: scroll;
+  display: block;
+  max-height: 300px; /* Set a maximum height for the container */
+  overflow: hidden auto; /* Enable vertical scrolling */ /* Prevent horizontal scrolling */
+  width: 100%;
+}
+
+#intern-options table {
+  width: 100%; /* Set the table width to 100% */
+  border-collapse: collapse; /* Collapse borders for a cleaner look */
+}
+
+/* Optional: Add some styling to the table for better appearance */
+#intern-options table th,
+#intern-options table td {
+  border: 1px solid #ddd; /* Add borders to table cells */
+  padding: 8px; /* Add padding to table cells */
+  width: 100%; /* Ensure they stretch to fill the space */
+  box-sizing: border-box;
 }
 
 #edit-modal-header {
