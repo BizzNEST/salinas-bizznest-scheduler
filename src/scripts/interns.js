@@ -7,7 +7,18 @@ import { uniquePairing } from "../util/uniquePairing.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
+import { displayAddModal, displayRemoveModal } from "./edit.js";
 import { internsSet } from "../constants/constants.js";
+import { dynamicHeader } from "../util/dynamicHeader.js";
+
+export function savePairsToLocalStorage(pairs) {
+  localStorage.setItem("internPairs", JSON.stringify(pairs));
+}
+
+export function loadPairsFromLocalStorage() {
+  const pairs = localStorage.getItem("internPairs");
+  return pairs ? JSON.parse(pairs) : [];
+}
 
 async function pairInterns() {
   const interns = getSelectedInterns();
@@ -15,6 +26,7 @@ async function pairInterns() {
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
   return pair(interns);
 }
+
 function formatInternWeekDetails(intern) {
   const col = document.createElement("td"); //Create column for intern
   const internInfo = document.createElement("div"); //Column info div
@@ -38,8 +50,10 @@ function formatInternWeekDetails(intern) {
   return col;
 }
 
-export async function displayInternWeekTable() {
-  const internPairs = await pairInterns();
+export async function displayInternWeekTable(savedPairs) {
+  const internPairs = savedPairs != null ? savedPairs : await pairInterns();
+  savePairsToLocalStorage(internPairs);
+
   renderDepartmentLists("department-list-2");
   const weekCard = document.getElementById("week-card-content");
   weekCard.style.display = "block";
@@ -50,7 +64,7 @@ export async function displayInternWeekTable() {
 
   internPairs.length === 0
     ? (tableHeader.innerHTML = `<tr><th>Not enough Interns selected to pair.</th></tr>`)
-    : (tableHeader.innerHTML = `<tr><th>Group</th><th>Intern 1</th><th>Intern 2</th></tr>`);
+    : (tableHeader.innerHTML = dynamicHeader(internPairs));
 
   const tableBody = document.getElementById("interns-week-table-body");
   tableBody.innerHTML = ""; //clear out any previous pairings
@@ -59,8 +73,30 @@ export async function displayInternWeekTable() {
     const row = document.createElement("tr"); //creating group row
 
     const groupNum = document.createElement("td"); //Group num column
-    groupNum.textContent = "Group " + (index + 1);
+    groupNum.innerHTML = `<p>Group ${index + 1}</p>`;
+
+    const addInternToPairButton = document.createElement("button"); //add edit button
+    addInternToPairButton.className = "edit";
+    addInternToPairButton.id = "add-intern";
+    addInternToPairButton.type = "button";
+    addInternToPairButton.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
+    groupNum.appendChild(addInternToPairButton);
+
+    displayAddModal(addInternToPairButton, pair, index); //display add functionality
+
+    const removeInternFromPairButton = document.createElement("button"); //remove edit button
+    removeInternFromPairButton.className = "edit";
+    removeInternFromPairButton.id = "remove-intern";
+    removeInternFromPairButton.type = "button";
+    removeInternFromPairButton.innerHTML = `<i class="fa-solid fa-user-minus"></i>`;
+    groupNum.appendChild(removeInternFromPairButton);
     row.appendChild(groupNum);
+
+    displayRemoveModal(removeInternFromPairButton, pair, index);
+
+    if (pair.length === 0) {
+      removeInternFromPairButton.innerHTML = `<i class="fa-solid fa-minus"></i>`;
+    }
 
     //add intern info columns
     for (const intern of pair) {
@@ -72,7 +108,7 @@ export async function displayInternWeekTable() {
   });
 }
 
-function formatInternDetails(intern) {
+export function formatInternDetails(intern) {
   const row = document.createElement("tr"); // Create a row for the intern
   row.dataset.name = intern.name;
 
@@ -145,6 +181,7 @@ export async function displayInternTable() {
     ),
     currentSearchQuery,
   );
+
   renderDepartmentLists("department-list-1");
   const tableHeader = document.getElementById("interns-table-header");
   tableHeader.innerHTML = "";
@@ -157,8 +194,7 @@ export async function displayInternTable() {
   tableBody.innerHTML = ""; //clear out any previous pairings
 
   for (const intern of interns) {
-    const row = formatInternDetails(intern);
-    tableBody.appendChild(row);
+    tableBody.appendChild(formatInternDetails(intern));
   }
 
   document.getElementById("select-all").addEventListener("click", () => {
@@ -181,6 +217,37 @@ export async function displayInternTable() {
     });
   });
 }
+export function updateInternsTable(newInterns, isAdd) {
+  const tableBody = document.getElementById("interns-table-body");
+  const rows = tableBody.querySelectorAll("tr");
+
+  // Finds every intern that we added and updates their selection
+  newInterns.forEach((newIntern) => {
+    rows.forEach((row) => {
+      const nameCell = row.cells[1];
+      const locationCell = row.cells[2];
+      const departmentCell = row.cells[3];
+      const selectButton = row.querySelector("button");
+
+      if (
+        nameCell.textContent !== newIntern.name ||
+        locationCell.textContent !== newIntern.location ||
+        departmentCell.textContent !== newIntern.department
+      ) {
+        return;
+      }
+      if (isAdd) {
+        selectButton.textContent = "Deselect";
+        selectButton.classList.add("pill-selected");
+        selectButton.classList.remove("pill-select");
+      } else {
+        selectButton.textContent = "Select";
+        selectButton.classList.add("pill-select");
+        selectButton.classList.remove("pill-selected");
+      }
+    });
+  });
+}
 
 function getSelectedInterns() {
   const selectedInterns = [];
@@ -188,20 +255,39 @@ function getSelectedInterns() {
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-selected");
-    if (selectButton) {
-      const intern = {
-        name: row.cells[1].textContent,
-        location: row.cells[2].textContent,
-        department: row.cells[3].textContent,
-      };
-      selectedInterns.push(intern);
-      internsSet.add(intern);
+    if (selectButton == null) {
+      return;
     }
+    selectedInterns.push({
+      name: row.cells[1].textContent,
+      location: row.cells[2].textContent,
+      department: row.cells[3].textContent,
+    });
   });
 
   return selectedInterns;
 }
 
+export function getUnselectedInterns() {
+  const unselectedInterns = [];
+  const rows = document.querySelectorAll("#interns-table-body tr");
+
+  rows.forEach((row) => {
+    const selectButton = row.querySelector(".pill-select");
+    if (selectButton == null) {
+      return;
+    }
+    unselectedInterns.push({
+      name: row.cells[1].textContent,
+      location: row.cells[2].textContent,
+      department: row.cells[3].textContent,
+    });
+  });
+
+  return unselectedInterns;
+}
+
+// linear search
 function searchInterns(interns, query) {
   const lowerCasedQuery = query.toLowerCase();
   return interns.filter(
