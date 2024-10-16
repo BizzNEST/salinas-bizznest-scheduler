@@ -79,7 +79,7 @@ export async function displayInternWeekTable(savedPairs) {
     addBtn.className = "edit";
     addBtn.id = "add-intern";
     addBtn.type = "button";
-    addBtn.textContent = "+";
+    addBtn.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
     groupNum.appendChild(addBtn);
 
     displayAddModal(addBtn, pair, index); //display add functionality
@@ -88,11 +88,15 @@ export async function displayInternWeekTable(savedPairs) {
     rmBtn.className = "edit";
     rmBtn.id = "remove-intern";
     rmBtn.type = "button";
-    rmBtn.textContent = "-";
+    rmBtn.innerHTML = `<i class="fa-solid fa-user-minus"></i>`;
     groupNum.appendChild(rmBtn);
     row.appendChild(groupNum);
 
     displayRemoveModal(rmBtn, pair, index);
+
+    if (pair.length === 0) {
+      rmBtn.innerHTML = `<i class="fa-solid fa-minus"></i>`;
+    }
 
     //add intern info columns
     for (const intern of pair) {
