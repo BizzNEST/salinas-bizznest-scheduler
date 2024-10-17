@@ -328,6 +328,38 @@ i#toggle-icon-week.interns {
   background-color: #8be1b6;
 }
 
+/*Pairing Table Option Buttons*/
+#pairings-operations {
+  display: flex;
+  column-gap: 10px;
+}
+
+.export-button-div {
+  display: block;
+  width: 100%;
+}
+
+#export-button {
+  height: 40px;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+  background-color: rgb(245, 204, 157);
+  font-weight: bold;
+  
+  cursor: pointer;
+  font-size: 15px;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+#export-button:hover {
+  background-color: rgb(255, 186, 49);
+}
+
 #add-pair-button {
   justify-content: center;
   width: 100% !important;
@@ -439,28 +471,6 @@ i#toggle-icon-week.interns {
   align-items: center;
   justify-content: flex-start;
   margin: 20px;
-}
-
-.export-button-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-}
-
-.export-button {
-  background-color: white;
-  font-weight: bold;
-  border: 4px, solid, rgb(243 174 142);
-  border-radius: 25px;
-  padding: 10px;
-  color: rgb(221 156 126);
-  cursor: pointer;
-}
-
-.export-button:hover {
-  background-color: rgb(243 174 142);
-  color: white;
 }
 
 /* list-card-wrapper-alonzo */

@@ -4,7 +4,6 @@ import {
   displayInternWeekTable,
   displayInternTable,
 } from "./scripts/interns.js";
-import { displayExportButton } from "./scripts/exportCSV.js";
 
 export let currentSearchQuery = "";
 
@@ -48,7 +47,6 @@ function main() {
     generateScheduleButtonAudio.play();
     displayInternWeekTable();
     displayQuestions();
-    displayExportButton();
     generateButtonAnimation.goToAndPlay(0, true);
   });
 
