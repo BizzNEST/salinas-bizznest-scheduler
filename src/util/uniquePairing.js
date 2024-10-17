@@ -26,6 +26,17 @@ export function uniquePairingHelper(interns, isUniqueDept, isUniqueLoc) {
   }
 }
 
+export function isValidGroup(group, isUniqueDept, isUniqueLoc) {
+  for (let i = 0; i < group.length; i++) {
+    for (let j = i + 1; j < group.length; j++) {
+      if (!isValidPair(group[i], group[j], isUniqueDept, isUniqueLoc)) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 export function isValidPair(
   firstIntern,
   secondIntern,

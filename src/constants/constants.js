@@ -28,3 +28,8 @@ export const locationEmojiMap = {
 };
 
 export const internsSet = new Set();
+
+export const mailToMessageObject = {
+  subject: "Hello 👋, We've been paired to NEST Meet!",
+  body: "Hey! We've been paired up to meet, Let me know what day and time works best for you!",
+};

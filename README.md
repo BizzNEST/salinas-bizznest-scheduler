@@ -36,7 +36,7 @@ Step-by-step instructions on how to get the development environment running.
 4. Run the development server:
    - run live server
 
-5. Run tests:
+5. To Run our Test / Accuracy:
    ```sh
    npm run test
    ```
@@ -132,7 +132,7 @@ All of the process is completed following [bizzNest GitHub Branching/Commit/PR S
 
 ## Deployment Instructions
 
-* Website will be deployed either by GitHub Pages or Vercel
+* Through [GitHub Pages](https://bizznest.github.io/salinas-bizznest-scheduler/)
 
 
 

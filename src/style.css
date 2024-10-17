@@ -328,7 +328,7 @@ i#toggle-icon-week.interns {
   background-color: #8be1b6;
 }
 
-/*Pairing Table Option Buttons*/
+/* Pairing Table Option Buttons */
 #pairings-operations {
   display: flex;
   column-gap: 25px;
@@ -345,9 +345,8 @@ i#toggle-icon-week.interns {
   width: 100% !important;
   margin-top: 10px;
   text-align: center;
-  background-color: rgb(245, 204, 157);
+  background-color: rgb(245 204 157);
   font-weight: bold;
-  
   cursor: pointer;
   font-size: 15px;
   transition:
@@ -357,7 +356,7 @@ i#toggle-icon-week.interns {
 }
 
 #export-button:hover {
-  background-color: rgb(255, 186, 49);
+  background-color: rgb(255 186 49);
 }
 
 #add-pair-button {
@@ -730,7 +729,7 @@ tr:nth-child(odd) {
 #submit-modal {
   margin-top: 10px;
   padding: 10px;
-  background-color: rgb(172, 211, 253);
+  background-color: rgb(172 211 253);
   border: none;
   border-radius: 20px;
   font-weight: bold;
@@ -739,7 +738,7 @@ tr:nth-child(odd) {
 }
 
 #submit-modal:hover {
-  background-color: rgb(100, 173, 252);
+  background-color: rgb(100 173 252);
 }
 
 /* ADD/REMOVE buttons */
@@ -841,6 +840,23 @@ tr:nth-child(odd) {
   .interns-config-settings {
     flex-direction: column-reverse;
   }
+}
+
+/* Style for the intern email link */
+.intern-email {
+  text-decoration: none; /* Remove text decoration */
+  color: #000; /* Set the text color */
+  font-weight: bold; /* Make the text bold */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the intern email link */
+.intern-email:hover {
+  color: #007bff; /* Change the text color on hover */
+}
+
+.group-number-container {
+  margin-bottom: 10px;
 }
 
 @media screen and (width <= 950px) {

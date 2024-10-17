@@ -1,6 +1,7 @@
 import getInterns from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
+import generateMailToString from "../util/sendEmail.js";
 import { filterByDepartment } from "../util/filterByDepartment.js";
 import { filterByLocation } from "../util/filterByLocation.js";
 import { uniquePairing } from "../util/uniquePairing.js";
@@ -73,7 +74,10 @@ export async function displayInternWeekTable(savedPairs) {
     const row = document.createElement("tr"); //creating group row
 
     const groupNum = document.createElement("td"); //Group num column
-    groupNum.innerHTML = `<p>Group ${index + 1}</p>`;
+    groupNum.innerHTML = `
+    <div class="group-number-container">
+      <a class="intern-email" href=${generateMailToString(pair.map((intern) => intern?.email ?? ""))}>📧 Group ${index + 1}</a>
+    </div>`;
 
     const addInternToPairButton = document.createElement("button"); //add edit button
     addInternToPairButton.className = "edit";
@@ -112,7 +116,7 @@ export async function displayInternWeekTable(savedPairs) {
 export function formatInternDetails(intern) {
   const row = document.createElement("tr"); // Create a row for the intern
   row.dataset.name = intern.name;
-
+  row.dataset.email = intern.email;
   // Create column for the select button
   const selectCol = document.createElement("td");
   const selectButton = document.createElement("button");
@@ -263,6 +267,7 @@ function getSelectedInterns() {
       name: row.cells[1].textContent,
       location: row.cells[2].textContent,
       department: row.cells[3].textContent,
+      email: row.dataset.email,
     });
   });
 
@@ -282,6 +287,7 @@ export function getUnselectedInterns() {
       name: row.cells[1].textContent,
       location: row.cells[2].textContent,
       department: row.cells[3].textContent,
+      email: row.dataset.email,
     });
   });
 

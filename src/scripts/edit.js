@@ -82,6 +82,7 @@ function getSelectedInternsEdit() {
         name: row.cells[1].textContent,
         location: row.cells[2].textContent,
         department: row.cells[3].textContent,
+        email: row.dataset.email,
       };
       selectedInterns.push(intern);
     }
@@ -102,6 +103,7 @@ function getDeselectedInternsEdit() {
         name: row.cells[1].textContent,
         location: row.cells[2].textContent,
         department: row.cells[3].textContent,
+        email: row.dataset.email,
       };
       deselectedInterns.push(intern);
     }
