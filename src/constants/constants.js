@@ -19,4 +19,12 @@ export const filters = [
   },
 ];
 
+export const locationEmojiMap = {
+  Salinas: "🥗",
+  Watsonville: "🍓",
+  Gilroy: "🧄",
+  Modesto: "🐮",
+  Stockton: "🍒",
+};
+
 export const internsSet = new Set();
