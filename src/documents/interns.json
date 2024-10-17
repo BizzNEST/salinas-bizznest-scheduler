@@ -3,6 +3,7 @@
     "Ali Taquie": {
       "location": "Watsonville",
       "department": "Web Development",
+      "email": "ataquie@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -10,9 +11,10 @@
         "Friday": "Unavailable"
       }
     },
-    "Sergio Medina-Inta": {
+    "Sergio Medina-Ixta": {
       "location": "Watsonville",
       "department": "Web Development",
+      "email": "sergio@digitalnest.org",
       "schedule": {
         "Tuesday": "Afternoon",
         "Wednesday": "Afternoon",
@@ -23,6 +25,7 @@
     "Yuliana Morales-Galvan": {
       "location": "Watsonville",
       "department": "Web Development",
+      "email": "ymorales-galvan@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Unavailable",
@@ -33,6 +36,7 @@
     "Joel Mariscal": {
       "location": "Watsonville",
       "department": "Web Development",
+      "email": "jmariscal@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Full Day",
@@ -43,6 +47,7 @@
     "Tyler Nguyen": {
       "location": "Stockton",
       "department": "Web Development",
+      "email": "tnguyen@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -53,6 +58,7 @@
     "Christopher Loya": {
       "location": "Stockton",
       "department": "Web Development",
+      "email": "cloya@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -63,6 +69,7 @@
     "Bledine Messa Ngunte": {
       "location": "Stockton",
       "department": "Web Development",
+      "email": "bngunte@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -73,6 +80,7 @@
     "Jose Velarde-Ruiz": {
       "location": "Modesto",
       "department": "Web Development",
+      "email": "jose.velarde@bizznest.digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -83,6 +91,7 @@
     "Alan Buenrostro": {
       "location": "Modesto",
       "department": "Web Development",
+      "email": "abuenrostro@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Afternoon",
@@ -93,6 +102,7 @@
     "Leo Masellis": {
       "location": "Modesto",
       "department": "Web Development",
+      "email": "lmasillas@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -103,6 +113,7 @@
     "Karl Legson": {
       "location": "Modesto",
       "department": "Web Development",
+      "email": "klegson@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Afternoon",
@@ -110,9 +121,10 @@
         "Friday": "Morning"
       }
     },
-    "Victor Lomelli Ponce": {
+    "Victor Lomeli Ponce": {
       "location": "Modesto",
       "department": "Web Development",
+      "email": "vlomeli@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -120,9 +132,10 @@
         "Friday": "Unavailable"
       }
     },
-    "Adriaan Cajijas": {
+    "Adrean Cajigas": {
       "location": "Modesto",
       "department": "Web Development",
+      "email": "adrean.cajigas@bizznest.digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Afternoon",
@@ -133,6 +146,7 @@
     "Eli Manzo": {
       "location": "Salinas",
       "department": "Web Development",
+      "email": "eli.manzo@bizznest.digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -143,6 +157,7 @@
     "Liliana Constantino": {
       "location": "Salinas",
       "department": "Web Development",
+      "email": "lconstantino@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -153,6 +168,7 @@
     "Jacqueline Perez": {
       "location": "Salinas",
       "department": "Web Development",
+      "email": "jperez@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -163,6 +179,7 @@
     "Alonzo Cabrera": {
       "location": "Salinas",
       "department": "Web Development",
+      "email": "a.cabrera@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Unavailable",
@@ -173,6 +190,7 @@
     "Youssef Bazzi": {
       "location": "Gilroy",
       "department": "Web Development",
+      "email": "ybazzi@digitalnest.org",
       "schedule": {
         "Tuesday": "Afternoon",
         "Wednesday": "Unavailable",
@@ -183,6 +201,7 @@
     "Lisandro Jimenez": {
       "location": "Gilroy",
       "department": "Web Development",
+      "email": "lisandro.jimenez@bizznest.digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Unavailable",
@@ -193,6 +212,7 @@
     "Ian Ellis": {
       "location": "Gilroy",
       "department": "Web Development",
+      "email": "iellis@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Unavailable",
@@ -200,9 +220,21 @@
         "Friday": "Full Day"
       }
     },
-    "Lizeth Villareal": {
+    "Benjamin Schoolland": {
+      "location": "Modesto",
+      "department": "Web Development",
+      "email": "benjamin.schoolland@bizznest.digitalnest.org",
+      "schedule": {
+        "Tuesday": "Afternoon",
+        "Wednesday": "Full Day",
+        "Thursday": "Afternoon",
+        "Friday": "Afternoon"
+      }
+    },
+    "Lizeth Villarreal": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "l.villarreal@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -213,6 +245,7 @@
     "Ivan Ramirez": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "l.villarreal@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -223,6 +256,7 @@
     "Julian Guerrero": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "jguerrero@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -233,6 +267,7 @@
     "Dominic Morales": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "dmorales@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -243,6 +278,7 @@
     "Luis Perez": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "lperez@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -253,6 +289,7 @@
     "Rogelio Valdez-Perez": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "rperez@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -263,6 +300,7 @@
     "Melanie Torres": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "mtorres@digitalnest.org",
       "schedule": {
         "Tuesday": "Afternoon",
         "Wednesday": "Full Day",
@@ -273,6 +311,7 @@
     "Emily Ramirez": {
       "location": "Watsonville",
       "department": "Video Production",
+      "email": "eramirez@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -283,6 +322,7 @@
     "Josh Matadamas": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "jmatadamas@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -293,6 +333,7 @@
     "Julia Ruiz": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "julia@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -303,6 +344,7 @@
     "Emiliano Margarito": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "emargarito@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Afternoon",
@@ -313,6 +355,7 @@
     "Elijah Younger": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "eyounger@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Unavailable",
@@ -323,6 +366,7 @@
     "Lesley Vargas": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "lvargas@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Unavailable",
@@ -333,6 +377,7 @@
     "Natalia Rodas": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "nrodas@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -343,6 +388,7 @@
     "Nicolas Biala": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "nbiala@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -353,6 +399,7 @@
     "Talia Mendoza": {
       "location": "Salinas",
       "department": "Video Production",
+      "email": "tmendoza@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Unavailable",
@@ -363,6 +410,7 @@
     "Fatima Perez": {
       "location": "Modesto",
       "department": "Design",
+      "email": "fperez@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -373,6 +421,7 @@
     "Seneca Rubianes": {
       "location": "Modesto",
       "department": "Design",
+      "email": "srubianes@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -383,6 +432,7 @@
     "Carmen Trujillo": {
       "location": "Modesto",
       "department": "Design",
+      "email": "ctrujillo@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -393,6 +443,7 @@
     "Andrew Eversley": {
       "location": "Modesto",
       "department": "Design",
+      "email": "aeversley@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -403,6 +454,7 @@
     "Nazgol Ghafourian": {
       "location": "Modesto",
       "department": "Design",
+      "email": "nghafourian@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -413,6 +465,7 @@
     "Nat Talaid": {
       "location": "Stockton",
       "department": "Design",
+      "email": "ntalaid@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -423,6 +476,7 @@
     "Thalia Gu": {
       "location": "Stockton",
       "department": "Design",
+      "email": "tgu@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Unavailable",
@@ -433,6 +487,7 @@
     "Gianelli Liguidliguid": {
       "location": "Stockton",
       "department": "Design",
+      "email": "gliguidliguid@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -443,6 +498,7 @@
     "Sebi Perry": {
       "location": "Watsonville",
       "department": "Design",
+      "email": "operry@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Morning",
@@ -453,6 +509,7 @@
     "Ryan Janowitz": {
       "location": "Watsonville",
       "department": "Design",
+      "email": "rjanowitz@digitalnest.org",
       "schedule": {
         "Tuesday": "Afternoon",
         "Wednesday": "Full Day",
@@ -463,6 +520,7 @@
     "Mirna Gonzalez": {
       "location": "Watsonville",
       "department": "Design",
+      "email": "mgonzalez@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -473,6 +531,7 @@
     "Nancy Cervantes-Herrera": {
       "location": "Watsonville",
       "department": "Design",
+      "email": "ncervantes-herrera@digitalnest.org",
       "schedule": {
         "Tuesday": "Afternoon",
         "Wednesday": "Afternoon",
@@ -483,6 +542,7 @@
     "Yadriel Pareja": {
       "location": "Gilroy",
       "department": "Design",
+      "email": "ypareja@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Full Day",
@@ -493,6 +553,7 @@
     "Princess Rodriguez": {
       "location": "Gilroy",
       "department": "Design",
+      "email": "prodriguez@digitalnest.org",
       "schedule": {
         "Tuesday": "Morning",
         "Wednesday": "Morning",
@@ -503,6 +564,7 @@
     "Milagros Perez": {
       "location": "Gilroy",
       "department": "Design",
+      "email": "mperez@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -513,6 +575,7 @@
     "Xavier Cruz": {
       "location": "Salinas",
       "department": "Design",
+      "email": "xcruz@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -523,6 +586,7 @@
     "Alexa Zavala": {
       "location": "Salinas",
       "department": "Design",
+      "email": "azavala@digitalnest.org",
       "schedule": {
         "Tuesday": "Afternoon",
         "Wednesday": "Afternoon",
@@ -533,6 +597,7 @@
     "Emma Griffin-Ortiz": {
       "location": "Salinas",
       "department": "Design",
+      "email": "egriffin-ortiz@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -543,6 +608,7 @@
     "Cristian Reyes": {
       "location": "Salinas",
       "department": "Design",
+      "email": "creyes@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
@@ -553,6 +619,7 @@
     "Maribel Garcia": {
       "location": "Modesto",
       "department": "Marketing",
+      "email": "mgarcia@digitalnest.org",
       "schedule": {
         "Tuesday": "Unavailable",
         "Wednesday": "Full Day",
@@ -563,16 +630,18 @@
     "Fernanda Jordan": {
       "location": "Watsonville",
       "department": "Marketing",
+      "email": "fernanda@digitalnest.org",
       "schedule": {
         "Tuesday": "Afternoon",
         "Wednesday": "Unavailable",
         "Thursday": "Afternoon",
         "Friday": "Full Day"
       }
-    }, 
+    },
     "Elissa Covarrubias": {
       "location": "Salinas",
       "department": "IT",
+      "email": "elissa@digitalnest.org",
       "schedule": {
         "Tuesday": "Full Day",
         "Wednesday": "Full Day",
