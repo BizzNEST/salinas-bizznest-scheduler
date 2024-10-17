@@ -330,7 +330,7 @@ i#toggle-icon-week.interns {
 
 #add-pair-button {
   justify-content: center;
-  width: 100%;
+  width: 100% !important;
   height: 40px;
   margin-top: 10px;
   text-align: center;
