@@ -8,7 +8,7 @@ import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
 import { displayAddModal, displayRemoveModal } from "./edit.js";
-import { internsSet } from "../constants/constants.js";
+import { internsSet, locationEmojiMap } from "../constants/constants.js";
 import { dynamicHeader } from "../util/dynamicHeader.js";
 
 export function savePairsToLocalStorage(pairs) {
@@ -37,14 +37,13 @@ function formatInternWeekDetails(intern) {
   pill.innerHTML = `<b>${intern.department}</b>`;
   internInfo.appendChild(pill);
 
+  const location = document.createElement("p"); //Location
+  location.textContent = `${locationEmojiMap[intern.location]} ${intern.location}`;
+  internInfo.appendChild(location);
+
   const name = document.createElement("p"); //Name
   name.textContent = intern.name;
   internInfo.appendChild(name);
-
-  const location = document.createElement("p"); //Location
-  location.textContent = intern.location;
-  internInfo.appendChild(location);
-
   col.appendChild(internInfo);
 
   return col;
