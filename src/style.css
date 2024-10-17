@@ -342,7 +342,7 @@ i#toggle-icon-week.interns {
 #export-button {
   height: 40px;
   display: block;
-  width: 100%;
+  width: 100% !important;
   margin-top: 10px;
   text-align: center;
   background-color: rgb(245, 204, 157);
@@ -889,7 +889,7 @@ tr:nth-child(odd) {
   }
 
   #pairings-operations {
-    column-gap: 5px;
+    column-gap: 10px;
   }
 
   /* Force table to not be like tables anymore */
