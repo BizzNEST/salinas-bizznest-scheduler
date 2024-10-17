@@ -1,5 +1,5 @@
 import shuffle from "../../util/shuffle.js";
-import { isValidPair, uniquePairingHelper } from "../../util/uniquePairing.js";
+import { uniquePairingHelper, isValidGroup } from "../../util/uniquePairing.js";
 import pair from "../../util/pair.js";
 import accuracy from "../../util/accuracy.js";
 import { readFileSync } from "fs";
@@ -31,10 +31,10 @@ function uniquePairingTest(test) {
   const pairs = pairInterns(test.isUniqueDept, test.isUniqueLoc);
 
   const count = pairs.reduce(
-    (accumultor, [intern1, intern2]) =>
-      isValidPair(intern1, intern2, test.isUniqueDept, test.isUniqueLoc)
-        ? accumultor + 1
-        : accumultor,
+    (accumulator, group) =>
+      isValidGroup(group, test.isUniqueDept, test.isUniqueLoc)
+        ? accumulator + 1
+        : accumulator,
     0,
   );
 
