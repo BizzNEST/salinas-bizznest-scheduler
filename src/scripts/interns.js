@@ -10,6 +10,7 @@ import { currentSearchQuery } from "../app.js";
 import { displayAddModal, displayRemoveModal } from "./edit.js";
 import { internsSet, locationEmojiMap } from "../constants/constants.js";
 import { dynamicHeader } from "../util/dynamicHeader.js";
+import { displayExportButton } from "./exportCSV.js";
 
 export function savePairsToLocalStorage(pairs) {
   localStorage.setItem("internPairs", JSON.stringify(pairs));
@@ -105,6 +106,7 @@ export async function displayInternWeekTable(savedPairs) {
     //add to table
     tableBody.appendChild(row);
   });
+  displayExportButton();
 }
 
 export function formatInternDetails(intern) {

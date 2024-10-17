@@ -94,7 +94,7 @@
       <section class="week-card">
         <div class="inner-week-card">
           <div class="week-header">
-            <h2>Week</h2>
+            <h2>Week Schedule</h2>
             <i id="toggle-icon-week" class="fa-solid fa-chevron-up"></i>
           </div>
         </div>
@@ -106,15 +106,17 @@
             </div>
           </div>
           <div id="ice-breakers" class="ice-breakers"></div>
-          <button class="filter-button" id="add-pair-button" type="button">
-            Add Pair
-          </button>
+          <div id="pairings-operations">
+            <div id="export-button-div" class="export-button-div"></div>
+            <button class="filter-button" id="add-pair-button" type="button">
+              Add Pair <i class="fa-solid fa-user-group"></i>
+            </button>
+          </div>
           <table id="interns-week-table">
             <thead id="interns-week-table-header"></thead>
             <tbody id="interns-week-table-body"></tbody>
           </table>
         </div>
-        <div id="export-button-div" class="export-button-div"></div>
       </section>
 
       <div id="edit-pair-modal" class="edit-modal">

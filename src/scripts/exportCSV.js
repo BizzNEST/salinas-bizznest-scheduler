@@ -7,13 +7,11 @@ export function displayExportButton() {
 
   // Create the button
   const exportButton = document.createElement("button");
-  exportButton.className = "export-button";
+  exportButton.className = "filter-button export-button";
   exportButton.id = "export-button";
   exportButton.type = "button";
-  exportButton.textContent = "Download CSV 🗒";
+  exportButton.innerHTML = `Export <i class="fa-solid fa-file-arrow-down"></i>`;
   parentContainer.appendChild(exportButton);
-
-  weekCard.appendChild(parentContainer);
 
   //convert HTML table to CSV on click of the button
   exportButton.addEventListener("click", function () {
@@ -39,10 +37,12 @@ export function tableToCSV() {
     const cols = rows[i].querySelectorAll("td,th");
 
     //If more than 3 columns means a group of 3 so we have to modify header
-    if (cols.length === 4) {
-      csv_data[0] =
-        csv_data[0] +
-        ", (Intern 3) Name, (Intern 3) Department, (Intern 3) Location";
+    if (cols.length > 3) {
+      for (let i = 3; i < cols.length; i++) {
+        csv_data[0] =
+          csv_data[0] +
+          `, (Intern ${i}) Name, (Intern ${i}) Department, (Intern ${i}) Location`;
+      }
     }
 
     // Stores each csv row data
@@ -57,7 +57,7 @@ export function tableToCSV() {
       separateInfo.length === 1
         ? csvrow.push(internText)
         : csvrow.push(
-            `${separateInfo[1]}, ${separateInfo[0]}, ${separateInfo[2]} `,
+            `${separateInfo[2]}, ${separateInfo[0]}, ${separateInfo[1]} `,
           );
     }
 
