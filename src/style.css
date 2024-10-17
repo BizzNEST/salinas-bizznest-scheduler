@@ -331,7 +331,7 @@ i#toggle-icon-week.interns {
 /*Pairing Table Option Buttons*/
 #pairings-operations {
   display: flex;
-  column-gap: 10px;
+  column-gap: 25px;
 }
 
 .export-button-div {
@@ -730,9 +730,8 @@ tr:nth-child(odd) {
 #submit-modal {
   margin-top: 10px;
   padding: 10px;
-  background-color: rgb(192 222 255);
-  color: rgb(35 110 189);
-  border: 2px solid rgb(35 110 189);
+  background-color: rgb(172, 211, 253);
+  border: none;
   border-radius: 20px;
   font-weight: bold;
   font-size: 15px;
@@ -740,7 +739,7 @@ tr:nth-child(odd) {
 }
 
 #submit-modal:hover {
-  background-color: rgb(123 187 255);
+  background-color: rgb(100, 173, 252);
 }
 
 /* ADD/REMOVE buttons */
@@ -883,6 +882,14 @@ tr:nth-child(odd) {
 
   .week-header h2 {
     font-size: 1.5rem;
+  }
+
+  .selection-config {
+    justify-content: center;
+  }
+
+  #pairings-operations {
+    column-gap: 5px;
   }
 
   /* Force table to not be like tables anymore */
