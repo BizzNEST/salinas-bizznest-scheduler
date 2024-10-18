@@ -101,6 +101,7 @@ section.week-card {
   margin: 10px;
   overflow: hidden;
   min-width: 400px;
+  width: 50%;
 }
 
 /* Inner Week Card */
