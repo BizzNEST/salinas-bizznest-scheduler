@@ -187,6 +187,18 @@ table tbody td {
   text-align: center; /* Center content within the table cell */
 }
 
+table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+tr:nth-child(odd) {
+  background: #e8f2ea;
+}
+
+table tbody tr:hover {
+  background-color: #d0eaff; /* Light blue background color on hover */
+}
+
 /* Reusable Pill Styles */
 .pill {
   background-color: #bde3d0;
@@ -651,10 +663,6 @@ table thead th:nth-child(2) {
 
 #week-card-content {
   display: none;
-}
-
-tr:nth-child(odd) {
-  background: #e8f2ea;
 }
 
 /* EDITING modal */
