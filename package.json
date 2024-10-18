@@ -8,7 +8,7 @@
     "lint:eslint": "eslint --config eslint.config.mjs . --fix",
     "lint:style": "stylelint \"**/*.css\" --fix",
     "lint:html": "htmlhint \"**/*.html\"",
-    "format": "prettier --write \"**/*.{js,css,html}\"",
+    "format": "prettier --write \"**/*.{js,mjs,css,html}\"",
     "check": "npm run format && npm run lint:eslint && npm run lint:style && npm run lint:html",
     "test": "node src/scripts/run-tests.js"
   },

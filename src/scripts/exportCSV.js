@@ -1,6 +1,4 @@
 export function displayExportButton() {
-  const weekCard = document.getElementById("week-card-content");
-
   //get export button div & clear if re-generated
   const parentContainer = document.getElementById("export-button-div");
   parentContainer.innerHTML = "";

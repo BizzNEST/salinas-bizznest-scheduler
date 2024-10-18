@@ -44,6 +44,7 @@ function uniquePairingTest(test) {
   );
   try {
     console.log("Acurracy: " + accuracy(count, pairs.length) + "\n");
+    // eslint-disable-next-line no-unused-vars
   } catch (error) {
     console.log("0 Pairs were made because there was only 1 Intern\n");
   }
