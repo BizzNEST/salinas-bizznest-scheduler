@@ -49,6 +49,7 @@ export async function exportPairs(pairs) {
     a.download = "pairs.json";
     document.body.appendChild(a);
     a.click();
+    a.remove();
     window.URL.revokeObjectURL(url);
     if (!response.ok) {
       throw new Error("Network response was not ok");
