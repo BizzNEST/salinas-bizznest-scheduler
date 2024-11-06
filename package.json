@@ -10,7 +10,8 @@
     "lint:html": "htmlhint \"**/*.html\"",
     "format": "prettier --write \"**/*.{js,mjs,css,html}\"",
     "check": "npm run format && npm run lint:eslint && npm run lint:style && npm run lint:html",
-    "test": "node src/scripts/run-tests.js"
+    "test": "node src/scripts/run-tests.js",
+    "server": "nodemon ./server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,13 @@
     "eslint-plugin-prettier": "5.2.1",
     "globals": "15.9.0",
     "htmlhint": "1.1.4",
+    "nodemon": "3.1.7",
     "prettier": "3.3.3",
     "stylelint": "16.9.0",
     "stylelint-config-standard": "36.0.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "4.21.1"
   }
 }

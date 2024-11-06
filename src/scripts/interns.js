@@ -1,4 +1,8 @@
-import getInterns from "../api/interns/service.js";
+import {
+  getInterns,
+  generatePairs,
+  exportPairs,
+} from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
 import generateMailToString from "../util/sendEmail.js";
@@ -26,6 +30,11 @@ async function pairInterns() {
   const interns = getSelectedInterns();
   shuffle(interns);
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
+  const serverPairs = await generatePairs(
+    interns,
+    getSelectedOptions()["Unique Pairing"],
+  );
+  exportPairs(serverPairs.pairs);
   return pair(interns);
 }
 
