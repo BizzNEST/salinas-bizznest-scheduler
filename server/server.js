@@ -1,8 +1,5 @@
 import express from "express";
 import cors from "cors";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 
 import shuffle from "../src/util/shuffle.js";
 import pair from "../src/util/pair.js";
@@ -10,10 +7,6 @@ import { uniquePairing } from "../src/util/uniquePairing.js";
 
 const app = express();
 const PORT = 8000;
-
-// Get the directory name of the current module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware to parse JSON request bodies
@@ -45,23 +38,12 @@ app.post("/api/export-pairs", async (req, res) => {
   }
 
   const jsonContent = JSON.stringify(pairs, null, 2);
-  const filePath = path.join(__dirname, "pairs.json");
 
   try {
-    await fs.promises.writeFile(filePath, jsonContent);
-
-    // Send the file to the client for download
-    res.download(filePath, "pairs.json", (err) => {
-      if (err) {
-        console.error("Error downloading file:", err);
-        return res.status(500).send("Error downloading file");
-      }
-
-      // Optionally delete the file after sending
-      fs.promises.unlink(filePath).catch((unlinkErr) => {
-        console.error("Error deleting file:", unlinkErr);
-      });
-    });
+    // Send the file content directly in the response
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Disposition", 'attachment; filename="pairs.json"');
+    res.send(jsonContent);
   } catch (err) {
     console.error("Error exporting pairs:", err);
     res.status(500).send("Error exporting pairs");
