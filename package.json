@@ -25,5 +25,9 @@
     "prettier": "3.3.3",
     "stylelint": "16.9.0",
     "stylelint-config-standard": "36.0.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
   }
 }

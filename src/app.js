@@ -4,6 +4,7 @@ import {
   displayInternWeekTable,
   displayInternTable,
 } from "./scripts/interns.js";
+import { asyncApiCall } from "./api/interns/service.js";
 
 export let currentSearchQuery = "";
 
@@ -21,6 +22,13 @@ function main() {
     path: "src/assets/lottie/lottie_confetti.json",
   });
   displayInternTable();
+
+  //API Call function
+  const toggleAPICall = document.getElementById("api-call");
+  toggleAPICall.addEventListener("click", async () => {
+    //apiCall();
+    await asyncApiCall();
+  });
 
   toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
