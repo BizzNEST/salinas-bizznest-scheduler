@@ -28,13 +28,39 @@ export async function asyncApiCall() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ x: 5 }),
+      body: JSON.stringify({ x: 5, y: 3 }),
     });
-    if (!response.ok) {
+
+    //return response.json();
+
+    /*if (!response.ok) {
       throw new Error("Networking Error");
     }
     const data = await response.json();
-    console.log(data);
+    console.log(data);*/
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function generatePairs(interns, pairingType) {
+  try {
+    const response = await fetch("http://localhost:8000/generate-pairs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ interns, pairingType }),
+    });
+    const res = response.json();
+
+    //console.log("this function is being called");
+    //console.log(`Response: ${res}`);
+    return res;
+
+    if (!response.ok) {
+      throw new Error("Response Error");
+    }
   } catch (error) {
     console.log(error);
   }

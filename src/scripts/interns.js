@@ -1,4 +1,4 @@
-import getInterns from "../api/interns/service.js";
+import getInterns, { generatePairs } from "../api/interns/service.js";
 import shuffle from "../util/shuffle.js";
 import pair from "../util/pair.js";
 import generateMailToString from "../util/sendEmail.js";
@@ -24,9 +24,17 @@ export function loadPairsFromLocalStorage() {
 
 async function pairInterns() {
   const interns = getSelectedInterns();
-  shuffle(interns);
+  /*shuffle(interns);
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
-  return pair(interns);
+  return pair(interns);*/
+  const serverPairs = await generatePairs(
+    interns,
+    //indicates if there is a unique pairing filter is selected & returns which
+    getSelectedOptions()["Unique Pairing"],
+  );
+  console.log("server pairs:");
+  console.log(Object.values(serverPairs));
+  return Object.values(serverPairs)[0];
 }
 
 function formatInternWeekDetails(intern) {
@@ -53,6 +61,7 @@ function formatInternWeekDetails(intern) {
 
 export async function displayInternWeekTable(savedPairs) {
   const internPairs = savedPairs != null ? savedPairs : await pairInterns();
+  //console.log(internPairs);
   savePairsToLocalStorage(internPairs);
 
   renderDepartmentLists("department-list-2");
