@@ -27,6 +27,7 @@ export function loadPairsFromLocalStorage() {
 
 async function pairInterns() {
   const interns = getSelectedInterns();
+  //previous implementation
   /*shuffle(interns);
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
   return pair(interns);*/
@@ -35,9 +36,10 @@ async function pairInterns() {
     //indicates if there is a unique pairing filter is selected & returns which
     getSelectedOptions()["Unique Pairing"],
   );
+
+  //to attach url to button anchor tag (can download on first click now)
   await exportPairs();
-  //console.log("server pairs:");
-  //console.log(Object.values(serverPairs));
+
   return serverPairs.pairs;
 }
 

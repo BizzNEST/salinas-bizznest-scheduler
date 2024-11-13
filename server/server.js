@@ -18,14 +18,14 @@ app.listen(port, () => {
   console.log(`Server is running on localhost:${port}`);
 });
 
-app.post("/apicall", (req, res) => {
+//PRACTICE API Call
+/*app.post("/apicall", (req, res) => {
   //console.log(req.body);
   const { x, y } = req.body;
   console.log(x * y);
-});
+});*/
 
 app.post("/generate-pairs", (req, res) => {
-  //console.log(req.body);
   const { interns, pairingType } = req.body;
 
   shuffle(interns);
@@ -36,16 +36,13 @@ app.post("/generate-pairs", (req, res) => {
 });
 
 app.get("/export-pairs", (req, res) => {
-  //console.log(JSON.stringify(internData));
   try {
     const data = JSON.stringify(internData);
-    //console.log(data);
     const filePath = path.join(process.cwd(), "docs", "internData.json");
+
     fs.writeFileSync(filePath, data, (err) => err && console.error(err));
     console.log("JSON data saved to file successfully.");
-    //console.log(process.cwd());
-    //console.log(filePath);
-    //res.sendFile(filePath);
+
     res.download(filePath, "internData.json", (err) => {
       if (err) {
         console.error(err);

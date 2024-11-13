@@ -4,7 +4,6 @@ import {
   displayInternWeekTable,
   displayInternTable,
 } from "./scripts/interns.js";
-import { asyncApiCall, exportPairs } from "./api/interns/service.js";
 
 export let currentSearchQuery = "";
 
@@ -23,7 +22,7 @@ function main() {
   });
   displayInternTable();
 
-  //API Call function
+  //PRACTICE API Call function
   /*const toggleAPICall = document.getElementById("api-call");
   toggleAPICall.addEventListener("click", async (event) => {
     //apiCall();

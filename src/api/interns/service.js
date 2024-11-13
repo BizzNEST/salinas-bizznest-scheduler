@@ -11,7 +11,7 @@ export default async function getInterns() {
     throw error;
   }
 }
-
+//PRACTICE API Calls (from zoom tutorials)
 /*export function apiCall() {
   fetch("http://localhost:8000/apicall")
     .then(console.log("hello console"))
@@ -21,7 +21,7 @@ export default async function getInterns() {
     });
 }*/
 
-export async function asyncApiCall() {
+/*export async function asyncApiCall() {
   try {
     const response = await fetch("http://localhost:8000/apicall", {
       method: "POST",
@@ -31,17 +31,17 @@ export async function asyncApiCall() {
       body: JSON.stringify({ x: 5, y: 3 }),
     });
 
-    //return response.json();
-
-    /*if (!response.ok) {
+    if (!response.ok) {
       throw new Error("Networking Error");
     }
-    const data = await response.json();
-    console.log(data);*/
+    //const data = await response.json();
+    //console.log(data);
+
+    return response.json();
   } catch (error) {
     console.log(error);
   }
-}
+}*/
 
 export async function generatePairs(interns, pairingType) {
   try {
@@ -52,15 +52,13 @@ export async function generatePairs(interns, pairingType) {
       },
       body: JSON.stringify({ interns, pairingType }),
     });
-    const res = response.json();
-
-    //console.log("this function is being called");
-    //console.log(`Response: ${res}`);
-    return res;
 
     if (!response.ok) {
       throw new Error("Response Error");
     }
+
+    const res = response.json();
+    return res;
   } catch (error) {
     console.log(error);
   }
@@ -74,10 +72,9 @@ export async function exportPairs() {
       throw new Error("Network response was not ok");
     }
 
-    //const internFile = await response.blob();
+    //get the anchor tag and add the file url
     const aTag = document.getElementById("fileTag");
     aTag.setAttribute("href", response.url);
-    //console.log(response);
   } catch (error) {
     console.error("There was a problem fetching the data:", error);
   }
