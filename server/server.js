@@ -1,5 +1,8 @@
 import express from "express";
 import cors from "cors";
+import fs from "fs";
+import path from "path";
+
 import shuffle from "../src/util/shuffle.js";
 import { uniquePairing } from "../src/util/uniquePairing.js";
 import pair from "../src/util/pair.js";
@@ -7,6 +10,7 @@ import pair from "../src/util/pair.js";
 const app = express();
 
 const port = 8000;
+let internData = {};
 app.use(cors());
 app.use(express.json());
 
@@ -27,5 +31,28 @@ app.post("/generate-pairs", (req, res) => {
   shuffle(interns);
   uniquePairing(interns, pairingType);
   const pairedInterns = pair(interns);
-  res.json({ pairs: pairedInterns });
+  internData = { pairs: pairedInterns };
+  res.json(internData);
+});
+
+app.get("/export-pairs", (req, res) => {
+  //console.log(JSON.stringify(internData));
+  try {
+    const data = JSON.stringify(internData);
+    //console.log(data);
+    const filePath = path.join(process.cwd(), "docs", "internData.json");
+    fs.writeFileSync(filePath, data, (err) => err && console.error(err));
+    console.log("JSON data saved to file successfully.");
+    //console.log(process.cwd());
+    //console.log(filePath);
+    //res.sendFile(filePath);
+    res.download(filePath, "internData.json", (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Error downloading file");
+      }
+    });
+  } catch (error) {
+    console.error("Error writing JSON data to file:", error);
+  }
 });

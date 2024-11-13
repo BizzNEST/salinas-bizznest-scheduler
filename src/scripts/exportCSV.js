@@ -1,4 +1,4 @@
-export function displayExportButton() {
+/*export function displayExportButton() {
   //get export button div & clear if re-generated
   const parentContainer = document.getElementById("export-button-div");
   parentContainer.innerHTML = "";
@@ -14,6 +14,28 @@ export function displayExportButton() {
   //convert HTML table to CSV on click of the button
   exportButton.addEventListener("click", function () {
     tableToCSV();
+  });
+}*/
+
+import { exportPairs } from "../api/interns/service.js";
+
+export function displayExportButton() {
+  //get export button div & clear if re-generated
+  const parentContainer = document.getElementById("export-button-div");
+  parentContainer.innerHTML = "";
+
+  // Create the button
+  const exportButton = document.createElement("button");
+  exportButton.className = "filter-button export-button";
+  exportButton.id = "export-button";
+  exportButton.type = "button";
+  exportButton.innerHTML = `Export <i class="fa-solid fa-file-arrow-down"></i>`;
+  parentContainer.appendChild(exportButton);
+
+  //convert HTML table to CSV on click of the button
+  exportButton.addEventListener("click", function () {
+    //tableToCSV();
+    exportPairs();
   });
 }
 

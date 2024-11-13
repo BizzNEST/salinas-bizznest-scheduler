@@ -65,3 +65,20 @@ export async function generatePairs(interns, pairingType) {
     console.log(error);
   }
 }
+
+export async function exportPairs() {
+  try {
+    const response = await fetch("http://localhost:8000/export-pairs");
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    //const internFile = await response.blob();
+    const aTag = document.getElementById("fileTag");
+    aTag.setAttribute("href", response.url);
+    //console.log(response);
+  } catch (error) {
+    console.error("There was a problem fetching the data:", error);
+  }
+}

@@ -4,7 +4,7 @@ import {
   displayInternWeekTable,
   displayInternTable,
 } from "./scripts/interns.js";
-import { asyncApiCall } from "./api/interns/service.js";
+import { asyncApiCall, exportPairs } from "./api/interns/service.js";
 
 export let currentSearchQuery = "";
 
@@ -24,11 +24,13 @@ function main() {
   displayInternTable();
 
   //API Call function
-  const toggleAPICall = document.getElementById("api-call");
-  toggleAPICall.addEventListener("click", async () => {
+  /*const toggleAPICall = document.getElementById("api-call");
+  toggleAPICall.addEventListener("click", async (event) => {
     //apiCall();
-    await asyncApiCall();
-  });
+    //await asyncApiCall();
+    //event.preventDefault();
+    //await exportPairs();
+  });*/
 
   toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height

@@ -1,10 +1,13 @@
-import getInterns, { generatePairs } from "../api/interns/service.js";
-import shuffle from "../util/shuffle.js";
-import pair from "../util/pair.js";
+import getInterns, {
+  exportPairs,
+  generatePairs,
+} from "../api/interns/service.js";
+//import shuffle from "../util/shuffle.js";
+//import pair from "../util/pair.js";
 import generateMailToString from "../util/sendEmail.js";
 import { filterByDepartment } from "../util/filterByDepartment.js";
 import { filterByLocation } from "../util/filterByLocation.js";
-import { uniquePairing } from "../util/uniquePairing.js";
+//import { uniquePairing } from "../util/uniquePairing.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
@@ -32,9 +35,10 @@ async function pairInterns() {
     //indicates if there is a unique pairing filter is selected & returns which
     getSelectedOptions()["Unique Pairing"],
   );
-  console.log("server pairs:");
-  console.log(Object.values(serverPairs));
-  return Object.values(serverPairs)[0];
+  await exportPairs();
+  //console.log("server pairs:");
+  //console.log(Object.values(serverPairs));
+  return serverPairs.pairs;
 }
 
 function formatInternWeekDetails(intern) {
@@ -119,6 +123,7 @@ export async function displayInternWeekTable(savedPairs) {
     //add to table
     tableBody.appendChild(row);
   });
+  //displayExportButton();
   displayExportButton();
 }
 
