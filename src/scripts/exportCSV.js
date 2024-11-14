@@ -17,12 +17,17 @@
   });
 }*/
 
-import { exportPairs } from "../api/interns/service.js";
+//import { exportPairs } from "../api/interns/service.js";
 
 export function displayExportButton() {
   //get export button div & clear if re-generated
   const parentContainer = document.getElementById("export-button-div");
   parentContainer.innerHTML = "";
+
+  //Create anchor tag to download
+  const fileTag = document.createElement("a");
+  fileTag.id = "server-export";
+  fileTag.style = "text-decoration:none";
 
   // Create the button
   const exportButton = document.createElement("button");
@@ -30,13 +35,14 @@ export function displayExportButton() {
   exportButton.id = "export-button";
   exportButton.type = "button";
   exportButton.innerHTML = `Export <i class="fa-solid fa-file-arrow-down"></i>`;
-  parentContainer.appendChild(exportButton);
+  parentContainer.appendChild(fileTag);
+  fileTag.appendChild(exportButton);
 
   //convert HTML table to CSV on click of the button
-  exportButton.addEventListener("click", function () {
+  /*exportButton.addEventListener("click", function () {
     //tableToCSV();
     exportPairs();
-  });
+  });*/
 }
 
 export function tableToCSV() {

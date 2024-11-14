@@ -73,7 +73,8 @@ export async function exportPairs() {
     }
 
     //get the anchor tag and add the file url
-    const aTag = document.getElementById("fileTag");
+    //const aTag = document.getElementById("fileTag");
+    const aTag = document.getElementById("server-export");
     aTag.setAttribute("href", response.url);
   } catch (error) {
     console.error("There was a problem fetching the data:", error);

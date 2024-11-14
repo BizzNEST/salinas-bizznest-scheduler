@@ -66,8 +66,8 @@ function formatInternWeekDetails(intern) {
 }
 
 export async function displayInternWeekTable(savedPairs) {
+  displayExportButton();
   const internPairs = savedPairs != null ? savedPairs : await pairInterns();
-  //console.log(internPairs);
   savePairsToLocalStorage(internPairs);
 
   renderDepartmentLists("department-list-2");
@@ -126,7 +126,6 @@ export async function displayInternWeekTable(savedPairs) {
     tableBody.appendChild(row);
   });
   //displayExportButton();
-  displayExportButton();
 }
 
 export function formatInternDetails(intern) {
