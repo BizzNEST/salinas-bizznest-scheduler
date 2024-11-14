@@ -22,6 +22,15 @@ function main() {
   });
   displayInternTable();
 
+  //PRACTICE API Call function
+  /*const toggleAPICall = document.getElementById("api-call");
+  toggleAPICall.addEventListener("click", async (event) => {
+    //apiCall();
+    //await asyncApiCall();
+    //event.preventDefault();
+    //await exportPairs();
+  });*/
+
   toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
     weekCardContent.classList.toggle("collapsed");

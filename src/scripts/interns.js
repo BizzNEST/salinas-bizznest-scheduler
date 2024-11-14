@@ -1,10 +1,13 @@
-import getInterns from "../api/interns/service.js";
-import shuffle from "../util/shuffle.js";
-import pair from "../util/pair.js";
+import getInterns, {
+  exportPairs,
+  generatePairs,
+} from "../api/interns/service.js";
+//import shuffle from "../util/shuffle.js";
+//import pair from "../util/pair.js";
 import generateMailToString from "../util/sendEmail.js";
 import { filterByDepartment } from "../util/filterByDepartment.js";
 import { filterByLocation } from "../util/filterByLocation.js";
-import { uniquePairing } from "../util/uniquePairing.js";
+//import { uniquePairing } from "../util/uniquePairing.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
@@ -24,9 +27,20 @@ export function loadPairsFromLocalStorage() {
 
 async function pairInterns() {
   const interns = getSelectedInterns();
-  shuffle(interns);
+  //previous implementation
+  /*shuffle(interns);
   uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
-  return pair(interns);
+  return pair(interns);*/
+  const serverPairs = await generatePairs(
+    interns,
+    //indicates if there is a unique pairing filter is selected & returns which
+    getSelectedOptions()["Unique Pairing"],
+  );
+
+  //to attach url to button anchor tag (can download on first click now)
+  await exportPairs();
+
+  return serverPairs.pairs;
 }
 
 function formatInternWeekDetails(intern) {
@@ -52,6 +66,7 @@ function formatInternWeekDetails(intern) {
 }
 
 export async function displayInternWeekTable(savedPairs) {
+  displayExportButton();
   const internPairs = savedPairs != null ? savedPairs : await pairInterns();
   savePairsToLocalStorage(internPairs);
 
@@ -110,7 +125,7 @@ export async function displayInternWeekTable(savedPairs) {
     //add to table
     tableBody.appendChild(row);
   });
-  displayExportButton();
+  //displayExportButton();
 }
 
 export function formatInternDetails(intern) {
