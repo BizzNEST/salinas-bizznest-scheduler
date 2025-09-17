@@ -34,7 +34,10 @@ Step-by-step instructions on how to get the development environment running.
     npm install
     ```
 4. Run the development server:
-   - run live server
+   - Download "Live Server" extension on VScode
+   - After download is complete, a "Go Live" button will appear in the bottom right.
+   - Click "Go Live" to locally run project
+   - If successful, the button should read "Port: 5500"
 
 5. To Run our Test / Accuracy:
    ```sh
