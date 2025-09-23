@@ -66,7 +66,7 @@ filterByDepartmentTest({
     "Design",
     "Video Production",
     "IT",
-    "Digital-Marketing",
+    "Digital Marketing",
   ],
   message: "Test: accuracy for all departments filter:",
 });
@@ -83,8 +83,8 @@ filterByDepartmentTest({
   message: "Test: Accuracy for IT filter:",
 });
 filterByDepartmentTest({
-  departments: ["Digital-Marketing"],
-  message: "Test: Accuracy for Digital-Marketing filter:",
+  departments: ["Digital Marketing"],
+  message: "Test: Accuracy for Digital Marketing filter:",
 });
 filterByDepartmentTest({
   departments: [],
