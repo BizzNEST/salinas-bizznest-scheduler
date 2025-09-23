@@ -10,7 +10,7 @@ export const filters = [
       "Design",
       "Video Production",
       "IT",
-      "Marketing",
+      "Digital Marketing",
     ],
   },
   {

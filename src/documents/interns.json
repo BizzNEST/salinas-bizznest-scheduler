@@ -1,476 +1,29 @@
 {
   "interns": {
-    "Ali Taquie": {
-      "location": "Watsonville",
-      "department": "Web Development",
-      "email": "ataquie@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Sergio Medina-Ixta": {
-      "location": "Watsonville",
-      "department": "Web Development",
-      "email": "sergio@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Afternoon",
-        "Thursday": "Afternoon",
-        "Friday": "Afternoon"
-      }
-    },
-    "Yuliana Morales-Galvan": {
-      "location": "Watsonville",
-      "department": "Web Development",
-      "email": "ymorales-galvan@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Unavailable",
-        "Thursday": "Morning",
-        "Friday": "Full Day"
-      }
-    },
-    "Joel Mariscal": {
-      "location": "Watsonville",
-      "department": "Web Development",
-      "email": "jmariscal@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Tyler Nguyen": {
-      "location": "Stockton",
-      "department": "Web Development",
-      "email": "tnguyen@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Christopher Loya": {
-      "location": "Stockton",
-      "department": "Web Development",
-      "email": "cloya@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Bledine Messa Ngunte": {
-      "location": "Stockton",
-      "department": "Web Development",
-      "email": "bngunte@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Full Day"
-      }
-    },
-    "Jose Velarde-Ruiz": {
+    
+
+    "Michelle Aung": {
       "location": "Modesto",
-      "department": "Web Development",
-      "email": "jose.velarde@bizznest.digitalnest.org",
+      "department": "Design",
+      "email" : "m.aung@digitalnest.org",
       "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Full Day"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Alan Buenrostro": {
-      "location": "Modesto",
-      "department": "Web Development",
-      "email": "abuenrostro@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Afternoon",
-        "Thursday": "Not Available",
-        "Friday": "Full Day"
-      }
-    },
-    "Leo Masellis": {
-      "location": "Modesto",
-      "department": "Web Development",
-      "email": "lmasillas@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Karl Legson": {
-      "location": "Modesto",
-      "department": "Web Development",
-      "email": "klegson@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Afternoon",
-        "Thursday": "Afternoon",
-        "Friday": "Morning"
-      }
-    },
-    "Victor Lomeli Ponce": {
-      "location": "Modesto",
-      "department": "Web Development",
-      "email": "vlomeli@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Adrean Cajigas": {
-      "location": "Modesto",
-      "department": "Web Development",
-      "email": "adrean.cajigas@bizznest.digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Afternoon",
-        "Thursday": "Morning",
-        "Friday": "Afternoon"
-      }
-    },
-    "Eli Manzo": {
-      "location": "Salinas",
-      "department": "Web Development",
-      "email": "eli.manzo@bizznest.digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Liliana Constantino": {
-      "location": "Salinas",
-      "department": "Web Development",
-      "email": "lconstantino@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Jacqueline Perez": {
-      "location": "Salinas",
-      "department": "Web Development",
-      "email": "jperez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Alonzo Cabrera": {
-      "location": "Salinas",
-      "department": "Web Development",
-      "email": "a.cabrera@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Unavailable",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Youssef Bazzi": {
+
+    
+    "Xavier Cruz": {
       "location": "Gilroy",
-      "department": "Web Development",
-      "email": "ybazzi@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Unavailable",
-        "Thursday": "Afternoon",
-        "Friday": "Full Day"
-      }
-    },
-    "Lisandro Jimenez": {
-      "location": "Gilroy",
-      "department": "Web Development",
-      "email": "lisandro.jimenez@bizznest.digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Unavailable",
-        "Thursday": "Full Day",
-        "Friday": "Full Day"
-      }
-    },
-    "Ian Ellis": {
-      "location": "Gilroy",
-      "department": "Web Development",
-      "email": "iellis@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Unavailable",
-        "Thursday": "Unavailable",
-        "Friday": "Full Day"
-      }
-    },
-    "Benjamin Schoolland": {
-      "location": "Modesto",
-      "department": "Web Development",
-      "email": "benjamin.schoolland@bizznest.digitalnest.org",
-      "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Full Day",
-        "Thursday": "Afternoon",
-        "Friday": "Afternoon"
-      }
-    },
-    "Lizeth Villarreal": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "l.villarreal@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Full Day"
-      }
-    },
-    "Ivan Ramirez": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "l.villarreal@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Julian Guerrero": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "jguerrero@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Full Day"
-      }
-    },
-    "Dominic Morales": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "dmorales@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Unavailable",
-        "Friday": "Full Day"
-      }
-    },
-    "Luis Perez": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "lperez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Morning"
-      }
-    },
-    "Rogelio Valdez-Perez": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "rperez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Melanie Torres": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "mtorres@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Full Day",
-        "Thursday": "Unavailable",
-        "Friday": "Full Day"
-      }
-    },
-    "Emily Ramirez": {
-      "location": "Watsonville",
-      "department": "Video Production",
-      "email": "eramirez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Unavailable",
-        "Friday": "Full Day"
-      }
-    },
-    "Josh Matadamas": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "jmatadamas@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Full Day"
-      }
-    },
-    "Julia Ruiz": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "julia@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Emiliano Margarito": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "emargarito@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Afternoon",
-        "Thursday": "Unavailable",
-        "Friday": "Full Day"
-      }
-    },
-    "Elijah Younger": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "eyounger@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Unavailable",
-        "Thursday": "Full Day",
-        "Friday": "Morning"
-      }
-    },
-    "Lesley Vargas": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "lvargas@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Unavailable",
-        "Thursday": "Morning",
-        "Friday": "Full Day"
-      }
-    },
-    "Natalia Rodas": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "nrodas@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Afternoon",
-        "Friday": "Full Day"
-      }
-    },
-    "Nicolas Biala": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "nbiala@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Unavailable",
-        "Friday": "Morning"
-      }
-    },
-    "Talia Mendoza": {
-      "location": "Salinas",
-      "department": "Video Production",
-      "email": "tmendoza@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Unavailable",
-        "Thursday": "Morning",
-        "Friday": "Full Day"
-      }
-    },
-    "Fatima Perez": {
-      "location": "Modesto",
       "department": "Design",
-      "email": "fperez@digitalnest.org",
+      "email": "xcruz@digitalnest.org",
       "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Seneca Rubianes": {
-      "location": "Modesto",
-      "department": "Design",
-      "email": "srubianes@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Unavailable",
-        "Friday": "Full Day"
-      }
-    },
-    "Carmen Trujillo": {
-      "location": "Modesto",
-      "department": "Design",
-      "email": "ctrujillo@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Morning"
-      }
-    },
-    "Andrew Eversley": {
-      "location": "Modesto",
-      "department": "Design",
-      "email": "aeversley@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
-      }
-    },
-    "Nazgol Ghafourian": {
-      "location": "Modesto",
-      "department": "Design",
-      "email": "nghafourian@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Afternoon",
-        "Friday": "Full Day"
-      }
-    },
-    "Nat Talaid": {
-      "location": "Stockton",
-      "department": "Design",
-      "email": "ntalaid@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
     "Thalia Gu": {
@@ -478,176 +31,466 @@
       "department": "Design",
       "email": "tgu@digitalnest.org",
       "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Unavailable",
-        "Thursday": "Full Day",
-        "Friday": "Afternoon"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Gianelli Liguidliguid": {
+
+    "Brenda Zavala": {
+      "location": "Gilroy",
+      "department": "Design",
+      "email": "b.zavala@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+
+    "Mitchell Raposa": {
+      "location": "Modesto",
+      "department": "Design",
+      "email": "m.raposa@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Ian Barbero": {
+      "location": "Modesto",
+      "department": "Design",
+      "email": "i.barbero@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Andrea Singson": {
       "location": "Stockton",
       "department": "Design",
-      "email": "gliguidliguid@digitalnest.org",
+      "email": "a.singson@digitalnest.org",
       "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Sebi Perry": {
-      "location": "Watsonville",
+
+
+    "Maggie Ma": {
+      "location": "Stockton",
       "department": "Design",
-      "email": "operry@digitalnest.org",
+      "email": "m.ma@digitalnest.org",
       "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Morning",
-        "Thursday": "Unavailable",
-        "Friday": "Full Day"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Ryan Janowitz": {
-      "location": "Watsonville",
-      "department": "Design",
-      "email": "rjanowitz@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Mirna Gonzalez": {
-      "location": "Watsonville",
-      "department": "Design",
-      "email": "mgonzalez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Nancy Cervantes-Herrera": {
-      "location": "Watsonville",
-      "department": "Design",
-      "email": "ncervantes-herrera@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Afternoon",
-        "Thursday": "Morning",
-        "Friday": "Morning"
-      }
-    },
-    "Yadriel Pareja": {
+
+    "Elija Vakni": {
       "location": "Gilroy",
       "department": "Design",
-      "email": "ypareja@digitalnest.org",
+      "email": "e.vakni@digitalnest.org",
       "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Princess Rodriguez": {
-      "location": "Gilroy",
-      "department": "Design",
-      "email": "prodriguez@digitalnest.org",
+
+
+    "Samantha Haro-Reynoso": {
+      "location": "Watsonville",
+      "department": "Digital Marketing",
+      "email": "s.haro@digitalnest.org",
       "schedule": {
-        "Tuesday": "Morning",
-        "Wednesday": "Morning",
-        "Thursday": "Morning",
-        "Friday": "Morning"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
+
+
     "Milagros Perez": {
-      "location": "Gilroy",
-      "department": "Design",
+      "location": "Salinas",
+      "department": "Digital Marketing",
       "email": "mperez@digitalnest.org",
       "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Xavier Cruz": {
+
+    "Nat Talaid": {
+      "location": "Stockton",
+      "department": "Digital Marketing",
+      "email": "ntalaid@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Catrina Alcantar": {
       "location": "Salinas",
-      "department": "Design",
-      "email": "xcruz@digitalnest.org",
+      "department": "Digital Marketing",
+      "email": "c.alcantar@digitalnest.org",
       "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Alexa Zavala": {
+
+    "Raquel Cruz": {
       "location": "Salinas",
-      "department": "Design",
-      "email": "azavala@digitalnest.org",
+      "department": "Digital Marketing",
+      "email": "r.cruz@digitalnest.org",
       "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Afternoon",
-        "Thursday": "Full Day",
-        "Friday": "Full Day"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Emma Griffin-Ortiz": {
-      "location": "Salinas",
-      "department": "Design",
-      "email": "egriffin-ortiz@digitalnest.org",
+
+    "Ayleen Aguilar": {
+      "location": "Stockton",
+      "department": "Digital Marketing",
+      "email": "a.aguilar@digitalnest.org",
       "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Cristian Reyes": {
-      "location": "Salinas",
-      "department": "Design",
-      "email": "creyes@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Unavailable"
-      }
-    },
-    "Maribel Garcia": {
-      "location": "Modesto",
-      "department": "Marketing",
-      "email": "mgarcia@digitalnest.org",
-      "schedule": {
-        "Tuesday": "Unavailable",
-        "Wednesday": "Full Day",
-        "Thursday": "Full Day",
-        "Friday": "Morning"
-      }
-    },
-    "Fernanda Jordan": {
+
+
+    "Rogelio Perez": {
       "location": "Watsonville",
-      "department": "Marketing",
-      "email": "fernanda@digitalnest.org",
+      "department": "Digital Marketing",
+      "email": "rperez@digitalnest.org",
       "schedule": {
-        "Tuesday": "Afternoon",
-        "Wednesday": "Unavailable",
-        "Thursday": "Afternoon",
-        "Friday": "Full Day"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     },
-    "Elissa Covarrubias": {
-      "location": "Salinas",
-      "department": "IT",
-      "email": "elissa@digitalnest.org",
+
+
+    "Juan Suarez": {
+      "location": "Watsonville",
+      "department": "Digital Marketing",
+      "email": "juan.suarez@digitalnest.org",
       "schedule": {
-        "Tuesday": "Full Day",
-        "Wednesday": "Full Day",
-        "Thursday": "Morning",
-        "Friday": "Unavailable"
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Fatima Perez": {
+      "location": "Stockton",
+      "department": "Digital Marketing",
+      "email": "fperez@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Catherine Villegas": {
+      "location": "Modesto",
+      "department": "IT",
+      "email": "c.villegas@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Victor Lomeli": {
+      "location": "Modesto",
+      "department": "IT",
+      "email": "vlomeli@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Micah Stampos": {
+      "location": "Salinas",
+      "department": "Video Production",
+      "email": "m.stamps@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Elizabeth Elias": {
+      "location": "Watsonville",
+      "department": "Video Production",
+      "email": "e.elias@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Luis Serrano": {
+      "location": "Salinas",
+      "department": "Video Production",
+      "email": "l.serrano@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Terry Mirande": {
+      "location": "Watsonville",
+      "department": "Video Production",
+      "email": "t.mirande@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Leo Grenlin": {
+      "location": "Watsonville",
+      "department": "Video Production",
+      "email": "l.grelin@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Jesus Cumplido": {
+      "location": "Salinas",
+      "department": "Video Production",
+      "email": "j.cumplido@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Ian Ellis": {
+      "location": "Gilroy",
+      "department": "Web Development",
+      "email": "iellis@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Fernando Alcazar" : {
+      "location": "Modesto",
+      "department": "Web Development",
+      "email": "f.alcazar@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Jacqueline Perez": {
+      "location": "Salinas",
+      "department": "Web Development",
+      "email": "jperez@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Joel Mariscal": {
+      "location": "Watsonville",
+      "department": "Web Development",
+      "email": "jmariscal@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Joshua Rivera": {
+      "location": "Stockton",
+      "department": "Web Development",
+      "email": "j.rivera@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Andre Maciel": {
+      "location": "Salinas",
+      "department": "Web Development",
+      "email": "a.maciel@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Joseph Perez": {
+      "location": "Salinas",
+      "department": "Web Development",
+      "email": "j.perez@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Luciano Lorenzana": {
+      "location": "Watsonville",
+      "department": "Web Development",
+      "email": "l.lorenzana@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Jackeline Arellano": {
+      "location": "Gilroy",
+      "department": "Web Development",
+      "email": "j.arellano@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Rene Rodriguez": {
+      "location": "Modesto",
+      "department": "Web Development",
+      "email": "r.rodriguez@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+    "Parul Datta": {
+      "location": "Stockton",
+      "department": "Web Development",
+      "email": "p.datta@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Jack Liang": {
+      "location": "Gilroy",
+      "department": "Web Development",
+      "email": "j.liang@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+
+
+    "Aidan Younathan": {
+      "location": "Modesto",
+      "department": "Web Development",
+      "email": "a.younathan@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
       }
     }
-  }
+
+
+   
+}
 }
