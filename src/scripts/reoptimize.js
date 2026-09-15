@@ -13,13 +13,10 @@ import {
   refresh,
 } from "./plan.js";
 import generatePlan from "../util/generatePlan.js";
+import makeFilterButton from "../util/makeFilterButton.js";
 
 export function renderReoptimize(container) {
-  const button = document.createElement("button");
-  button.className = "filter-button";
-  button.textContent = "Re-optimize remaining weeks";
-
-  button.addEventListener("click", () => {
+  const button = makeFilterButton("Re-optimize remaining weeks", () => {
     const plan = getPlan();
     if (!plan) {
       return;
