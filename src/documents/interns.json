@@ -1,11 +1,9 @@
 {
   "interns": {
-    
-
     "Michelle Aung": {
       "location": "Modesto",
       "department": "Design",
-      "email" : "m.aung@digitalnest.org",
+      "email": "m.aung@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -13,8 +11,6 @@
         "Friday": ""
       }
     },
-
-    
     "Xavier Cruz": {
       "location": "Gilroy",
       "department": "Design",
@@ -37,7 +33,6 @@
         "Friday": ""
       }
     },
-
     "Brenda Zavala": {
       "location": "Gilroy",
       "department": "Design",
@@ -49,9 +44,6 @@
         "Friday": ""
       }
     },
-
-
-
     "Mitchell Raposa": {
       "location": "Modesto",
       "department": "Design",
@@ -63,8 +55,6 @@
         "Friday": ""
       }
     },
-
-
     "Ian Barbero": {
       "location": "Modesto",
       "department": "Design",
@@ -76,7 +66,6 @@
         "Friday": ""
       }
     },
-
     "Andrea Singson": {
       "location": "Stockton",
       "department": "Design",
@@ -88,8 +77,6 @@
         "Friday": ""
       }
     },
-
-
     "Maggie Ma": {
       "location": "Stockton",
       "department": "Design",
@@ -101,7 +88,6 @@
         "Friday": ""
       }
     },
-
     "Elija Vakni": {
       "location": "Gilroy",
       "department": "Design",
@@ -113,8 +99,6 @@
         "Friday": ""
       }
     },
-
-
     "Samantha Haro-Reynoso": {
       "location": "Watsonville",
       "department": "Digital Marketing",
@@ -126,8 +110,6 @@
         "Friday": ""
       }
     },
-
-
     "Milagros Perez": {
       "location": "Salinas",
       "department": "Digital Marketing",
@@ -139,7 +121,6 @@
         "Friday": ""
       }
     },
-
     "Nat Talaid": {
       "location": "Stockton",
       "department": "Digital Marketing",
@@ -151,7 +132,6 @@
         "Friday": ""
       }
     },
-
     "Catrina Alcantar": {
       "location": "Salinas",
       "department": "Digital Marketing",
@@ -163,7 +143,6 @@
         "Friday": ""
       }
     },
-
     "Raquel Cruz": {
       "location": "Salinas",
       "department": "Digital Marketing",
@@ -175,7 +154,6 @@
         "Friday": ""
       }
     },
-
     "Ayleen Aguilar": {
       "location": "Stockton",
       "department": "Digital Marketing",
@@ -187,8 +165,6 @@
         "Friday": ""
       }
     },
-
-
     "Rogelio Perez": {
       "location": "Watsonville",
       "department": "Digital Marketing",
@@ -200,8 +176,6 @@
         "Friday": ""
       }
     },
-
-
     "Juan Suarez": {
       "location": "Watsonville",
       "department": "Digital Marketing",
@@ -213,8 +187,6 @@
         "Friday": ""
       }
     },
-
-
     "Fatima Perez": {
       "location": "Stockton",
       "department": "Digital Marketing",
@@ -226,7 +198,6 @@
         "Friday": ""
       }
     },
-
     "Catherine Villegas": {
       "location": "Modesto",
       "department": "IT",
@@ -238,8 +209,6 @@
         "Friday": ""
       }
     },
-
-
     "Victor Lomeli": {
       "location": "Modesto",
       "department": "IT",
@@ -251,7 +220,6 @@
         "Friday": ""
       }
     },
-
     "Micah Stampos": {
       "location": "Salinas",
       "department": "Video Production",
@@ -263,7 +231,6 @@
         "Friday": ""
       }
     },
-
     "Elizabeth Elias": {
       "location": "Watsonville",
       "department": "Video Production",
@@ -275,8 +242,6 @@
         "Friday": ""
       }
     },
-
-
     "Luis Serrano": {
       "location": "Salinas",
       "department": "Video Production",
@@ -288,7 +253,6 @@
         "Friday": ""
       }
     },
-
     "Terry Mirande": {
       "location": "Watsonville",
       "department": "Video Production",
@@ -300,8 +264,6 @@
         "Friday": ""
       }
     },
-
-
     "Leo Grenlin": {
       "location": "Watsonville",
       "department": "Video Production",
@@ -313,8 +275,6 @@
         "Friday": ""
       }
     },
-
-
     "Jesus Cumplido": {
       "location": "Salinas",
       "department": "Video Production",
@@ -326,12 +286,10 @@
         "Friday": ""
       }
     },
-
-
-    "Ian Ellis": {
+    "Achsah Jojo": {
       "location": "Gilroy",
       "department": "Web Development",
-      "email": "iellis@digitalnest.org",
+      "email": "a.jojo@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -339,11 +297,10 @@
         "Friday": ""
       }
     },
-
-    "Fernando Alcazar" : {
+    "Aidan Younathan": {
       "location": "Modesto",
       "department": "Web Development",
-      "email": "f.alcazar@digitalnest.org",
+      "email": "a.younathan@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -351,38 +308,10 @@
         "Friday": ""
       }
     },
-
-
-    "Jacqueline Perez": {
-      "location": "Salinas",
-      "department": "Web Development",
-      "email": "jperez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "",
-        "Wednesday": "",
-        "Thursday": "",
-        "Friday": ""
-      }
-    },
-
-
-    "Joel Mariscal": {
-      "location": "Watsonville",
-      "department": "Web Development",
-      "email": "jmariscal@digitalnest.org",
-      "schedule": {
-        "Tuesday": "",
-        "Wednesday": "",
-        "Thursday": "",
-        "Friday": ""
-      }
-    },
-
-
-    "Joshua Rivera": {
+    "Aldridge Alegre": {
       "location": "Stockton",
       "department": "Web Development",
-      "email": "j.rivera@digitalnest.org",
+      "email": "a.alegre@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -390,7 +319,6 @@
         "Friday": ""
       }
     },
-
     "Andre Maciel": {
       "location": "Salinas",
       "department": "Web Development",
@@ -402,23 +330,10 @@
         "Friday": ""
       }
     },
-
-    "Joseph Perez": {
-      "location": "Salinas",
-      "department": "Web Development",
-      "email": "j.perez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "",
-        "Wednesday": "",
-        "Thursday": "",
-        "Friday": ""
-      }
-    },
-
-    "Luciano Lorenzana": {
+    "Anthony Duenez Ramirez": {
       "location": "Watsonville",
       "department": "Web Development",
-      "email": "l.lorenzana@digitalnest.org",
+      "email": "a.duenez@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -426,11 +341,10 @@
         "Friday": ""
       }
     },
-
-    "Jackeline Arellano": {
+    "Ashley Perez": {
       "location": "Gilroy",
       "department": "Web Development",
-      "email": "j.arellano@digitalnest.org",
+      "email": "a.perez@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -438,24 +352,10 @@
         "Friday": ""
       }
     },
-
-
-    "Rene Rodriguez": {
-      "location": "Modesto",
-      "department": "Web Development",
-      "email": "r.rodriguez@digitalnest.org",
-      "schedule": {
-        "Tuesday": "",
-        "Wednesday": "",
-        "Thursday": "",
-        "Friday": ""
-      }
-    },
-
-    "Parul Datta": {
+    "Diego Acosta": {
       "location": "Stockton",
       "department": "Web Development",
-      "email": "p.datta@digitalnest.org",
+      "email": "dacosta@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -463,12 +363,43 @@
         "Friday": ""
       }
     },
-
-
-    "Jack Liang": {
+    "Jared Esquivel": {
+      "location": "Watsonville",
+      "department": "Web Development",
+      "email": "jared@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Milo Rodriguez": {
+      "location": "Watsonville",
+      "department": "Web Development",
+      "email": "m.rodriguez@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Oswaldo Cortes-Tinoco": {
+      "location": "Salinas",
+      "department": "Web Development",
+      "email": "o.cortes@digitalnest.org",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Prabjot Pannu": {
       "location": "Gilroy",
       "department": "Web Development",
-      "email": "j.liang@digitalnest.org",
+      "email": "p.pannu@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -476,12 +407,10 @@
         "Friday": ""
       }
     },
-
-
-    "Aidan Younathan": {
-      "location": "Modesto",
+    "Sebastian Ramos": {
+      "location": "Salinas",
       "department": "Web Development",
-      "email": "a.younathan@digitalnest.org",
+      "email": "s.ramos@digitalnest.org",
       "schedule": {
         "Tuesday": "",
         "Wednesday": "",
@@ -489,8 +418,5 @@
         "Friday": ""
       }
     }
-
-
-   
-}
+  }
 }
