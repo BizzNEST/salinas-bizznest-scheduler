@@ -24,7 +24,7 @@ import {
   loadPlan,
   savePlan,
 } from "./plan.js";
-import { pickQuestions, renderQuestions } from "./questions.js";
+import { pickQuestionSets, renderQuestions } from "./questions.js";
 import { renderCopyWeek } from "./copyWeek.js";
 import { reoptimizeRemainingWeeks } from "./reoptimize.js";
 
@@ -175,19 +175,25 @@ function renderCoverageMeter(coverage) {
   return meter;
 }
 
-// Show the selected week's ice-breakers, picking + persisting them once per
-// week so they stay stable across edits and week switches (per spec story 30).
+// Ensure EVERY week has its own distinct ice-breaker set (so they're stable
+// across edits/week switches and present in exports even for weeks never
+// viewed), then render the selected week's set.
 async function showWeekQuestions() {
   const plan = getPlan();
   if (!plan) {
     return;
   }
-  const week = plan.weeks[getWeekIndex()];
-  if (!week.questions || week.questions.length === 0) {
-    week.questions = await pickQuestions();
+  const missing = plan.weeks.filter(
+    (week) => !week.questions || week.questions.length === 0,
+  );
+  if (missing.length > 0) {
+    const sets = await pickQuestionSets(missing.length);
+    missing.forEach((week, i) => {
+      week.questions = sets[i];
+    });
     savePlan();
   }
-  renderQuestions(week.questions);
+  renderQuestions(plan.weeks[getWeekIndex()].questions);
 }
 
 // Render the whole plan view: controls + selected week's meetings + operations.
