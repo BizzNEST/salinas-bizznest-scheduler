@@ -11,6 +11,64 @@ function pairKey(a, b) {
   return [a, b].sort().join(KEY_SEP);
 }
 
+// The target coverage set: every eligible pair on the roster, keyed by
+// `pairKey` and mapped to its [nameA, nameB] tuple.
+function buildEligible(interns, isEligible) {
+  const eligible = new Map();
+  for (let i = 0; i < interns.length; i++) {
+    for (let j = i + 1; j < interns.length; j++) {
+      if (isEligible(interns[i], interns[j])) {
+        eligible.set(pairKey(interns[i].name, interns[j].name), [
+          interns[i].name,
+          interns[j].name,
+        ]);
+      }
+    }
+  }
+  return eligible;
+}
+
+// Add every internal pair of every meeting in `meetings` to the `met` Set.
+function recordMeetings(meetings, met) {
+  for (const meeting of meetings) {
+    for (let i = 0; i < meeting.length; i++) {
+      for (let j = i + 1; j < meeting.length; j++) {
+        met.add(pairKey(meeting[i].name, meeting[j].name));
+      }
+    }
+  }
+}
+
+// Score coverage: only eligible pairs count, each once.
+function scoreCoverage(eligible, met) {
+  let metCount = 0;
+  const unmetPairs = [];
+  for (const [k, tuple] of eligible) {
+    if (met.has(k)) {
+      metCount++;
+    } else {
+      unmetPairs.push(tuple);
+    }
+  }
+  return { met: metCount, total: eligible.size, unmetPairs };
+}
+
+// Every [nameA, nameB] tuple met across the given weeks (used to seed a
+// continuation, e.g. re-optimize).
+export function metTuplesFromWeeks(weeks) {
+  const tuples = [];
+  for (const week of weeks) {
+    for (const meeting of week.meetings) {
+      for (let i = 0; i < meeting.length; i++) {
+        for (let j = i + 1; j < meeting.length; j++) {
+          tuples.push([meeting[i].name, meeting[j].name]);
+        }
+      }
+    }
+  }
+  return tuples;
+}
+
 // Normalize an `alreadyMet` seed (array of [nameA, nameB] tuples or keys) into
 // a Set of canonical keys.
 function seedMet(alreadyMet) {
@@ -25,6 +83,11 @@ function seedMet(alreadyMet) {
   return met;
 }
 
+function eligibilityFor({ isUniqueDept = false, isUniqueLoc = false }) {
+  return (a, b) =>
+    a.name !== b.name && isValidPair(a, b, isUniqueDept, isUniqueLoc);
+}
+
 // Pure multi-week plan generator. Given a roster and the active Unique Pairing
 // options, returns `{ weeks, coverage }` where every eligible pair meets at
 // least once (unless a `cap` cuts the plan short). No DOM/localStorage/fetch.
@@ -34,29 +97,10 @@ function seedMet(alreadyMet) {
 //   cap        - optional max number of weeks
 //   alreadyMet - optional seed of pairs already met (continue a partial plan)
 export default function generatePlan(interns, options = {}) {
-  const {
-    isUniqueDept = false,
-    isUniqueLoc = false,
-    cap = Infinity,
-    alreadyMet = [],
-  } = options;
+  const { cap = Infinity, alreadyMet = [] } = options;
 
-  const isEligible = (a, b) =>
-    a.name !== b.name && isValidPair(a, b, isUniqueDept, isUniqueLoc);
-
-  // Target coverage set: every eligible pair on the roster.
-  const eligible = new Map();
-  for (let i = 0; i < interns.length; i++) {
-    for (let j = i + 1; j < interns.length; j++) {
-      if (isEligible(interns[i], interns[j])) {
-        eligible.set(pairKey(interns[i].name, interns[j].name), [
-          interns[i].name,
-          interns[j].name,
-        ]);
-      }
-    }
-  }
-  const total = eligible.size;
+  const isEligible = eligibilityFor(options);
+  const eligible = buildEligible(interns, isEligible);
 
   const met = seedMet(alreadyMet);
   const hasMet = (a, b) => met.has(pairKey(a.name, b.name));
@@ -73,42 +117,21 @@ export default function generatePlan(interns, options = {}) {
       break;
     }
 
-    const meetings = matchWeek(active, isEligible, hasMet);
-
-    // Record every internal pair of every meeting as met. Coverage counts only
-    // eligible pairs (below), so filler/known pairs never advance coverage.
-    for (const meeting of meetings) {
-      for (let i = 0; i < meeting.length; i++) {
-        for (let j = i + 1; j < meeting.length; j++) {
-          met.add(pairKey(meeting[i].name, meeting[j].name));
-        }
-      }
-    }
-
+    const meetings = buildWeekMeetings(active, isEligible, hasMet);
+    // Filler/known pairs land in `met` too, but coverage only counts eligible
+    // pairs, so they never advance the meter.
+    recordMeetings(meetings, met);
     weeks.push({ meetings });
     week++;
   }
 
-  let metCount = 0;
-  const unmetPairs = [];
-  for (const [k, tuple] of eligible) {
-    if (met.has(k)) {
-      metCount++;
-    } else {
-      unmetPairs.push(tuple);
-    }
-  }
-
-  return {
-    weeks,
-    coverage: { met: metCount, total, unmetPairs },
-  };
+  return { weeks, coverage: scoreCoverage(eligible, met) };
 }
 
 // Build one week's meetings from the active interns: fresh eligible pairs first,
 // then known/not-yet-met filler, then rotated repeats, folding a final leftover
 // into a triplet. Every active intern lands in exactly one meeting.
-function matchWeek(active, isEligible, hasMet) {
+function buildWeekMeetings(active, isEligible, hasMet) {
   const pool = [...active];
   shuffle(pool);
 
@@ -184,43 +207,12 @@ function matchWeek(active, isEligible, hasMet) {
 // Recompute coverage for an arbitrary set of weeks against a roster (used after
 // manual edits). Pure: mirrors the accounting `generatePlan` does internally.
 export function computeCoverage(interns, weeks, options = {}) {
-  const { isUniqueDept = false, isUniqueLoc = false } = options;
-  const isEligible = (a, b) =>
-    a.name !== b.name && isValidPair(a, b, isUniqueDept, isUniqueLoc);
-
-  const eligible = new Map();
-  for (let i = 0; i < interns.length; i++) {
-    for (let j = i + 1; j < interns.length; j++) {
-      if (isEligible(interns[i], interns[j])) {
-        eligible.set(pairKey(interns[i].name, interns[j].name), [
-          interns[i].name,
-          interns[j].name,
-        ]);
-      }
-    }
-  }
-
+  const eligible = buildEligible(interns, eligibilityFor(options));
   const met = new Set();
   for (const week of weeks) {
-    for (const meeting of week.meetings) {
-      for (let i = 0; i < meeting.length; i++) {
-        for (let j = i + 1; j < meeting.length; j++) {
-          met.add(pairKey(meeting[i].name, meeting[j].name));
-        }
-      }
-    }
+    recordMeetings(week.meetings, met);
   }
-
-  let metCount = 0;
-  const unmetPairs = [];
-  for (const [k, tuple] of eligible) {
-    if (met.has(k)) {
-      metCount++;
-    } else {
-      unmetPairs.push(tuple);
-    }
-  }
-  return { met: metCount, total: eligible.size, unmetPairs };
+  return scoreCoverage(eligible, met);
 }
 
 export { pairKey };

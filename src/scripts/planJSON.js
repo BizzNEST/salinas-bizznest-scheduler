@@ -4,19 +4,13 @@
 // well-formed plan, confirms replacement, then loads it and refreshes.
 
 import { getPlan, setPlan, refresh } from "./plan.js";
+import makeFilterButton from "../util/makeFilterButton.js";
 
 export function renderPlanJSON(container) {
-  const exportButton = document.createElement("button");
-  exportButton.className = "filter-button";
-  exportButton.type = "button";
-  exportButton.textContent = "Export plan (JSON)";
-  exportButton.addEventListener("click", exportPlan);
+  const exportButton = makeFilterButton("Export plan (JSON)", exportPlan);
   container.appendChild(exportButton);
 
-  const importButton = document.createElement("button");
-  importButton.className = "filter-button";
-  importButton.type = "button";
-  importButton.textContent = "Import plan (JSON)";
+  const importButton = makeFilterButton("Import plan (JSON)");
   container.appendChild(importButton);
 
   // Hidden file input triggered by the Import button.

@@ -20,8 +20,9 @@ import {
   updateCurrentWeekMeetings,
   setRenderer,
   loadPlan,
+  savePlan,
 } from "./plan.js";
-import displayQuestions from "./questions.js";
+import { pickQuestions, renderQuestions } from "./questions.js";
 import { renderCopyWeek } from "./copyWeek.js";
 import { renderPlanJSON } from "./planJSON.js";
 import { renderReoptimize } from "./reoptimize.js";
@@ -131,7 +132,6 @@ function renderPlanControls() {
   });
   select.addEventListener("change", () => {
     setWeekIndex(Number(select.value));
-    displayQuestions();
     renderPlan();
   });
   label.appendChild(select);
@@ -156,11 +156,27 @@ function renderCoverageMeter(coverage) {
   return meter;
 }
 
+// Show the selected week's ice-breakers, picking + persisting them once per
+// week so they stay stable across edits and week switches (per spec story 30).
+async function showWeekQuestions() {
+  const plan = getPlan();
+  if (!plan) {
+    return;
+  }
+  const week = plan.weeks[getWeekIndex()];
+  if (!week.questions || week.questions.length === 0) {
+    week.questions = await pickQuestions();
+    savePlan();
+  }
+  renderQuestions(week.questions);
+}
+
 // Render the whole plan view: controls + selected week's meetings + operations.
 export function renderPlan() {
   renderPlanControls();
   renderWeekTable(getCurrentMeetings());
   planOperationsBar();
+  showWeekQuestions();
 }
 
 // Restore any saved plan on page load and register the renderer so feature
@@ -170,7 +186,6 @@ export function initPlanView() {
   const plan = loadPlan();
   if (plan) {
     renderPlan();
-    displayQuestions();
   }
 }
 

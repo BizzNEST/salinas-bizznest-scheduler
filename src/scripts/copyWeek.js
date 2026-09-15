@@ -4,6 +4,7 @@
 // meetings, name + location per intern; triplets on one line).
 
 import { getCurrentMeetings, getWeekIndex } from "./plan.js";
+import makeFilterButton from "../util/makeFilterButton.js";
 
 // Build the plain-text block that pastes straight into Google Chat.
 function formatWeek(meetings, weekIndex) {
@@ -19,11 +20,7 @@ function formatWeek(meetings, weekIndex) {
 }
 
 export function renderCopyWeek(container) {
-  const button = document.createElement("button");
-  button.className = "filter-button";
-  button.textContent = "Copy Week";
-
-  button.addEventListener("click", async () => {
+  const button = makeFilterButton("Copy Week", async () => {
     const text = formatWeek(getCurrentMeetings(), getWeekIndex());
     try {
       await navigator.clipboard.writeText(text);

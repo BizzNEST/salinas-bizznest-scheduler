@@ -1,4 +1,3 @@
-import displayQuestions from "./scripts/questions.js";
 import { displayFilters } from "./scripts/filters.js";
 import {
   generateSchedule,
@@ -48,7 +47,6 @@ function main() {
     generateScheduleButtonAudio.volume = 0.5;
     generateScheduleButtonAudio.play();
     generateSchedule();
-    displayQuestions();
     generateButtonAnimation.goToAndPlay(0, true);
   });
 

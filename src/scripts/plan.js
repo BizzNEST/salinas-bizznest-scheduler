@@ -1,4 +1,4 @@
-import { computeCoverage } from "../util/generatePlan.js";
+import { computeCoverage, metTuplesFromWeeks } from "../util/generatePlan.js";
 
 // Storage + in-memory state for the multi-week plan. This is the layer that
 // wraps the pure `generatePlan`/`computeCoverage` seam; it is the only place
@@ -108,17 +108,7 @@ export function collectRoster(source = plan) {
 
 // The met-pair seed accumulated across the given weeks (for re-optimize).
 export function collectMet(weeks) {
-  const met = [];
-  for (const week of weeks) {
-    for (const meeting of week.meetings) {
-      for (let i = 0; i < meeting.length; i++) {
-        for (let j = i + 1; j < meeting.length; j++) {
-          met.push([meeting[i].name, meeting[j].name]);
-        }
-      }
-    }
-  }
-  return met;
+  return metTuplesFromWeeks(weeks);
 }
 
 export function recomputeCoverage() {
