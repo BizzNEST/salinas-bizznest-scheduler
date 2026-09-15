@@ -142,19 +142,28 @@ function renderPlanControls() {
   selector.appendChild(label);
   controls.appendChild(selector);
 
-  controls.appendChild(renderCoverageMeter(plan.coverage));
+  const meter = renderCoverageMeter(plan.coverage);
+  if (meter) {
+    controls.appendChild(meter);
+  }
 }
 
+// Only surface coverage when it tells the coordinator something: how many
+// eligible pairs are left, or a brief done note. Nothing when there is no
+// coverage to track (no eligible pairs) or when already complete-and-silent.
 function renderCoverageMeter(coverage) {
-  const meter = document.createElement("div");
-  meter.className = "coverage-meter";
   if (!coverage || !coverage.total) {
-    meter.textContent = "Coverage: n/a";
-    return meter;
+    return null;
   }
   const remaining = coverage.total - coverage.met;
+  const meter = document.createElement("div");
+  meter.className = "coverage-meter";
+  if (remaining === 0) {
+    meter.innerHTML = `<span class="coverage-label">✓ Everyone eligible has met</span>`;
+    return meter;
+  }
   const percent = Math.round((coverage.met / coverage.total) * 100);
-  meter.innerHTML = `<span class="coverage-label">${percent}% coverage — ${remaining} eligible pair${remaining === 1 ? "" : "s"} remaining</span>`;
+  meter.innerHTML = `<span class="coverage-label">${percent}% — ${remaining} eligible pair${remaining === 1 ? "" : "s"} left to meet</span>`;
   return meter;
 }
 
