@@ -1,4 +1,4 @@
-// Ticket 06: JSON export / import (round-trip).
+// JSON export / import (round-trip).
 // Exposes action functions used by the plan operations menu. Export downloads
 // the full plan structure; import validates a well-formed plan, confirms
 // replacement, then loads it and refreshes.

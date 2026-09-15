@@ -1,4 +1,4 @@
-// Ticket 04: Copy Week to Google Chat.
+// Copy Week to Google Chat.
 // Renders a "Copy Week" button into `container` that copies the selected week's
 // meetings to the clipboard as plain grouped text (week header + numbered
 // meetings by name, then the week's ice-breaker questions).
