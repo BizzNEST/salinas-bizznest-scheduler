@@ -32,7 +32,7 @@ export function exportPlan() {
     type: "application/json",
   });
   const link = document.createElement("a");
-  link.download = "intern-plan.json";
+  link.download = "associate-plan.json";
   link.href = window.URL.createObjectURL(blob);
   link.style.display = "none";
   document.body.appendChild(link);

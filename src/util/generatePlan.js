@@ -1,26 +1,26 @@
 import shuffle from "./shuffle.js";
 import { isValidPair } from "./uniquePairing.js";
 
-// Delimiter for pair keys: "::" cannot appear in an intern name, so keys stay
+// Delimiter for pair keys: "::" cannot appear in an associate name, so keys stay
 // unambiguous (and the source stays plain text — a null/space separator would
 // collide with multi-word names or make tools treat this file as binary).
 const KEY_SEP = "::";
 
-// Canonical key for an unordered pair of intern names.
+// Canonical key for an unordered pair of associate names.
 function pairKey(a, b) {
   return [a, b].sort().join(KEY_SEP);
 }
 
 // The target coverage set: every eligible pair on the roster, keyed by
 // `pairKey` and mapped to its [nameA, nameB] tuple.
-function buildEligible(interns, isEligible) {
+function buildEligible(associates, isEligible) {
   const eligible = new Map();
-  for (let i = 0; i < interns.length; i++) {
-    for (let j = i + 1; j < interns.length; j++) {
-      if (isEligible(interns[i], interns[j])) {
-        eligible.set(pairKey(interns[i].name, interns[j].name), [
-          interns[i].name,
-          interns[j].name,
+  for (let i = 0; i < associates.length; i++) {
+    for (let j = i + 1; j < associates.length; j++) {
+      if (isEligible(associates[i], associates[j])) {
+        eligible.set(pairKey(associates[i].name, associates[j].name), [
+          associates[i].name,
+          associates[j].name,
         ]);
       }
     }
@@ -96,23 +96,23 @@ function eligibilityFor({ isUniqueDept = false, isUniqueLoc = false }) {
 //   isUniqueDept, isUniqueLoc - which axes define an eligible pair
 //   cap        - optional max number of weeks
 //   alreadyMet - optional seed of pairs already met (continue a partial plan)
-export default function generatePlan(interns, options = {}) {
+export default function generatePlan(associates, options = {}) {
   const { cap = Infinity, alreadyMet = [] } = options;
 
   const isEligible = eligibilityFor(options);
-  const eligible = buildEligible(interns, isEligible);
+  const eligible = buildEligible(associates, isEligible);
 
   const met = seedMet(alreadyMet);
   const hasMet = (a, b) => met.has(pairKey(a.name, b.name));
 
-  // An intern is fully-met once every eligible partner has been met.
-  const fullyMet = (intern) =>
-    interns.every((o) => !isEligible(intern, o) || hasMet(intern, o));
+  // An associate is fully-met once every eligible partner has been met.
+  const fullyMet = (associate) =>
+    associates.every((o) => !isEligible(associate, o) || hasMet(associate, o));
 
   const weeks = [];
   let week = 0;
   while (week < cap) {
-    const active = interns.filter((i) => !fullyMet(i));
+    const active = associates.filter((i) => !fullyMet(i));
     if (active.length === 0) {
       break;
     }
@@ -127,17 +127,17 @@ export default function generatePlan(interns, options = {}) {
 
   // No eligible pairs to cover (e.g. everyone selected shares the axis the
   // active Unique Pairing toggle requires them to differ on) but there are
-  // still interns to pair — produce one all-filler week so nobody is idle.
-  if (weeks.length === 0 && interns.length >= 2 && cap >= 1) {
-    weeks.push({ meetings: buildWeekMeetings(interns, isEligible, hasMet) });
+  // still associates to pair — produce one all-filler week so nobody is idle.
+  if (weeks.length === 0 && associates.length >= 2 && cap >= 1) {
+    weeks.push({ meetings: buildWeekMeetings(associates, isEligible, hasMet) });
   }
 
   return { weeks, coverage: scoreCoverage(eligible, met) };
 }
 
-// Build one week's meetings from the active interns: fresh eligible pairs first,
+// Build one week's meetings from the active associates: fresh eligible pairs first,
 // then known/not-yet-met filler, then rotated repeats, folding a final leftover
-// into a triplet. Every active intern lands in exactly one meeting.
+// into a triplet. Every active associate lands in exactly one meeting.
 function buildWeekMeetings(active, isEligible, hasMet) {
   const pool = [...active];
   shuffle(pool);
@@ -213,8 +213,8 @@ function buildWeekMeetings(active, isEligible, hasMet) {
 
 // Recompute coverage for an arbitrary set of weeks against a roster (used after
 // manual edits). Pure: mirrors the accounting `generatePlan` does internally.
-export function computeCoverage(interns, weeks, options = {}) {
-  const eligible = buildEligible(interns, eligibilityFor(options));
+export function computeCoverage(associates, weeks, options = {}) {
+  const eligible = buildEligible(associates, eligibilityFor(options));
   const met = new Set();
   for (const week of weeks) {
     recordMeetings(week.meetings, met);

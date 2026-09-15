@@ -12,31 +12,33 @@ import { filterByLocation } from "../../util/filterByLocation.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const internsPath = join(__dirname, "../../documents/interns.json");
-const internInfo = JSON.parse(readFileSync(internsPath, "utf-8"));
+const associatesPath = join(__dirname, "../../documents/associates.json");
+const associateInfo = JSON.parse(readFileSync(associatesPath, "utf-8"));
 
-function pairInterns(listOfOurLocations) {
-  let interns = [];
-  const fetchedInterns = internInfo;
-  for (const [intern, internInfo] of Object.entries(fetchedInterns.interns)) {
-    interns.push({
-      name: intern,
-      ...internInfo,
+function pairAssociates(listOfOurLocations) {
+  let associates = [];
+  const fetchedAssociates = associateInfo;
+  for (const [associate, associateInfo] of Object.entries(
+    fetchedAssociates.associates,
+  )) {
+    associates.push({
+      name: associate,
+      ...associateInfo,
     });
   }
 
-  shuffle(interns);
-  interns = filterByLocation(interns, listOfOurLocations);
-  return pair(interns);
+  shuffle(associates);
+  associates = filterByLocation(associates, listOfOurLocations);
+  return pair(associates);
 }
 function filterByLocationTest(test) {
-  const pairs = pairInterns(test.locations);
+  const pairs = pairAssociates(test.locations);
   let count = 0;
-  for (const [intern1, intern2] of pairs) {
+  for (const [associate1, associate2] of pairs) {
     if (
       test.locations.length === 0 ||
-      (test.locations.includes(intern1.location) &&
-        test.locations.includes(intern2.location))
+      (test.locations.includes(associate1.location) &&
+        test.locations.includes(associate2.location))
     ) {
       count++;
     }
@@ -50,7 +52,7 @@ function filterByLocationTest(test) {
     console.log("Acurracy: " + accuracy(count, pairs.length) + "\n");
     // eslint-disable-next-line no-unused-vars
   } catch (error) {
-    console.log("0 Pairs were made because there was only 1 Intern\n");
+    console.log("0 Pairs were made because there was only 1 Associate\n");
   }
 }
 

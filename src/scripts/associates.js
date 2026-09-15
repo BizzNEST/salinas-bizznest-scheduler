@@ -1,4 +1,4 @@
-import getInterns from "../api/interns/service.js";
+import getAssociates from "../api/associates/service.js";
 import generateMailToString from "../util/sendEmail.js";
 import { filterByDepartment } from "../util/filterByDepartment.js";
 import { filterByLocation } from "../util/filterByLocation.js";
@@ -7,7 +7,7 @@ import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
 import { displayAddModal, displayRemoveModal, addEmptyPair } from "./edit.js";
-import { internsSet, locationEmojiMap } from "../constants/constants.js";
+import { associatesSet, locationEmojiMap } from "../constants/constants.js";
 import { dynamicHeader } from "../util/dynamicHeader.js";
 import { weekToCSV, planToCSV } from "./exportCSV.js";
 import { exportPlan, openImportDialog } from "./planJSON.js";
@@ -40,39 +40,39 @@ export function loadPairsFromLocalStorage() {
 
 // Build a full multi-week plan from the selected roster and active options.
 export function generateSchedule() {
-  const interns = getSelectedInterns();
+  const associates = getSelectedAssociates();
   const options = uniquePairingOptions(getSelectedOptions()["Unique Pairing"]);
-  const plan = generatePlan(interns, options);
+  const plan = generatePlan(associates, options);
   plan.options = options;
   setPlan(plan);
   renderPlan();
 }
 
-function formatInternWeekDetails(intern) {
-  const col = document.createElement("td"); //Create column for intern
-  const internInfo = document.createElement("div"); //Column info div
-  internInfo.className = "intern-pill-name-location";
+function formatAssociateWeekDetails(associate) {
+  const col = document.createElement("td"); //Create column for associate
+  const associateInfo = document.createElement("div"); //Column info div
+  associateInfo.className = "associate-pill-name-location";
 
   const pill = document.createElement("div"); //Department pill div
-  pill.className = `pill pill-${stringToKebabCase(intern.department)}`;
-  pill.innerHTML = `<b>${intern.department}</b>`;
-  internInfo.appendChild(pill);
+  pill.className = `pill pill-${stringToKebabCase(associate.department)}`;
+  pill.innerHTML = `<b>${associate.department}</b>`;
+  associateInfo.appendChild(pill);
 
   const location = document.createElement("p"); //Location
-  location.textContent = `${locationEmojiMap[intern.location]} ${intern.location}`;
-  internInfo.appendChild(location);
+  location.textContent = `${locationEmojiMap[associate.location]} ${associate.location}`;
+  associateInfo.appendChild(location);
 
   const name = document.createElement("p"); //Name
-  name.textContent = intern.name;
-  internInfo.appendChild(name);
-  col.appendChild(internInfo);
+  name.textContent = associate.name;
+  associateInfo.appendChild(name);
+  col.appendChild(associateInfo);
 
   return col;
 }
 
 // Backwards-compatible entry point still called by the edit modals: the week's
 // meetings are already persisted via savePairsToLocalStorage, so just re-render.
-export function displayInternWeekTable() {
+export function displayAssociateWeekTable() {
   renderPlan();
 }
 
@@ -208,57 +208,57 @@ export function initPlanView() {
   }
 }
 
-function renderWeekTable(internPairs) {
+function renderWeekTable(associatePairs) {
   renderDepartmentLists("department-list-2");
   const weekCard = document.getElementById("week-card-content");
   weekCard.style.display = "block";
   const departmentHeader = document.getElementById("department-headers-week");
   departmentHeader.innerText = "Departments";
-  const tableHeader = document.getElementById("interns-week-table-header");
+  const tableHeader = document.getElementById("associates-week-table-header");
   tableHeader.innerHTML = "";
 
-  internPairs.length === 0
-    ? (tableHeader.innerHTML = `<tr><th>Not enough Interns selected to pair.</th></tr>`)
-    : (tableHeader.innerHTML = dynamicHeader(internPairs));
+  associatePairs.length === 0
+    ? (tableHeader.innerHTML = `<tr><th>Not enough Associates selected to pair.</th></tr>`)
+    : (tableHeader.innerHTML = dynamicHeader(associatePairs));
 
-  const tableBody = document.getElementById("interns-week-table-body");
+  const tableBody = document.getElementById("associates-week-table-body");
   tableBody.innerHTML = ""; //clear out any previous pairings
 
-  internPairs.forEach((pair, index) => {
+  associatePairs.forEach((pair, index) => {
     const row = document.createElement("tr"); //creating group row
 
     const groupNum = document.createElement("td"); //Group num column
     groupNum.innerHTML = `
     <div class="group-number-container">
-      <a class="intern-email" href=${generateMailToString(pair.map((intern) => intern?.email ?? ""))}>📧 Group ${index + 1}</a>
+      <a class="associate-email" href=${generateMailToString(pair.map((associate) => associate?.email ?? ""))}>📧 Group ${index + 1}</a>
     </div>`;
 
-    const addInternToPairButton = document.createElement("button"); //add edit button
-    addInternToPairButton.className = "edit";
-    addInternToPairButton.id = "add-intern";
-    addInternToPairButton.type = "button";
-    addInternToPairButton.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
-    groupNum.appendChild(addInternToPairButton);
+    const addAssociateToPairButton = document.createElement("button"); //add edit button
+    addAssociateToPairButton.className = "edit";
+    addAssociateToPairButton.id = "add-associate";
+    addAssociateToPairButton.type = "button";
+    addAssociateToPairButton.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
+    groupNum.appendChild(addAssociateToPairButton);
 
-    displayAddModal(addInternToPairButton, pair, index); //display add functionality
+    displayAddModal(addAssociateToPairButton, pair, index); //display add functionality
 
-    const removeInternFromPairButton = document.createElement("button"); //remove edit button
-    removeInternFromPairButton.className = "edit";
-    removeInternFromPairButton.id = "remove-intern";
-    removeInternFromPairButton.type = "button";
-    removeInternFromPairButton.innerHTML = `<i class="fa-solid fa-user-minus"></i>`;
-    groupNum.appendChild(removeInternFromPairButton);
+    const removeAssociateFromPairButton = document.createElement("button"); //remove edit button
+    removeAssociateFromPairButton.className = "edit";
+    removeAssociateFromPairButton.id = "remove-associate";
+    removeAssociateFromPairButton.type = "button";
+    removeAssociateFromPairButton.innerHTML = `<i class="fa-solid fa-user-minus"></i>`;
+    groupNum.appendChild(removeAssociateFromPairButton);
     row.appendChild(groupNum);
 
-    displayRemoveModal(removeInternFromPairButton, pair, index);
+    displayRemoveModal(removeAssociateFromPairButton, pair, index);
 
     if (pair.length === 0) {
-      removeInternFromPairButton.innerHTML = `<i class="fa-solid fa-minus"></i>`;
+      removeAssociateFromPairButton.innerHTML = `<i class="fa-solid fa-minus"></i>`;
     }
 
-    //add intern info columns
-    for (const intern of pair) {
-      row.appendChild(formatInternWeekDetails(intern));
+    //add associate info columns
+    for (const associate of pair) {
+      row.appendChild(formatAssociateWeekDetails(associate));
     }
 
     //add to table
@@ -266,14 +266,14 @@ function renderWeekTable(internPairs) {
   });
 }
 
-export function formatInternDetails(intern) {
-  const row = document.createElement("tr"); // Create a row for the intern
-  row.dataset.name = intern.name;
-  row.dataset.email = intern.email;
+export function formatAssociateDetails(associate) {
+  const row = document.createElement("tr"); // Create a row for the associate
+  row.dataset.name = associate.name;
+  row.dataset.email = associate.email;
   // Create column for the select button
   const selectCol = document.createElement("td");
   const selectButton = document.createElement("button");
-  if (internsSet.has(intern.name)) {
+  if (associatesSet.has(associate.name)) {
     selectButton.className = "pill-selected";
     selectButton.textContent = "Deselect";
   } else {
@@ -285,54 +285,56 @@ export function formatInternDetails(intern) {
       selectButton.textContent = "Deselect";
       selectButton.classList.remove("pill-select");
       selectButton.classList.add("pill-selected");
-      internsSet.add(intern.name);
+      associatesSet.add(associate.name);
     } else {
       selectButton.textContent = "Select";
       selectButton.classList.remove("pill-selected");
       selectButton.classList.add("pill-select");
-      internsSet.delete(intern.name);
+      associatesSet.delete(associate.name);
     }
   });
   selectCol.appendChild(selectButton);
   row.appendChild(selectCol);
 
-  // Create column for the intern name
+  // Create column for the associate name
   const nameCol = document.createElement("td");
   const namePtag = document.createElement("p");
-  namePtag.textContent = intern.name;
-  namePtag.className = "intern-list-text";
+  namePtag.textContent = associate.name;
+  namePtag.className = "associate-list-text";
   nameCol.appendChild(namePtag);
   row.appendChild(nameCol);
 
   const locationCol = document.createElement("td");
   const locationPtag = document.createElement("p");
-  locationPtag.textContent = intern.location;
-  locationPtag.className = "intern-list-text";
+  locationPtag.textContent = associate.location;
+  locationPtag.className = "associate-list-text";
   locationCol.appendChild(locationPtag);
   row.appendChild(locationCol);
 
-  // Create column for the intern department
+  // Create column for the associate department
   const departmentCol = document.createElement("td");
   const pill = document.createElement("div"); // Department pill div
-  pill.className = `pill pill-${stringToKebabCase(intern.department)}`;
-  pill.innerHTML = `<b>${intern.department}</b>`;
+  pill.className = `pill pill-${stringToKebabCase(associate.department)}`;
+  pill.innerHTML = `<b>${associate.department}</b>`;
   departmentCol.appendChild(pill);
   row.appendChild(departmentCol);
 
   return row;
 }
 
-export async function displayInternTable() {
+export async function displayAssociateTable() {
   const filterSelections = getSelectedOptions();
 
-  // Fetches, Filters, and Searches for Interns
-  const interns = searchInterns(
+  // Fetches, Filters, and Searches for Associates
+  const associates = searchAssociates(
     filterByDepartment(
       filterByLocation(
-        Object.entries(await getInterns()).map(([intern, internInfo]) => ({
-          name: intern,
-          ...internInfo,
-        })),
+        Object.entries(await getAssociates()).map(
+          ([associate, associateInfo]) => ({
+            name: associate,
+            ...associateInfo,
+          }),
+        ),
         filterSelections.Location,
       ),
       filterSelections.Departments,
@@ -341,18 +343,18 @@ export async function displayInternTable() {
   );
 
   renderDepartmentLists("department-list-1");
-  const tableHeader = document.getElementById("interns-table-header");
+  const tableHeader = document.getElementById("associates-table-header");
   tableHeader.innerHTML = "";
 
-  interns.length === 0
-    ? (tableHeader.innerHTML = `<tr><th>There are no interns listed</th></tr>`)
-    : (tableHeader.innerHTML = `<tr><th>Select</th><th>Intern</th><th>Location</th><th>Department</th></tr>`);
+  associates.length === 0
+    ? (tableHeader.innerHTML = `<tr><th>There are no associates listed</th></tr>`)
+    : (tableHeader.innerHTML = `<tr><th>Select</th><th>Associate</th><th>Location</th><th>Department</th></tr>`);
 
-  const tableBody = document.getElementById("interns-table-body");
+  const tableBody = document.getElementById("associates-table-body");
   tableBody.innerHTML = ""; //clear out any previous pairings
 
-  for (const intern of interns) {
-    tableBody.appendChild(formatInternDetails(intern));
+  for (const associate of associates) {
+    tableBody.appendChild(formatAssociateDetails(associate));
   }
 
   document.getElementById("select-all").addEventListener("click", () => {
@@ -361,7 +363,7 @@ export async function displayInternTable() {
       button.textContent = "Deselect";
       button.classList.remove("pill-select");
       button.classList.add("pill-selected");
-      internsSet.add(button.closest("tr").dataset.name);
+      associatesSet.add(button.closest("tr").dataset.name);
     });
   });
 
@@ -371,16 +373,16 @@ export async function displayInternTable() {
       button.textContent = "Select";
       button.classList.remove("pill-selected");
       button.classList.add("pill-select");
-      internsSet.delete(button.closest("tr").dataset.name);
+      associatesSet.delete(button.closest("tr").dataset.name);
     });
   });
 }
-export function updateInternsTable(newInterns, isAdd) {
-  const tableBody = document.getElementById("interns-table-body");
+export function updateAssociatesTable(newAssociates, isAdd) {
+  const tableBody = document.getElementById("associates-table-body");
   const rows = tableBody.querySelectorAll("tr");
 
-  // Finds every intern that we added and updates their selection
-  newInterns.forEach((newIntern) => {
+  // Finds every associate that we added and updates their selection
+  newAssociates.forEach((newAssociate) => {
     rows.forEach((row) => {
       const nameCell = row.cells[1];
       const locationCell = row.cells[2];
@@ -388,9 +390,9 @@ export function updateInternsTable(newInterns, isAdd) {
       const selectButton = row.querySelector("button");
 
       if (
-        nameCell.textContent !== newIntern.name ||
-        locationCell.textContent !== newIntern.location ||
-        departmentCell.textContent !== newIntern.department
+        nameCell.textContent !== newAssociate.name ||
+        locationCell.textContent !== newAssociate.location ||
+        departmentCell.textContent !== newAssociate.department
       ) {
         return;
       }
@@ -407,16 +409,16 @@ export function updateInternsTable(newInterns, isAdd) {
   });
 }
 
-function getSelectedInterns() {
-  const selectedInterns = [];
-  const rows = document.querySelectorAll("#interns-table-body tr");
+function getSelectedAssociates() {
+  const selectedAssociates = [];
+  const rows = document.querySelectorAll("#associates-table-body tr");
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-selected");
     if (selectButton == null) {
       return;
     }
-    selectedInterns.push({
+    selectedAssociates.push({
       name: row.cells[1].textContent,
       location: row.cells[2].textContent,
       department: row.cells[3].textContent,
@@ -424,19 +426,19 @@ function getSelectedInterns() {
     });
   });
 
-  return selectedInterns;
+  return selectedAssociates;
 }
 
-export function getUnselectedInterns() {
-  const unselectedInterns = [];
-  const rows = document.querySelectorAll("#interns-table-body tr");
+export function getUnselectedAssociates() {
+  const unselectedAssociates = [];
+  const rows = document.querySelectorAll("#associates-table-body tr");
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-select");
     if (selectButton == null) {
       return;
     }
-    unselectedInterns.push({
+    unselectedAssociates.push({
       name: row.cells[1].textContent,
       location: row.cells[2].textContent,
       department: row.cells[3].textContent,
@@ -444,16 +446,16 @@ export function getUnselectedInterns() {
     });
   });
 
-  return unselectedInterns;
+  return unselectedAssociates;
 }
 
 // linear search
-function searchInterns(interns, query) {
+function searchAssociates(associates, query) {
   const lowerCasedQuery = query.toLowerCase();
-  return interns.filter(
-    (intern) =>
-      intern.name.toLowerCase().includes(lowerCasedQuery) ||
-      intern.department.toLowerCase().includes(lowerCasedQuery) ||
-      intern.location.toLowerCase().includes(lowerCasedQuery),
+  return associates.filter(
+    (associate) =>
+      associate.name.toLowerCase().includes(lowerCasedQuery) ||
+      associate.department.toLowerCase().includes(lowerCasedQuery) ||
+      associate.location.toLowerCase().includes(lowerCasedQuery),
   );
 }

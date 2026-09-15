@@ -1,9 +1,12 @@
-import { displayInternWeekTable, getUnselectedInterns } from "./interns.js";
-import { formatInternDetails, updateInternsTable } from "./interns.js";
+import {
+  displayAssociateWeekTable,
+  getUnselectedAssociates,
+} from "./associates.js";
+import { formatAssociateDetails, updateAssociatesTable } from "./associates.js";
 import {
   savePairsToLocalStorage,
   loadPairsFromLocalStorage,
-} from "./interns.js";
+} from "./associates.js";
 
 export function displayAddModal(button, pair, index) {
   button.onclick = function () {
@@ -12,8 +15,8 @@ export function displayAddModal(button, pair, index) {
     //display the modal
     modal.style.display = "block";
 
-    //show interns to be added
-    addIntern(pair, index);
+    //show associates to be added
+    addAssociate(pair, index);
 
     // Get the <span> element that closes the modal
     const span = document.getElementsByClassName("edit-close")[0];
@@ -36,90 +39,90 @@ export function displayAddModal(button, pair, index) {
   };
 }
 
-function addIntern(pair, index) {
+function addAssociate(pair, index) {
   const modal = document.getElementById("edit-pair-modal");
   const modalHeader = document.getElementById("edit-modal-header");
-  modalHeader.textContent = "Select Intern(s) to Add";
+  modalHeader.textContent = "Select Associate(s) to Add";
 
-  const table = document.getElementById("intern-options");
+  const table = document.getElementById("associate-options");
   table.innerHTML = "";
 
-  const internPool = getUnselectedInterns();
+  const associatePool = getUnselectedAssociates();
 
-  if (internPool.length === 0) {
-    modalHeader.textContent = "No Available Interns to Pair";
+  if (associatePool.length === 0) {
+    modalHeader.textContent = "No Available Associates to Pair";
     return;
   }
 
-  for (const intern of internPool) {
-    table.appendChild(formatInternDetails(intern));
+  for (const associate of associatePool) {
+    table.appendChild(formatAssociateDetails(associate));
   }
 
   const pairs = loadPairsFromLocalStorage();
 
   document.getElementById("submit-modal").addEventListener("click", () => {
-    const addedInterns = getSelectedInternsEdit();
-    if (addedInterns.length < 1) {
+    const addedAssociates = getSelectedAssociatesEdit();
+    if (addedAssociates.length < 1) {
       return;
     }
-    pairs[index] = [...pair, ...addedInterns];
+    pairs[index] = [...pair, ...addedAssociates];
     savePairsToLocalStorage(pairs);
-    displayInternWeekTable(pairs);
-    updateInternsTable(addedInterns, true);
+    displayAssociateWeekTable(pairs);
+    updateAssociatesTable(addedAssociates, true);
     modal.style.display = "none";
   });
 }
 
-function getSelectedInternsEdit() {
-  //get interns selected to be added
-  const selectedInterns = [];
-  const rows = document.querySelectorAll("#intern-options tr");
+function getSelectedAssociatesEdit() {
+  //get associates selected to be added
+  const selectedAssociates = [];
+  const rows = document.querySelectorAll("#associate-options tr");
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-selected");
     if (selectButton) {
-      const intern = {
+      const associate = {
         name: row.cells[1].textContent,
         location: row.cells[2].textContent,
         department: row.cells[3].textContent,
         email: row.dataset.email,
       };
-      selectedInterns.push(intern);
+      selectedAssociates.push(associate);
     }
   });
 
-  return selectedInterns;
+  return selectedAssociates;
 }
 
-function getDeselectedInternsEdit() {
-  //get interns selected to be added
-  const deselectedInterns = [];
-  const rows = document.querySelectorAll("#intern-options tr");
+function getDeselectedAssociatesEdit() {
+  //get associates selected to be added
+  const deselectedAssociates = [];
+  const rows = document.querySelectorAll("#associate-options tr");
 
   rows.forEach((row) => {
     const selectButton = row.querySelector(".pill-select");
     if (selectButton) {
-      const intern = {
+      const associate = {
         name: row.cells[1].textContent,
         location: row.cells[2].textContent,
         department: row.cells[3].textContent,
         email: row.dataset.email,
       };
-      deselectedInterns.push(intern);
+      deselectedAssociates.push(associate);
     }
   });
 
-  return deselectedInterns;
+  return deselectedAssociates;
 }
 
 export function displayRemoveModal(button, pair, index) {
   button.onclick = function () {
-    // If we remove the group with no interns, we just delete the group.
+    // If we remove the group with no associates, we just delete the group.
     if (pair.length === 0) {
       const pairs = loadPairsFromLocalStorage();
       pairs.splice(index, 1);
       savePairsToLocalStorage(pairs);
-      displayInternWeekTable(pairs);
+      displayAssociateWeekTable(pairs);
       return;
     }
 
@@ -127,8 +130,8 @@ export function displayRemoveModal(button, pair, index) {
 
     //display the modal
     modal.style.display = "block";
-    //show interns to be added
-    removeIntern(pair, index);
+    //show associates to be added
+    removeAssociate(pair, index);
 
     // Get the <span> element that closes the modal
     const span = document.getElementsByClassName("edit-close")[0];
@@ -147,33 +150,33 @@ export function displayRemoveModal(button, pair, index) {
   };
 }
 
-function removeIntern(pair, index) {
+function removeAssociate(pair, index) {
   const modal = document.getElementById("edit-pair-modal");
   const modalHeader = document.getElementById("edit-modal-header");
-  modalHeader.textContent = "Deselect Intern(s) to Remove";
+  modalHeader.textContent = "Deselect Associate(s) to Remove";
 
-  const table = document.getElementById("intern-options");
+  const table = document.getElementById("associate-options");
   table.innerHTML = "";
 
-  for (const intern of pair) {
-    table.appendChild(formatInternDetails(intern));
+  for (const associate of pair) {
+    table.appendChild(formatAssociateDetails(associate));
   }
 
   const pairs = loadPairsFromLocalStorage();
 
   document.getElementById("submit-modal").addEventListener("click", () => {
-    const removedInterns = getDeselectedInternsEdit();
-    if (removedInterns.length < 1) {
+    const removedAssociates = getDeselectedAssociatesEdit();
+    if (removedAssociates.length < 1) {
       return;
     }
 
-    //remove interns from pair by filtering out matched pairs
-    const names = removedInterns.map((intern) => intern.name);
-    pairs[index] = pair.filter((intern) => !names.includes(intern.name));
+    //remove associates from pair by filtering out matched pairs
+    const names = removedAssociates.map((associate) => associate.name);
+    pairs[index] = pair.filter((associate) => !names.includes(associate.name));
 
     savePairsToLocalStorage(pairs);
-    displayInternWeekTable(pairs);
-    updateInternsTable(removedInterns, false);
+    displayAssociateWeekTable(pairs);
+    updateAssociatesTable(removedAssociates, false);
     modal.style.display = "none";
   });
 }
@@ -183,5 +186,5 @@ export function addEmptyPair() {
   const pairs = loadPairsFromLocalStorage();
   pairs.unshift([]);
   savePairsToLocalStorage(pairs);
-  displayInternWeekTable();
+  displayAssociateWeekTable();
 }
