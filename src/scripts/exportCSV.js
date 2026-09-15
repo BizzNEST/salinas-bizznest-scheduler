@@ -2,21 +2,21 @@ import { getPlan, getCurrentMeetings } from "./plan.js";
 
 // Build the CSV header line for the widest group in a set of meetings
 function meetingsHeader(meetings) {
-  // Every group has at least 2 intern slots in the header
-  let maxInterns = 2;
+  // Every group has at least 2 associate slots in the header
+  let maxAssociates = 2;
   for (const meeting of meetings) {
-    if (meeting.length > maxInterns) {
-      maxInterns = meeting.length;
+    if (meeting.length > maxAssociates) {
+      maxAssociates = meeting.length;
     }
   }
 
   let header =
-    "Group, (Intern 1) Name, (Intern 1) Department, (Intern 1) Location, (Intern 2) Name, (Intern 2) Department, (Intern 2) Location";
-  //If any group has more than 2 interns extend the header to match
-  for (let i = 3; i <= maxInterns; i++) {
+    "Group, (Associate 1) Name, (Associate 1) Department, (Associate 1) Location, (Associate 2) Name, (Associate 2) Department, (Associate 2) Location";
+  //If any group has more than 2 associates extend the header to match
+  for (let i = 3; i <= maxAssociates; i++) {
     header =
       header +
-      `, (Intern ${i}) Name, (Intern ${i}) Department, (Intern ${i}) Location`;
+      `, (Associate ${i}) Name, (Associate ${i}) Department, (Associate ${i}) Location`;
   }
   return header;
 }
@@ -31,8 +31,10 @@ export function meetingsToCSVRows(meetings) {
 
     // First column is the group number
     const csvrow = [`Group ${i + 1}`];
-    for (const intern of meeting) {
-      csvrow.push(`${intern.name}, ${intern.department}, ${intern.location} `);
+    for (const associate of meeting) {
+      csvrow.push(
+        `${associate.name}, ${associate.department}, ${associate.location} `,
+      );
     }
     rows.push(csvrow.join(","));
   }
@@ -72,7 +74,7 @@ export function downloadCSVFile(csv_data) {
   const temp_link = document.createElement("a");
 
   // Download csv file
-  temp_link.download = "InternPairs.csv";
+  temp_link.download = "AssociatePairs.csv";
   const url = window.URL.createObjectURL(CSVFile);
   temp_link.href = url;
 

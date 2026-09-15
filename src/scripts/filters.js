@@ -1,6 +1,6 @@
 import { filters } from "../constants/constants.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
-import { displayInternTable } from "./interns.js";
+import { displayAssociateTable } from "./associates.js";
 
 // Function to get all of our filters selected
 export function getSelectedOptions() {
@@ -109,7 +109,7 @@ export function displayFilters() {
       );
       checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", async () => {
-          await displayInternTable();
+          await displayAssociateTable();
           renderDepartmentLists("department-list-1");
         });
       });
@@ -163,7 +163,7 @@ export function displayFilters() {
     document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
       checkbox.checked = false;
     });
-    await displayInternTable();
+    await displayAssociateTable();
   });
 
   // Close the modals when clicking outside of them

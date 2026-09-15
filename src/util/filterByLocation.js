@@ -1,5 +1,5 @@
-export function filterByLocation(interns, locations) {
+export function filterByLocation(associates, locations) {
   return locations.length === 0
-    ? interns
-    : interns.filter((intern) => locations.includes(intern.location));
+    ? associates
+    : associates.filter((associate) => locations.includes(associate.location));
 }

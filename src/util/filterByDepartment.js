@@ -1,5 +1,7 @@
-export function filterByDepartment(interns, departments) {
+export function filterByDepartment(associates, departments) {
   return departments.length === 0
-    ? interns
-    : interns.filter((intern) => departments.includes(intern.department));
+    ? associates
+    : associates.filter((associate) =>
+        departments.includes(associate.department),
+      );
 }

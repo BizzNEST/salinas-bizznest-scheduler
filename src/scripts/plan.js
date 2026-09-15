@@ -4,8 +4,8 @@ import { computeCoverage, metTuplesFromWeeks } from "../util/generatePlan.js";
 // wraps the pure `generatePlan`/`computeCoverage` seam; it is the only place
 // that touches localStorage for the plan.
 
-const PLAN_KEY = "internPlan";
-const LEGACY_KEY = "internPairs";
+const PLAN_KEY = "associatePlan";
+const LEGACY_KEY = "associatePairs";
 
 let plan = null;
 let currentWeekIndex = 0;
@@ -60,7 +60,7 @@ export function setPlan(newPlan, { resetWeek = true } = {}) {
   savePlan();
 }
 
-// Load an existing plan, migrating a legacy flat `internPairs` schedule into
+// Load an existing plan, migrating a legacy flat `associatePairs` schedule into
 // week 1 of the new structure so upgrading never discards current work.
 export function loadPlan() {
   const raw = localStorage.getItem(PLAN_KEY);
@@ -93,13 +93,13 @@ export function loadPlan() {
   return null;
 }
 
-// Every distinct intern across all weeks of the plan.
+// Every distinct associate across all weeks of the plan.
 export function collectRoster(source = plan) {
   const map = new Map();
   for (const week of source.weeks) {
     for (const meeting of week.meetings) {
-      for (const intern of meeting) {
-        map.set(intern.name, intern);
+      for (const associate of meeting) {
+        map.set(associate.name, associate);
       }
     }
   }

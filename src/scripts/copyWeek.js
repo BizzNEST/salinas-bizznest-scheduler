@@ -1,7 +1,7 @@
 // Ticket 04: Copy Week to Google Chat.
 // Renders a "Copy Week" button into `container` that copies the selected week's
 // meetings to the clipboard as plain grouped text (week header + numbered
-// meetings, name + location per intern; triplets on one line).
+// meetings, name + location per associate; triplets on one line).
 
 import { getCurrentMeetings, getWeekIndex } from "./plan.js";
 import makeFilterButton from "../util/makeFilterButton.js";
@@ -10,11 +10,11 @@ import makeFilterButton from "../util/makeFilterButton.js";
 function formatWeek(meetings, weekIndex) {
   const lines = [`Week ${weekIndex + 1}`];
   meetings.forEach((meeting, index) => {
-    const interns = meeting.map(
-      (intern) => `${intern.name} (${intern.location})`,
+    const associates = meeting.map(
+      (associate) => `${associate.name} (${associate.location})`,
     );
-    const separator = interns.length > 2 ? ", " : " & ";
-    lines.push(`${index + 1}. ${interns.join(separator)}`);
+    const separator = associates.length > 2 ? ", " : " & ";
+    lines.push(`${index + 1}. ${associates.join(separator)}`);
   });
   return lines.join("\n");
 }

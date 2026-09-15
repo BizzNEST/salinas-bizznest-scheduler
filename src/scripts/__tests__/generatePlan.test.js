@@ -7,11 +7,11 @@ import { dirname, join } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const internsPath = join(__dirname, "../../documents/interns.json");
-const internInfo = JSON.parse(readFileSync(internsPath, "utf-8"));
+const associatesPath = join(__dirname, "../../documents/associates.json");
+const associateInfo = JSON.parse(readFileSync(associatesPath, "utf-8"));
 
 function roster() {
-  return Object.entries(internInfo.interns).map(([name, info]) => ({
+  return Object.entries(associateInfo.associates).map(([name, info]) => ({
     name,
     location: info.location,
     department: info.department,
@@ -29,12 +29,14 @@ function assert(cond, message) {
   }
 }
 
-function eligibleSet(interns, isUniqueDept, isUniqueLoc) {
+function eligibleSet(associates, isUniqueDept, isUniqueLoc) {
   const set = new Set();
-  for (let i = 0; i < interns.length; i++) {
-    for (let j = i + 1; j < interns.length; j++) {
-      if (isValidPair(interns[i], interns[j], isUniqueDept, isUniqueLoc)) {
-        set.add(pairKey(interns[i].name, interns[j].name));
+  for (let i = 0; i < associates.length; i++) {
+    for (let j = i + 1; j < associates.length; j++) {
+      if (
+        isValidPair(associates[i], associates[j], isUniqueDept, isUniqueLoc)
+      ) {
+        set.add(pairKey(associates[i].name, associates[j].name));
       }
     }
   }
@@ -54,10 +56,10 @@ function internalPairs(meeting) {
 // --- Full coverage: every eligible pair meets exactly once, no cap ---
 console.log("Test: full coverage with no cap (unique locations)");
 {
-  const interns = roster();
+  const associates = roster();
   const opts = { isUniqueLoc: true };
-  const plan = generatePlan(interns, opts);
-  const eligible = eligibleSet(interns, false, true);
+  const plan = generatePlan(associates, opts);
+  const eligible = eligibleSet(associates, false, true);
 
   assert(
     plan.coverage.total === eligible.size,
@@ -92,11 +94,13 @@ console.log("Test: full coverage with no cap (unique locations)");
   );
 }
 
-// --- No idle active intern + strict pairs / one triplet ---
-console.log("Test: no idle active intern, strict pairs, <=1 triplet per week");
+// --- No idle active associate + strict pairs / one triplet ---
+console.log(
+  "Test: no idle active associate, strict pairs, <=1 triplet per week",
+);
 {
-  const interns = roster();
-  const plan = generatePlan(interns, { isUniqueLoc: true });
+  const associates = roster();
+  const plan = generatePlan(associates, { isUniqueLoc: true });
   let ok = true;
   let triExtra = true;
   for (const week of plan.weeks) {
@@ -109,21 +113,21 @@ console.log("Test: no idle active intern, strict pairs, <=1 triplet per week");
       if (meeting.length !== 2 && meeting.length !== 3) {
         triExtra = false;
       }
-      for (const intern of meeting) {
-        seen.add(intern.name);
+      for (const associate of meeting) {
+        seen.add(associate.name);
       }
     }
     if (triplets > 1) {
       triExtra = false;
     }
-    // every active intern this week appears exactly once == no duplicates and
+    // every active associate this week appears exactly once == no duplicates and
     // total placed equals distinct names
     const placed = week.meetings.reduce((n, m) => n + m.length, 0);
     if (placed !== seen.size) {
       ok = false;
     }
   }
-  assert(ok, "no intern appears twice in a week (no idle / no double-book)");
+  assert(ok, "no associate appears twice in a week (no idle / no double-book)");
   assert(triExtra, "meetings are size 2 except at most one triplet per week");
 }
 
@@ -131,9 +135,9 @@ console.log("Test: no idle active intern, strict pairs, <=1 triplet per week");
 console.log("Test: triplet credits all three internal pairs");
 {
   // odd roster forces a triplet somewhere
-  const interns = roster().slice(0, 7);
-  const plan = generatePlan(interns, { isUniqueLoc: true });
-  const eligible = eligibleSet(interns, false, true);
+  const associates = roster().slice(0, 7);
+  const plan = generatePlan(associates, { isUniqueLoc: true });
+  const eligible = eligibleSet(associates, false, true);
   let checked = false;
   for (const week of plan.weeks) {
     for (const meeting of week.meetings) {
@@ -158,12 +162,12 @@ console.log("Test: triplet credits all three internal pairs");
 }
 
 // --- Fully-met drop-out ---
-console.log("Test: fully-met intern drops out of later weeks");
+console.log("Test: fully-met associate drops out of later weeks");
 {
-  const interns = roster();
-  const plan = generatePlan(interns, { isUniqueLoc: true });
-  // Track, per intern, the last week they appear; once they've met all eligible
-  // partners they must not appear afterwards. Simpler invariant: an intern in
+  const associates = roster();
+  const plan = generatePlan(associates, { isUniqueLoc: true });
+  // Track, per associate, the last week they appear; once they've met all eligible
+  // partners they must not appear afterwards. Simpler invariant: an associate in
   // week N must still have had an unmet eligible partner at the start of N.
   // We verify the weaker, observable property: nobody appears in a week after
   // the plan reports full coverage would exclude them — approximated by
@@ -186,11 +190,11 @@ console.log("Test: fully-met intern drops out of later weeks");
 // --- Eligibility follows toggles ---
 console.log("Test: eligibility follows toggles (unique dept)");
 {
-  const interns = roster();
-  const plan = generatePlan(interns, { isUniqueDept: true });
+  const associates = roster();
+  const plan = generatePlan(associates, { isUniqueDept: true });
   const sameDeptPairFound = plan.coverage.unmetPairs.some(([a, b]) => {
-    const ia = interns.find((x) => x.name === a);
-    const ib = interns.find((x) => x.name === b);
+    const ia = associates.find((x) => x.name === a);
+    const ib = associates.find((x) => x.name === b);
     return ia.department === ib.department;
   });
   assert(
@@ -202,8 +206,8 @@ console.log("Test: eligibility follows toggles (unique dept)");
 // --- Cap behavior ---
 console.log("Test: cap stops plan short and reports unmetPairs");
 {
-  const interns = roster();
-  const plan = generatePlan(interns, { isUniqueLoc: true, cap: 2 });
+  const associates = roster();
+  const plan = generatePlan(associates, { isUniqueLoc: true, cap: 2 });
   assert(plan.weeks.length <= 2, "plan respects the week cap");
   assert(
     plan.coverage.met < plan.coverage.total,
@@ -218,9 +222,9 @@ console.log("Test: cap stops plan short and reports unmetPairs");
 // --- Already-met seed continues a partial plan ---
 console.log("Test: already-met seed continues from partial coverage");
 {
-  const interns = roster();
+  const associates = roster();
   const opts = { isUniqueLoc: true, cap: 2 };
-  const partial = generatePlan(interns, opts);
+  const partial = generatePlan(associates, opts);
   const metSoFar = [];
   for (const week of partial.weeks) {
     for (const meeting of week.meetings) {
@@ -231,7 +235,7 @@ console.log("Test: already-met seed continues from partial coverage");
       }
     }
   }
-  const rest = generatePlan(interns, {
+  const rest = generatePlan(associates, {
     isUniqueLoc: true,
     alreadyMet: metSoFar,
   });
@@ -258,7 +262,7 @@ console.log("Test: zero eligible pairs still produces one filler week");
   const placed = plan.weeks[0].meetings.reduce((n, m) => n + m.length, 0);
   assert(
     placed === sameDept.length,
-    "every selected intern is paired (idle-free)",
+    "every selected associate is paired (idle-free)",
   );
 }
 

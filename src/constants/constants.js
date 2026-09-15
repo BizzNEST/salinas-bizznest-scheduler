@@ -27,7 +27,7 @@ export const locationEmojiMap = {
   Stockton: "🍒",
 };
 
-export const internsSet = new Set();
+export const associatesSet = new Set();
 
 export const mailToMessageObject = {
   subject: "Hello 👋, We've been paired to NEST Meet!",

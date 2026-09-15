@@ -1,18 +1,22 @@
 import { displayFilters } from "./scripts/filters.js";
 import {
   generateSchedule,
-  displayInternTable,
+  displayAssociateTable,
   initPlanView,
-} from "./scripts/interns.js";
+} from "./scripts/associates.js";
 
 export let currentSearchQuery = "";
 
 function main() {
   displayFilters();
   const toggleIconWeek = document.getElementById("toggle-icon-week");
-  const toggleIconInterns = document.getElementById("toggle-icon-interns");
+  const toggleIconAssociates = document.getElementById(
+    "toggle-icon-associates",
+  );
   const weekCardContent = document.getElementById("week-card-content");
-  const internCardContent = document.getElementById("intern-card-content");
+  const associateCardContent = document.getElementById(
+    "associate-card-content",
+  );
   const generateButtonAnimation = lottie.loadAnimation({
     container: document.getElementById("generate-button-lottie"),
     renderer: "svg",
@@ -20,7 +24,7 @@ function main() {
     autoplay: false,
     path: "src/assets/lottie/lottie_confetti.json",
   });
-  displayInternTable();
+  displayAssociateTable();
   initPlanView();
 
   toggleIconWeek.addEventListener("click", () => {
@@ -31,12 +35,12 @@ function main() {
     toggleIconWeek.classList.toggle("rotate");
   });
 
-  toggleIconInterns.addEventListener("click", () => {
+  toggleIconAssociates.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
-    internCardContent.classList.toggle("collapsed");
+    associateCardContent.classList.toggle("collapsed");
 
     // Toggle the chevron icon rotation
-    toggleIconInterns.classList.toggle("rotate");
+    toggleIconAssociates.classList.toggle("rotate");
   });
   const generateButton = document.getElementById("schedule-button");
 
@@ -68,7 +72,7 @@ function main() {
   if (searchInput) {
     searchInput.addEventListener("input", async function () {
       currentSearchQuery = searchInput.value;
-      await displayInternTable();
+      await displayAssociateTable();
     });
   } else {
     console.error("Search input element not found");

@@ -1,25 +1,29 @@
 import swap from "./swap.js";
 
-export function uniquePairing(interns, selected) {
+export function uniquePairing(associates, selected) {
   if (selected.length < 1) {
     return;
   }
 
   uniquePairingHelper(
-    interns,
+    associates,
     selected.includes("Unique Departments"),
     selected.includes("Unique Locations"),
   );
 }
 
-export function uniquePairingHelper(interns, isUniqueDept, isUniqueLoc) {
-  for (let i = 0; i < interns.length - 1; i += 2) {
-    if (isValidPair(interns[i], interns[i + 1], isUniqueDept, isUniqueLoc)) {
+export function uniquePairingHelper(associates, isUniqueDept, isUniqueLoc) {
+  for (let i = 0; i < associates.length - 1; i += 2) {
+    if (
+      isValidPair(associates[i], associates[i + 1], isUniqueDept, isUniqueLoc)
+    ) {
       continue;
     }
-    for (let j = i + 2; j < interns.length; j++) {
-      if (isValidPair(interns[i], interns[j], isUniqueDept, isUniqueLoc)) {
-        swap(interns, i + 1, j);
+    for (let j = i + 2; j < associates.length; j++) {
+      if (
+        isValidPair(associates[i], associates[j], isUniqueDept, isUniqueLoc)
+      ) {
+        swap(associates, i + 1, j);
         break;
       }
     }
@@ -38,13 +42,14 @@ export function isValidGroup(group, isUniqueDept, isUniqueLoc) {
 }
 
 export function isValidPair(
-  firstIntern,
-  secondIntern,
+  firstAssociate,
+  secondAssociate,
   isUniqueDept,
   isUniqueLoc,
 ) {
   return (
-    (!isUniqueDept || firstIntern.department !== secondIntern.department) &&
-    (!isUniqueLoc || firstIntern.location !== secondIntern.location)
+    (!isUniqueDept ||
+      firstAssociate.department !== secondAssociate.department) &&
+    (!isUniqueLoc || firstAssociate.location !== secondAssociate.location)
   );
 }
