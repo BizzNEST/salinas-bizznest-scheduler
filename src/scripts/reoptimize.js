@@ -1,4 +1,4 @@
-// Ticket 07: Re-optimize remaining weeks. Freezes past weeks and the selected
+// Re-optimize remaining weeks. Freezes past weeks and the selected
 // week, then regenerates future weeks via generatePlan seeded with the coverage
 // accumulated through the frozen weeks.
 

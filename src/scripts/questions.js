@@ -8,6 +8,19 @@ export async function pickQuestions(amount = 2) {
   return questions.slice(0, Math.max(0, amount));
 }
 
+// Pick `count` independent random question sets from a single fetch — one set
+// per week, so every week gets its own distinct ice-breakers.
+export async function pickQuestionSets(count, amount = 2) {
+  const pool = await getQuestions();
+  const sets = [];
+  for (let i = 0; i < count; i++) {
+    const shuffled = [...pool];
+    shuffle(shuffled);
+    sets.push(shuffled.slice(0, Math.max(0, amount)));
+  }
+  return sets;
+}
+
 // Render a fixed set of questions into the ice-breakers container.
 export function renderQuestions(questions = []) {
   const iceBreakersContainer = document.getElementById("ice-breakers");

@@ -1,4 +1,4 @@
-import { getPlan, getCurrentMeetings } from "./plan.js";
+import { getPlan, getCurrentMeetings, getCurrentWeek } from "./plan.js";
 
 // Build the CSV header line for the widest group in a set of meetings
 function meetingsHeader(meetings) {
@@ -41,6 +41,14 @@ export function meetingsToCSVRows(meetings) {
   return rows;
 }
 
+// CSV lines for a week's ice-breaker questions (blank if none).
+function iceBreakerCSVRows(questions = []) {
+  if (questions.length === 0) {
+    return [];
+  }
+  return ["", "Ice Breakers", ...questions.map((q, i) => `${i + 1}. ${q}`)];
+}
+
 export function planToCSV() {
   const plan = getPlan();
   const weeks = plan?.weeks ?? [];
@@ -51,6 +59,7 @@ export function planToCSV() {
     csv_data.push(`Week ${i + 1}`);
     const meetings = weeks[i].meetings ?? [];
     csv_data = csv_data.concat(meetingsToCSVRows(meetings));
+    csv_data = csv_data.concat(iceBreakerCSVRows(weeks[i].questions));
     // Blank line between weeks for readability
     csv_data.push("");
   }
@@ -60,8 +69,11 @@ export function planToCSV() {
 
 // Export only the currently selected week using the plan data
 export function weekToCSV() {
-  const meetings = getCurrentMeetings();
-  downloadCSVFile(meetingsToCSVRows(meetings).join("\n"));
+  const week = getCurrentWeek();
+  const rows = meetingsToCSVRows(getCurrentMeetings()).concat(
+    iceBreakerCSVRows(week?.questions),
+  );
+  downloadCSVFile(rows.join("\n"));
 }
 
 export function downloadCSVFile(csv_data) {
