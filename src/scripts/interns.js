@@ -6,7 +6,7 @@ import { uniquePairingOptions } from "../util/pairRound.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
-import { displayAddModal, displayRemoveModal } from "./edit.js";
+import { displayAddModal, displayRemoveModal, addEmptyPair } from "./edit.js";
 import { internsSet, locationEmojiMap } from "../constants/constants.js";
 import { dynamicHeader } from "../util/dynamicHeader.js";
 import { weekToCSV, planToCSV } from "./exportCSV.js";
@@ -26,7 +26,7 @@ import {
 } from "./plan.js";
 import { pickQuestions, renderQuestions } from "./questions.js";
 import { renderCopyWeek } from "./copyWeek.js";
-import { renderReoptimize } from "./reoptimize.js";
+import { reoptimizeRemainingWeeks } from "./reoptimize.js";
 
 // Edit modals still call these; they now act on the currently selected week of
 // the plan instead of a flat schedule.
@@ -76,8 +76,8 @@ export function displayInternWeekTable() {
   renderPlan();
 }
 
-// Compact operations bar: Copy Week, one Export/Backup menu (all CSV + JSON
-// actions), and Re-optimize. The static "Add Pair" button stays in the markup.
+// Compact operations bar, one flat row: Copy Week, an Export/Backup menu (all
+// CSV + JSON actions), and an Edit menu (add pair, re-optimize).
 function planOperationsBar() {
   const container = document.getElementById("pairings-operations");
 
@@ -99,7 +99,15 @@ function planOperationsBar() {
       { label: "Import plan (JSON)", onClick: openImportDialog },
     ]),
   );
-  renderReoptimize(bar);
+  bar.appendChild(
+    makeMenu("Edit", [
+      { label: "Add pair", onClick: addEmptyPair },
+      {
+        label: "Re-optimize remaining weeks",
+        onClick: reoptimizeRemainingWeeks,
+      },
+    ]),
+  );
 }
 
 // Week selector + coverage meter, injected above the week table.
