@@ -245,6 +245,23 @@ console.log("Test: already-met seed continues from partial coverage");
   );
 }
 
+// --- No eligible pairs still yields one filler week (nobody idle) ---
+console.log("Test: zero eligible pairs still produces one filler week");
+{
+  // Same department for everyone + Unique Departments => no eligible pairs.
+  const sameDept = roster()
+    .slice(0, 6)
+    .map((i) => ({ ...i, department: "Web Development" }));
+  const plan = generatePlan(sameDept, { isUniqueDept: true });
+  assert(plan.coverage.total === 0, "no eligible pairs under the toggle");
+  assert(plan.weeks.length === 1, "still generates exactly one filler week");
+  const placed = plan.weeks[0].meetings.reduce((n, m) => n + m.length, 0);
+  assert(
+    placed === sameDept.length,
+    "every selected intern is paired (idle-free)",
+  );
+}
+
 if (failures > 0) {
   throw new Error(`${failures} generatePlan assertion(s) failed`);
 }
