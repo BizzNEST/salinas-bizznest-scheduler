@@ -125,6 +125,13 @@ export default function generatePlan(interns, options = {}) {
     week++;
   }
 
+  // No eligible pairs to cover (e.g. everyone selected shares the axis the
+  // active Unique Pairing toggle requires them to differ on) but there are
+  // still interns to pair — produce one all-filler week so nobody is idle.
+  if (weeks.length === 0 && interns.length >= 2 && cap >= 1) {
+    weeks.push({ meetings: buildWeekMeetings(interns, isEligible, hasMet) });
+  }
+
   return { weeks, coverage: scoreCoverage(eligible, met) };
 }
 
