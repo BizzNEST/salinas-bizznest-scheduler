@@ -1,27 +1,33 @@
 // Ticket 04: Copy Week to Google Chat.
 // Renders a "Copy Week" button into `container` that copies the selected week's
 // meetings to the clipboard as plain grouped text (week header + numbered
-// meetings, name + location per associate; triplets on one line).
+// meetings by name, then the week's ice-breaker questions).
 
-import { getCurrentMeetings, getWeekIndex } from "./plan.js";
+import { getCurrentMeetings, getWeekIndex, getCurrentWeek } from "./plan.js";
 import makeFilterButton from "../util/makeFilterButton.js";
 
 // Build the plain-text block that pastes straight into Google Chat.
-function formatWeek(meetings, weekIndex) {
+function formatWeek(meetings, weekIndex, questions = []) {
   const lines = [`Week ${weekIndex + 1}`];
   meetings.forEach((meeting, index) => {
-    const associates = meeting.map(
-      (associate) => `${associate.name} (${associate.location})`,
-    );
-    const separator = associates.length > 2 ? ", " : " & ";
-    lines.push(`${index + 1}. ${associates.join(separator)}`);
+    const names = meeting.map((associate) => associate.name);
+    const separator = names.length > 2 ? ", " : " & ";
+    lines.push(`${index + 1}. ${names.join(separator)}`);
   });
+  if (questions.length > 0) {
+    lines.push("", "Ice Breakers");
+    questions.forEach((q, i) => lines.push(`${i + 1}. ${q}`));
+  }
   return lines.join("\n");
 }
 
 export function renderCopyWeek(container) {
   const button = makeFilterButton("Copy Week", async () => {
-    const text = formatWeek(getCurrentMeetings(), getWeekIndex());
+    const text = formatWeek(
+      getCurrentMeetings(),
+      getWeekIndex(),
+      getCurrentWeek()?.questions,
+    );
     try {
       await navigator.clipboard.writeText(text);
       button.textContent = "Copied!";
