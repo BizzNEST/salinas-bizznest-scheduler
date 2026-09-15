@@ -1,10 +1,8 @@
 import getInterns from "../api/interns/service.js";
-import shuffle from "../util/shuffle.js";
-import pair from "../util/pair.js";
 import generateMailToString from "../util/sendEmail.js";
 import { filterByDepartment } from "../util/filterByDepartment.js";
 import { filterByLocation } from "../util/filterByLocation.js";
-import { uniquePairing } from "../util/uniquePairing.js";
+import { uniquePairingOptions } from "../util/pairRound.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
@@ -12,21 +10,41 @@ import { displayAddModal, displayRemoveModal } from "./edit.js";
 import { internsSet, locationEmojiMap } from "../constants/constants.js";
 import { dynamicHeader } from "../util/dynamicHeader.js";
 import { displayExportButton } from "./exportCSV.js";
+import generatePlan from "../util/generatePlan.js";
+import {
+  setPlan,
+  getPlan,
+  getWeekIndex,
+  setWeekIndex,
+  getCurrentMeetings,
+  updateCurrentWeekMeetings,
+  setRenderer,
+  loadPlan,
+  savePlan,
+} from "./plan.js";
+import { pickQuestions, renderQuestions } from "./questions.js";
+import { renderCopyWeek } from "./copyWeek.js";
+import { renderPlanJSON } from "./planJSON.js";
+import { renderReoptimize } from "./reoptimize.js";
 
+// Edit modals still call these; they now act on the currently selected week of
+// the plan instead of a flat schedule.
 export function savePairsToLocalStorage(pairs) {
-  localStorage.setItem("internPairs", JSON.stringify(pairs));
+  updateCurrentWeekMeetings(pairs);
 }
 
 export function loadPairsFromLocalStorage() {
-  const pairs = localStorage.getItem("internPairs");
-  return pairs ? JSON.parse(pairs) : [];
+  return getCurrentMeetings();
 }
 
-async function pairInterns() {
+// Build a full multi-week plan from the selected roster and active options.
+export function generateSchedule() {
   const interns = getSelectedInterns();
-  shuffle(interns);
-  uniquePairing(interns, getSelectedOptions()["Unique Pairing"]);
-  return pair(interns);
+  const options = uniquePairingOptions(getSelectedOptions()["Unique Pairing"]);
+  const plan = generatePlan(interns, options);
+  plan.options = options;
+  setPlan(plan);
+  renderPlan();
 }
 
 function formatInternWeekDetails(intern) {
@@ -51,10 +69,127 @@ function formatInternWeekDetails(intern) {
   return col;
 }
 
-export async function displayInternWeekTable(savedPairs) {
-  const internPairs = savedPairs != null ? savedPairs : await pairInterns();
-  savePairsToLocalStorage(internPairs);
+// Backwards-compatible entry point still called by the edit modals: the week's
+// meetings are already persisted via savePairsToLocalStorage, so just re-render.
+export function displayInternWeekTable() {
+  renderPlan();
+}
 
+// Context handed to the per-week plan operation modules (copy / json / export /
+// re-optimize). Kept small and stable so those features stay decoupled.
+function planOperationsBar() {
+  const container = document.getElementById("pairings-operations");
+
+  const ensure = (id) => {
+    let el = document.getElementById(id);
+    if (!el) {
+      el = document.createElement("div");
+      el.id = id;
+      el.className = "plan-op";
+      container.appendChild(el);
+    }
+    el.innerHTML = "";
+    return el;
+  };
+
+  renderCopyWeek(ensure("copy-week-container"));
+  displayExportButton();
+  renderPlanJSON(ensure("json-ops-container"));
+  renderReoptimize(ensure("reoptimize-container"));
+}
+
+// Week selector + coverage meter, injected above the week table.
+function renderPlanControls() {
+  const plan = getPlan();
+  const weekCard = document.getElementById("week-card-content");
+  let controls = document.getElementById("plan-controls");
+  if (!controls) {
+    controls = document.createElement("div");
+    controls.id = "plan-controls";
+    controls.className = "plan-controls";
+    weekCard.insertBefore(controls, weekCard.firstChild);
+  }
+  controls.innerHTML = "";
+  if (!plan) {
+    return;
+  }
+
+  const selector = document.createElement("div");
+  selector.className = "week-selector";
+  const label = document.createElement("label");
+  label.setAttribute("for", "week-select");
+  label.textContent = "Week: ";
+  const select = document.createElement("select");
+  select.id = "week-select";
+  plan.weeks.forEach((_, i) => {
+    const opt = document.createElement("option");
+    opt.value = String(i);
+    opt.textContent = `Week ${i + 1}`;
+    if (i === getWeekIndex()) {
+      opt.selected = true;
+    }
+    select.appendChild(opt);
+  });
+  select.addEventListener("change", () => {
+    setWeekIndex(Number(select.value));
+    renderPlan();
+  });
+  label.appendChild(select);
+  selector.appendChild(label);
+  controls.appendChild(selector);
+
+  controls.appendChild(renderCoverageMeter(plan.coverage));
+}
+
+function renderCoverageMeter(coverage) {
+  const meter = document.createElement("div");
+  meter.className = "coverage-meter";
+  if (!coverage || !coverage.total) {
+    meter.textContent = "Coverage: n/a";
+    return meter;
+  }
+  const remaining = coverage.total - coverage.met;
+  const percent = Math.round((coverage.met / coverage.total) * 100);
+  meter.innerHTML = `
+    <div class="coverage-bar"><div class="coverage-bar-fill" style="width:${percent}%"></div></div>
+    <span class="coverage-label">${percent}% — ${remaining} eligible pair${remaining === 1 ? "" : "s"} remaining</span>`;
+  return meter;
+}
+
+// Show the selected week's ice-breakers, picking + persisting them once per
+// week so they stay stable across edits and week switches (per spec story 30).
+async function showWeekQuestions() {
+  const plan = getPlan();
+  if (!plan) {
+    return;
+  }
+  const week = plan.weeks[getWeekIndex()];
+  if (!week.questions || week.questions.length === 0) {
+    week.questions = await pickQuestions();
+    savePlan();
+  }
+  renderQuestions(week.questions);
+}
+
+// Render the whole plan view: controls + selected week's meetings + operations.
+export function renderPlan() {
+  renderPlanControls();
+  renderWeekTable(getCurrentMeetings());
+  planOperationsBar();
+  showWeekQuestions();
+}
+
+// Restore any saved plan on page load and register the renderer so feature
+// modules can trigger re-renders.
+export function initPlanView() {
+  setRenderer(renderPlan);
+  const plan = loadPlan();
+  if (plan) {
+    renderPlan();
+  }
+}
+
+function renderWeekTable(internPairs) {
   renderDepartmentLists("department-list-2");
   const weekCard = document.getElementById("week-card-content");
   weekCard.style.display = "block";
@@ -110,7 +245,6 @@ export async function displayInternWeekTable(savedPairs) {
     //add to table
     tableBody.appendChild(row);
   });
-  displayExportButton();
 }
 
 export function formatInternDetails(intern) {

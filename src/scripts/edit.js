@@ -181,6 +181,7 @@ function removeIntern(pair, index) {
 const addPairButton = document.getElementById("add-pair-button");
 addPairButton.addEventListener("click", function () {
   const pairs = loadPairsFromLocalStorage();
-  savePairsToLocalStorage(pairs.unshift([]));
-  displayInternWeekTable(pairs);
+  pairs.unshift([]);
+  savePairsToLocalStorage(pairs);
+  displayInternWeekTable();
 });

@@ -1,8 +1,8 @@
-import displayQuestions from "./scripts/questions.js";
 import { displayFilters } from "./scripts/filters.js";
 import {
-  displayInternWeekTable,
+  generateSchedule,
   displayInternTable,
+  initPlanView,
 } from "./scripts/interns.js";
 
 export let currentSearchQuery = "";
@@ -21,6 +21,7 @@ function main() {
     path: "src/assets/lottie/lottie_confetti.json",
   });
   displayInternTable();
+  initPlanView();
 
   toggleIconWeek.addEventListener("click", () => {
     // Toggle the collapsed class to control max-height
@@ -45,8 +46,7 @@ function main() {
     );
     generateScheduleButtonAudio.volume = 0.5;
     generateScheduleButtonAudio.play();
-    displayInternWeekTable();
-    displayQuestions();
+    generateSchedule();
     generateButtonAnimation.goToAndPlay(0, true);
   });
 
