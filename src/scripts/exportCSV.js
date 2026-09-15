@@ -1,37 +1,5 @@
 import { getPlan, getCurrentMeetings } from "./plan.js";
 
-export function displayExportButton() {
-  //get export button div & clear if re-generated
-  const parentContainer = document.getElementById("export-button-div");
-  parentContainer.innerHTML = "";
-
-  // Create the "Export this week" button
-  const exportWeekButton = document.createElement("button");
-  exportWeekButton.className = "filter-button export-button";
-  exportWeekButton.id = "export-button";
-  exportWeekButton.type = "button";
-  exportWeekButton.innerHTML = `Export this week <i class="fa-solid fa-file-arrow-down"></i>`;
-  parentContainer.appendChild(exportWeekButton);
-
-  // Create the "Export full plan" button
-  const exportPlanButton = document.createElement("button");
-  exportPlanButton.className = "filter-button export-button";
-  exportPlanButton.id = "export-plan-button";
-  exportPlanButton.type = "button";
-  exportPlanButton.innerHTML = `Export full plan <i class="fa-solid fa-file-arrow-down"></i>`;
-  parentContainer.appendChild(exportPlanButton);
-
-  // export the selected week's meetings to CSV on click
-  exportWeekButton.addEventListener("click", function () {
-    weekToCSV();
-  });
-
-  // export every week of the plan on click
-  exportPlanButton.addEventListener("click", function () {
-    planToCSV();
-  });
-}
-
 // Build the CSV header line for the widest group in a set of meetings
 function meetingsHeader(meetings) {
   // Every group has at least 2 intern slots in the header

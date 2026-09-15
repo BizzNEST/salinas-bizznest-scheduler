@@ -341,46 +341,34 @@ i#toggle-icon-week.interns {
   background-color: #8be1b6;
 }
 
-/* Pairing Table Option Buttons */
+/* Pairing table option buttons — one wrapping row of uniform buttons */
 #pairings-operations {
   display: flex;
-  column-gap: 25px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
 }
 
-.export-button-div {
-  display: block;
-  width: 100%;
+/* The dynamic ops (Copy / Export menu / Re-optimize) sit in one wrapping row */
+.plan-ops-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
-#export-button {
-  height: 40px;
-  display: block;
-  width: 100% !important;
-  margin-top: 10px;
-  text-align: center;
-  background-color: rgb(245 204 157);
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 15px;
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
-}
-
-#export-button:hover {
-  background-color: rgb(255 186 49);
-}
-
-#add-pair-button {
-  justify-content: center;
-  width: 100% !important;
-  height: 40px;
-  margin-top: 10px;
-  text-align: center;
-  display: inline-block;
+/* Every top-level operation button shares one size + shape */
+#pairings-operations .filter-button {
+  width: auto;
+  min-width: 160px;
+  height: 44px;
+  margin: 0;
+  padding: 0 18px;
+  gap: 8px;
   font-size: 15px;
   font-weight: bold;
+  text-align: center;
   transition:
     background-color 0.3s,
     box-shadow 0.3s;
@@ -390,6 +378,45 @@ i#toggle-icon-week.interns {
 #add-pair-button:hover,
 .add-pair-button-all:hover {
   background-color: #65daa0;
+}
+
+/* Export / Backup dropdown menu */
+.op-menu {
+  position: relative;
+}
+
+.op-menu-list {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  flex-direction: column;
+  min-width: 200px;
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #bde3d0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+.op-menu-list.open {
+  display: flex;
+}
+
+.op-menu-item {
+  padding: 10px 12px;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.op-menu-item:hover {
+  background-color: #eef7f1;
 }
 
 .modal {
@@ -1017,34 +1044,50 @@ table thead th:nth-child(2) {
   }
 }
 
-/* Multi-week plan controls */
+/* Multi-week plan controls (week selector + coverage meter) */
 .plan-controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
-  margin: 12px 0;
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  background-color: #f4faf7;
+  border: 1px solid #bde3d0;
+  border-radius: 10px;
+}
+
+.week-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
 }
 
 .week-selector select {
-  margin-left: 6px;
-  padding: 4px 8px;
-  border-radius: 6px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #bde3d0;
+  border-radius: 8px;
+  background-color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .coverage-meter {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex: 1;
-  min-width: 220px;
+  min-width: 240px;
 }
 
 .coverage-bar {
   flex: 1;
-  height: 10px;
+  height: 12px;
   background: #e0e0e0;
-  border-radius: 5px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -1056,9 +1099,6 @@ table thead th:nth-child(2) {
 
 .coverage-label {
   font-size: 14px;
+  font-weight: bold;
   white-space: nowrap;
-}
-
-.plan-op {
-  display: inline-block;
 }

@@ -1,37 +1,28 @@
 // Ticket 06: JSON export / import (round-trip).
-// Renders "Export plan (JSON)" and "Import plan (JSON)" controls into
-// `container`. Export downloads the full plan structure; import validates a
-// well-formed plan, confirms replacement, then loads it and refreshes.
+// Exposes action functions used by the plan operations menu. Export downloads
+// the full plan structure; import validates a well-formed plan, confirms
+// replacement, then loads it and refreshes.
 
 import { getPlan, setPlan, refresh } from "./plan.js";
-import makeFilterButton from "../util/makeFilterButton.js";
 
-export function renderPlanJSON(container) {
-  const exportButton = makeFilterButton("Export plan (JSON)", exportPlan);
-  container.appendChild(exportButton);
-
-  const importButton = makeFilterButton("Import plan (JSON)");
-  container.appendChild(importButton);
-
-  // Hidden file input triggered by the Import button.
+// Open a file picker and import the chosen plan JSON.
+export function openImportDialog() {
   const fileInput = document.createElement("input");
   fileInput.type = "file";
   fileInput.accept = ".json";
   fileInput.style.display = "none";
-  container.appendChild(fileInput);
-
-  importButton.addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", () => {
     const file = fileInput.files[0];
     if (file) {
       importPlan(file);
     }
-    // Reset so selecting the same file again still fires "change".
-    fileInput.value = "";
+    fileInput.remove();
   });
+  document.body.appendChild(fileInput);
+  fileInput.click();
 }
 
-function exportPlan() {
+export function exportPlan() {
   const plan = getPlan();
   if (!plan) {
     return;

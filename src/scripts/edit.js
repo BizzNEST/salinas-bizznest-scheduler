@@ -178,10 +178,10 @@ function removeIntern(pair, index) {
   });
 }
 
-const addPairButton = document.getElementById("add-pair-button");
-addPairButton.addEventListener("click", function () {
+// Prepend an empty group to the current week (used by the Edit menu).
+export function addEmptyPair() {
   const pairs = loadPairsFromLocalStorage();
   pairs.unshift([]);
   savePairsToLocalStorage(pairs);
   displayInternWeekTable();
-});
+}

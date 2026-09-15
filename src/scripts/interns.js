@@ -6,10 +6,12 @@ import { uniquePairingOptions } from "../util/pairRound.js";
 import { stringToKebabCase } from "../util/stringToKebabCase.js";
 import { renderDepartmentLists, getSelectedOptions } from "./filters.js";
 import { currentSearchQuery } from "../app.js";
-import { displayAddModal, displayRemoveModal } from "./edit.js";
+import { displayAddModal, displayRemoveModal, addEmptyPair } from "./edit.js";
 import { internsSet, locationEmojiMap } from "../constants/constants.js";
 import { dynamicHeader } from "../util/dynamicHeader.js";
-import { displayExportButton } from "./exportCSV.js";
+import { weekToCSV, planToCSV } from "./exportCSV.js";
+import { exportPlan, openImportDialog } from "./planJSON.js";
+import makeMenu from "../util/makeMenu.js";
 import generatePlan from "../util/generatePlan.js";
 import {
   setPlan,
@@ -24,8 +26,7 @@ import {
 } from "./plan.js";
 import { pickQuestions, renderQuestions } from "./questions.js";
 import { renderCopyWeek } from "./copyWeek.js";
-import { renderPlanJSON } from "./planJSON.js";
-import { renderReoptimize } from "./reoptimize.js";
+import { reoptimizeRemainingWeeks } from "./reoptimize.js";
 
 // Edit modals still call these; they now act on the currently selected week of
 // the plan instead of a flat schedule.
@@ -75,27 +76,38 @@ export function displayInternWeekTable() {
   renderPlan();
 }
 
-// Context handed to the per-week plan operation modules (copy / json / export /
-// re-optimize). Kept small and stable so those features stay decoupled.
+// Compact operations bar, one flat row: Copy Week, an Export/Backup menu (all
+// CSV + JSON actions), and an Edit menu (add pair, re-optimize).
 function planOperationsBar() {
   const container = document.getElementById("pairings-operations");
 
-  const ensure = (id) => {
-    let el = document.getElementById(id);
-    if (!el) {
-      el = document.createElement("div");
-      el.id = id;
-      el.className = "plan-op";
-      container.appendChild(el);
-    }
-    el.innerHTML = "";
-    return el;
-  };
+  let bar = document.getElementById("plan-ops-bar");
+  if (!bar) {
+    bar = document.createElement("div");
+    bar.id = "plan-ops-bar";
+    bar.className = "plan-ops-bar";
+    container.insertBefore(bar, container.firstChild);
+  }
+  bar.innerHTML = "";
 
-  renderCopyWeek(ensure("copy-week-container"));
-  displayExportButton();
-  renderPlanJSON(ensure("json-ops-container"));
-  renderReoptimize(ensure("reoptimize-container"));
+  renderCopyWeek(bar);
+  bar.appendChild(
+    makeMenu("Export / Backup", [
+      { label: "This week (CSV)", onClick: weekToCSV },
+      { label: "Full plan (CSV)", onClick: planToCSV },
+      { label: "Plan backup (JSON)", onClick: exportPlan },
+      { label: "Import plan (JSON)", onClick: openImportDialog },
+    ]),
+  );
+  bar.appendChild(
+    makeMenu("Edit", [
+      { label: "Add pair", onClick: addEmptyPair },
+      {
+        label: "Re-optimize remaining weeks",
+        onClick: reoptimizeRemainingWeeks,
+      },
+    ]),
+  );
 }
 
 // Week selector + coverage meter, injected above the week table.
@@ -138,21 +150,28 @@ function renderPlanControls() {
   selector.appendChild(label);
   controls.appendChild(selector);
 
-  controls.appendChild(renderCoverageMeter(plan.coverage));
+  const meter = renderCoverageMeter(plan.coverage);
+  if (meter) {
+    controls.appendChild(meter);
+  }
 }
 
+// Only surface coverage when it tells the coordinator something: how many
+// eligible pairs are left, or a brief done note. Nothing when there is no
+// coverage to track (no eligible pairs) or when already complete-and-silent.
 function renderCoverageMeter(coverage) {
-  const meter = document.createElement("div");
-  meter.className = "coverage-meter";
   if (!coverage || !coverage.total) {
-    meter.textContent = "Coverage: n/a";
-    return meter;
+    return null;
   }
   const remaining = coverage.total - coverage.met;
+  const meter = document.createElement("div");
+  meter.className = "coverage-meter";
+  if (remaining === 0) {
+    meter.innerHTML = `<span class="coverage-label">✓ Everyone eligible has met</span>`;
+    return meter;
+  }
   const percent = Math.round((coverage.met / coverage.total) * 100);
-  meter.innerHTML = `
-    <div class="coverage-bar"><div class="coverage-bar-fill" style="width:${percent}%"></div></div>
-    <span class="coverage-label">${percent}% — ${remaining} eligible pair${remaining === 1 ? "" : "s"} remaining</span>`;
+  meter.innerHTML = `<span class="coverage-label">${percent}% — ${remaining} eligible pair${remaining === 1 ? "" : "s"} left to meet</span>`;
   return meter;
 }
 
