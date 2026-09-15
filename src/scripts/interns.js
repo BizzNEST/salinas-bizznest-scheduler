@@ -9,7 +9,9 @@ import { currentSearchQuery } from "../app.js";
 import { displayAddModal, displayRemoveModal } from "./edit.js";
 import { internsSet, locationEmojiMap } from "../constants/constants.js";
 import { dynamicHeader } from "../util/dynamicHeader.js";
-import { displayExportButton } from "./exportCSV.js";
+import { weekToCSV, planToCSV } from "./exportCSV.js";
+import { exportPlan, openImportDialog } from "./planJSON.js";
+import makeMenu from "../util/makeMenu.js";
 import generatePlan from "../util/generatePlan.js";
 import {
   setPlan,
@@ -24,7 +26,6 @@ import {
 } from "./plan.js";
 import { pickQuestions, renderQuestions } from "./questions.js";
 import { renderCopyWeek } from "./copyWeek.js";
-import { renderPlanJSON } from "./planJSON.js";
 import { renderReoptimize } from "./reoptimize.js";
 
 // Edit modals still call these; they now act on the currently selected week of
@@ -75,27 +76,30 @@ export function displayInternWeekTable() {
   renderPlan();
 }
 
-// Context handed to the per-week plan operation modules (copy / json / export /
-// re-optimize). Kept small and stable so those features stay decoupled.
+// Compact operations bar: Copy Week, one Export/Backup menu (all CSV + JSON
+// actions), and Re-optimize. The static "Add Pair" button stays in the markup.
 function planOperationsBar() {
   const container = document.getElementById("pairings-operations");
 
-  const ensure = (id) => {
-    let el = document.getElementById(id);
-    if (!el) {
-      el = document.createElement("div");
-      el.id = id;
-      el.className = "plan-op";
-      container.appendChild(el);
-    }
-    el.innerHTML = "";
-    return el;
-  };
+  let bar = document.getElementById("plan-ops-bar");
+  if (!bar) {
+    bar = document.createElement("div");
+    bar.id = "plan-ops-bar";
+    bar.className = "plan-ops-bar";
+    container.insertBefore(bar, container.firstChild);
+  }
+  bar.innerHTML = "";
 
-  renderCopyWeek(ensure("copy-week-container"));
-  displayExportButton();
-  renderPlanJSON(ensure("json-ops-container"));
-  renderReoptimize(ensure("reoptimize-container"));
+  renderCopyWeek(bar);
+  bar.appendChild(
+    makeMenu("Export / Backup", [
+      { label: "This week (CSV)", onClick: weekToCSV },
+      { label: "Full plan (CSV)", onClick: planToCSV },
+      { label: "Plan backup (JSON)", onClick: exportPlan },
+      { label: "Import plan (JSON)", onClick: openImportDialog },
+    ]),
+  );
+  renderReoptimize(bar);
 }
 
 // Week selector + coverage meter, injected above the week table.
@@ -150,9 +154,7 @@ function renderCoverageMeter(coverage) {
   }
   const remaining = coverage.total - coverage.met;
   const percent = Math.round((coverage.met / coverage.total) * 100);
-  meter.innerHTML = `
-    <div class="coverage-bar"><div class="coverage-bar-fill" style="width:${percent}%"></div></div>
-    <span class="coverage-label">${percent}% — ${remaining} eligible pair${remaining === 1 ? "" : "s"} remaining</span>`;
+  meter.innerHTML = `<span class="coverage-label">${percent}% coverage — ${remaining} eligible pair${remaining === 1 ? "" : "s"} remaining</span>`;
   return meter;
 }
 

@@ -350,16 +350,16 @@ i#toggle-icon-week.interns {
   margin: 16px 0;
 }
 
-/* Operation wrappers lay their button(s) out inline within the row */
-.export-button-div,
-.plan-op {
+/* The dynamic ops (Copy / Export menu / Re-optimize) sit in one wrapping row */
+.plan-ops-bar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
 }
 
-/* Every operation button shares one size + shape for a consistent bar */
-#pairings-operations button {
+/* Every top-level operation button shares one size + shape */
+#pairings-operations .filter-button {
   width: auto;
   min-width: 160px;
   height: 44px;
@@ -375,18 +375,48 @@ i#toggle-icon-week.interns {
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
-/* Export actions keep their distinct amber accent */
-.export-button {
-  background-color: rgb(245 204 157);
-}
-
-.export-button:hover {
-  background-color: rgb(255 186 49);
-}
-
 #add-pair-button:hover,
 .add-pair-button-all:hover {
   background-color: #65daa0;
+}
+
+/* Export / Backup dropdown menu */
+.op-menu {
+  position: relative;
+}
+
+.op-menu-list {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  flex-direction: column;
+  min-width: 200px;
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #bde3d0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+.op-menu-list.open {
+  display: flex;
+}
+
+.op-menu-item {
+  padding: 10px 12px;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.op-menu-item:hover {
+  background-color: #eef7f1;
 }
 
 .modal {
